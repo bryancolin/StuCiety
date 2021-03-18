@@ -20,13 +20,13 @@ extension UITextField {
 
 @IBDesignable class CustomUITextField: UITextField {
     
-    @IBInspectable var cornerRadius: CGFloat = 0{
+    @IBInspectable var cornerRadius: CGFloat = 5.0 {
         didSet{
             self.layer.cornerRadius = cornerRadius
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat = 0{
+    @IBInspectable var borderWidth: CGFloat = 2.0 {
         didSet{
             self.layer.borderWidth = borderWidth
             self.layer.masksToBounds = true
