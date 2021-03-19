@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Meo-oS-7WZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
+        <!--Welcome-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Welcome" id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,13 +26,13 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StuCiety" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="50" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-J4-9Bn">
                                                 <rect key="frame" x="1" y="0.0" width="289.5" height="95.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="80"/>
-                                                <color key="textColor" name="BrandPurple"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place where you hangout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="CY8-5x-9ai">
-                                                <rect key="frame" x="49.5" y="95.5" width="192" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place where you connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="CY8-5x-9ai">
+                                                <rect key="frame" x="50" y="95.5" width="191" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="BrandPurple"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -42,32 +42,38 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjx-xF-WSG" customClass="CustomUIButton" customModule="Stuciety" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="134" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="134" id="6xf-No-g22"/>
                                                     <constraint firstAttribute="height" constant="50" id="OYi-QR-C56"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <state key="normal" title="Login">
-                                                    <color key="titleColor" name="BrandPurple"/>
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="BrandPurple"/>
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="XIN-Oi-gS1" kind="presentation" id="210-6y-oSC"/>
+                                                    <segue destination="XIN-Oi-gS1" kind="popoverPresentation" popoverAnchorView="qjx-xF-WSG" id="210-6y-oSC">
+                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                                    </segue>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU6-aq-1aw" customClass="CustomUIButton" customModule="Stuciety" customModuleProvider="target">
                                                 <rect key="frame" x="157" y="0.0" width="134" height="50"/>
-                                                <color key="backgroundColor" name="BrandPurple"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="134" id="YB4-Dm-bCE"/>
                                                     <constraint firstAttribute="height" constant="50" id="pgS-KE-4P0"/>
@@ -81,14 +87,17 @@
                                                         <real key="value" value="5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="BrandPurple"/>
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="H0B-R7-hza" kind="presentation" id="BND-OC-Hwi"/>
+                                                    <segue destination="H0B-R7-hza" kind="presentation" id="zEI-RA-duh"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -97,7 +106,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qS6-gg-5cX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ab1-bt-gkV"/>
                             <constraint firstItem="qS6-gg-5cX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="c0i-xG-0n1"/>
@@ -107,12 +116,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704.34782608695662" y="83.705357142857139"/>
+            <point key="canvasLocation" x="1128" y="104"/>
         </scene>
-        <!--Register View Controller-->
+        <!--Register-->
         <scene sceneID="7sr-ps-sJo">
             <objects>
-                <viewController id="H0B-R7-hza" customClass="RegisterViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Register" id="H0B-R7-hza" customClass="RegisterViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rNo-qv-hqn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,21 +130,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="019-Nz-PEW">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="844"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7C0-qW-zNG">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="844"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fR7-q9-ZU6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="166"/>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="48" translatesAutoresizingMaskIntoConstraints="NO" id="g2J-qN-yQ5">
-                                                        <rect key="frame" x="0.0" y="162" width="414" height="520"/>
+                                                        <rect key="frame" x="0.0" y="166" width="414" height="520"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JKO-DF-DaZ">
                                                                 <rect key="frame" x="30" y="8" width="354" height="184"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="77"/>
-                                                                <color key="textColor" name="BrandPurple"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="pO4-8l-QTi">
@@ -146,7 +155,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="u7R-By-HbW"/>
                                                                         </constraints>
-                                                                        <color key="textColor" name="BrandPurple"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" textContentType="name"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -157,10 +166,10 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" systemColor="labelColor"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                                                <color key="value" name="BrandLightPurple"/>
+                                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
@@ -169,7 +178,6 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="aF5-36-Q9E"/>
                                                                         </constraints>
-                                                                        <color key="textColor" name="BrandPurple"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -180,10 +188,10 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                                                <color key="value" name="BrandLightPurple"/>
+                                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
@@ -192,7 +200,7 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="EmT-mq-Kav"/>
                                                                         </constraints>
-                                                                        <color key="textColor" name="BrandPurple"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -203,19 +211,20 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" systemColor="labelColor"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                                                <color key="value" name="BrandLightPurple"/>
+                                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK9-Sp-kfN" customClass="CustomUIButton" customModule="Stuciety" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="222" width="354" height="50"/>
-                                                                        <color key="backgroundColor" name="BrandPurple"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="80G-ZX-lMF"/>
                                                                         </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <state key="normal" title="Create">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </state>
@@ -227,7 +236,10 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" systemColor="labelColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                                <real key="value" value="1"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </button>
@@ -237,7 +249,7 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="30" bottom="8" right="30"/>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WQT-pl-l6k">
-                                                        <rect key="frame" x="0.0" y="682" width="414" height="162"/>
+                                                        <rect key="frame" x="0.0" y="686" width="414" height="166"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -284,30 +296,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWW-Vj-AOa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="439"/>
+            <point key="canvasLocation" x="2338" y="439"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="rwP-W8-aEH">
+        <!--Tab Bar Controller-->
+        <scene sceneID="dun-nD-y4s">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Meo-oS-7WZ" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q1s-pG-zwr">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                <tabBarController modalPresentationStyle="fullScreen" id="KqW-e3-TtX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="b58-7q-4Ui"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dh5-TL-gLV" customClass="CustomUITabBar" customModule="Stuciety" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="BrandPurple"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="16"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="5Io-P5-RCF"/>
+                        <segue destination="ocH-rm-gLU" kind="relationship" relationship="viewControllers" id="Ghu-de-ebx"/>
+                        <segue destination="7tU-dq-7uW" kind="relationship" relationship="viewControllers" id="lTq-AA-J88"/>
+                        <segue destination="zay-R1-0Cw" kind="relationship" relationship="viewControllers" id="HdS-H8-COP"/>
+                        <segue destination="gLL-tb-GyQ" kind="relationship" relationship="viewControllers" id="5qK-eX-JNM"/>
                     </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fwz-lF-HcA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Ni-6o-5Sj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-204.34782608695653" y="83.705357142857139"/>
+            <point key="canvasLocation" x="3506" y="105"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Settings-->
+        <scene sceneID="y9X-1u-8m2">
+            <objects>
+                <viewController id="gLL-tb-GyQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wb2-Im-fmB">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="pQ4-2t-gLH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="1D9-qq-kFp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eHH-y4-tYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3506" y="1215"/>
+        </scene>
+        <!--Login-->
         <scene sceneID="Q8j-AJ-YiS">
             <objects>
-                <viewController id="XIN-Oi-gS1" customClass="LoginViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" modalPresentationStyle="fullScreen" id="XIN-Oi-gS1" customClass="LoginViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kFS-21-i56">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -316,32 +363,32 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwC-YX-g7I">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="864"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ICb-6p-biy">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="864"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rR4-ea-egr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="229"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="245"/>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="87" translatesAutoresizingMaskIntoConstraints="NO" id="t4E-es-BLj">
-                                                        <rect key="frame" x="0.0" y="229" width="414" height="406"/>
+                                                        <rect key="frame" x="0.0" y="245" width="414" height="406"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wKe-jm-6Fs">
                                                                 <rect key="frame" x="30" y="8" width="354" height="97"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="77"/>
-                                                                <color key="textColor" name="BrandPurple"/>
+                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="wi4-wf-5mw">
                                                                 <rect key="frame" x="30" y="192" width="354" height="206"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-70-VUK" customClass="CustomUITextField" customModule="Stuciety" customModuleProvider="target">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bryancolin35@ymail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-70-VUK" customClass="CustomUITextField" customModule="Stuciety" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="2F6-z4-PO5"/>
                                                                         </constraints>
-                                                                        <color key="textColor" name="BrandPurple"/>
+                                                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -352,19 +399,19 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                                                <color key="value" name="BrandLightPurple"/>
+                                                                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3" customClass="CustomUITextField" customModule="Stuciety" customModuleProvider="target">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3" customClass="CustomUITextField" customModule="Stuciety" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="laz-Ka-3Zb"/>
                                                                         </constraints>
-                                                                        <color key="textColor" name="BrandPurple"/>
+                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                         <userDefinedRuntimeAttributes>
@@ -375,19 +422,20 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                                                <color key="value" name="BrandLightPurple"/>
+                                                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ac2-UK-q1l" customClass="CustomUIButton" customModule="Stuciety" customModuleProvider="target">
                                                                         <rect key="frame" x="0.0" y="156" width="354" height="50"/>
-                                                                        <color key="backgroundColor" name="BrandPurple"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="eiF-TD-7Hm"/>
                                                                         </constraints>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                                         <state key="normal" title="Login">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
@@ -399,7 +447,10 @@
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
+                                                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                                <real key="value" value="0.0"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                         <connections>
@@ -412,7 +463,7 @@
                                                         <edgeInsets key="layoutMargins" top="8" left="30" bottom="8" right="30"/>
                                                     </stackView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BF1-8J-vJk">
-                                                        <rect key="frame" x="0.0" y="635" width="414" height="229"/>
+                                                        <rect key="frame" x="0.0" y="651" width="414" height="245"/>
                                                     </view>
                                                 </subviews>
                                                 <constraints>
@@ -450,35 +501,90 @@
                             <constraint firstItem="S56-0e-SK4" firstAttribute="trailing" secondItem="tLc-9M-YKw" secondAttribute="trailing" id="xQp-2f-pe8"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Dxu-ci-eq8"/>
                     <connections>
                         <outlet property="emailTextField" destination="09E-70-VUK" id="XKJ-kE-w4v"/>
                         <outlet property="passwordTextField" destination="Sug-2L-Bv3" id="5kp-hb-Z1W"/>
                         <outlet property="scrollView" destination="S56-0e-SK4" id="egp-Dp-mhN"/>
+                        <segue destination="KqW-e3-TtX" kind="show" identifier="LoginToHome" id="JL6-hn-v0e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0H-cw-Sif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1687" y="-331"/>
+            <point key="canvasLocation" x="2338" y="-331"/>
+        </scene>
+        <!--Lounge-->
+        <scene sceneID="qqn-ss-ZlH">
+            <objects>
+                <viewController id="ocH-rm-gLU" customClass="HomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cbP-2H-4Ob">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mPb-gl-vii"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Lounge" image="chat" id="hRp-bM-gb6"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhn-rK-HEl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4810" y="-331"/>
+        </scene>
+        <!--Counselors-->
+        <scene sceneID="aHS-vX-ffk">
+            <objects>
+                <viewController id="7tU-dq-7uW" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ICU-xq-qvd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="qao-Eb-kUL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Counselors" image="counselor" id="qcz-4r-C2p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JXZ-LS-JZF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4810" y="439"/>
+        </scene>
+        <!--Questionnaire-->
+        <scene sceneID="SNQ-yz-f7c">
+            <objects>
+                <viewController id="zay-R1-0Cw" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="miE-hh-Rzs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DPn-3d-hsz"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Questionnaire" image="questionnaire" id="2KA-eW-pGP">
+                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eb8-hH-4CH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4810" y="1215"/>
         </scene>
     </scenes>
     <designables>
         <designable name="09E-70-VUK">
-            <size key="intrinsicContentSize" width="62.5" height="34"/>
+            <size key="intrinsicContentSize" width="190" height="34"/>
         </designable>
         <designable name="9hF-gV-59h">
             <size key="intrinsicContentSize" width="62.5" height="34"/>
+        </designable>
+        <designable name="Dh5-TL-gLV">
+            <size key="intrinsicContentSize" width="-1" height="83"/>
         </designable>
         <designable name="EGf-pO-RWV">
             <size key="intrinsicContentSize" width="90.5" height="34"/>
         </designable>
         <designable name="RK9-Sp-kfN">
-            <size key="intrinsicContentSize" width="46" height="30"/>
+            <size key="intrinsicContentSize" width="59" height="36"/>
         </designable>
         <designable name="Sug-2L-Bv3">
-            <size key="intrinsicContentSize" width="90.5" height="34"/>
+            <size key="intrinsicContentSize" width="94" height="34"/>
         </designable>
         <designable name="ac2-UK-q1l">
-            <size key="intrinsicContentSize" width="38" height="30"/>
+            <size key="intrinsicContentSize" width="49" height="36"/>
         </designable>
         <designable name="gU6-aq-1aw">
             <size key="intrinsicContentSize" width="73" height="36"/>
@@ -491,12 +597,16 @@
         </designable>
     </designables>
     <resources>
-        <namedColor name="BrandLightPurple">
-            <color red="0.72200000286102295" green="0.70999997854232788" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
+        <image name="chat" width="20" height="20"/>
+        <image name="counselor" width="20" height="20"/>
+        <image name="questionnaire" width="20" height="20"/>
+        <image name="settings" width="15" height="15"/>
         <namedColor name="BrandPurple">
             <color red="0.47099998593330383" green="0.40799999237060547" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

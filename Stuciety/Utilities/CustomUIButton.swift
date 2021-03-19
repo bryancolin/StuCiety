@@ -27,6 +27,15 @@ import UIKit
         }
     }
     
+    @IBInspectable var shadowOpacity: Float = 1.0 {
+        didSet {
+            self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+            self.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
+            self.layer.shadowOpacity = shadowOpacity
+            self.layer.shadowRadius = 0.0
+        }
+    }
+    
     /*
      // Only override draw() if you perform custom drawing.
      // An empty implementation adversely affects performance during animation.

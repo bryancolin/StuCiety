@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E539D56826047E7800839E5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539D56726047E7700839E5A /* HomeViewController.swift */; };
+		E54144F12604D9D500ADF901 /* CustomUITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54144F02604D9D500ADF901 /* CustomUITabBar.swift */; };
 		E5454D7F26022A7E00A14DE6 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */; };
 		E5454D8026022A7E00A14DE6 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */; };
 		E5454D8B26022ABC00A14DE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5454D8A26022ABB00A14DE6 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		2C9A29EF4185FC5DDAEF05AF /* Pods-Stuciety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stuciety.release.xcconfig"; path = "Target Support Files/Pods-Stuciety/Pods-Stuciety.release.xcconfig"; sourceTree = "<group>"; };
 		B3135AD34672CD451F473D5D /* Pods-Stuciety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stuciety.debug.xcconfig"; path = "Target Support Files/Pods-Stuciety/Pods-Stuciety.debug.xcconfig"; sourceTree = "<group>"; };
+		E539D56726047E7700839E5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E54144F02604D9D500ADF901 /* CustomUITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBar.swift; sourceTree = "<group>"; };
 		E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		E5454D8A26022ABB00A14DE6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -92,6 +96,7 @@
 				E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */,
 				E5B3BA9826023143005D1D0B /* LoginViewController.swift */,
 				E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */,
+				E539D56726047E7700839E5A /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,8 +112,10 @@
 		E5454D7C26022A7E00A14DE6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E54A9B032602554000EFC6B8 /* Constants.swift */,
 				E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */,
 				E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */,
+				E54144F02604D9D500ADF901 /* CustomUITabBar.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -143,7 +150,6 @@
 				E5767A6E2602200100E851B2 /* Info.plist */,
 				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
-				E54A9B032602554000EFC6B8 /* Constants.swift */,
 			);
 			path = Stuciety;
 			sourceTree = "<group>";
@@ -269,6 +275,8 @@
 				E5B3BA9B26023150005D1D0B /* RegisterViewController.swift in Sources */,
 				E5454D8026022A7E00A14DE6 /* CustomUIButton.swift in Sources */,
 				E5767A6126021FFB00E851B2 /* AppDelegate.swift in Sources */,
+				E539D56826047E7800839E5A /* HomeViewController.swift in Sources */,
+				E54144F12604D9D500ADF901 /* CustomUITabBar.swift in Sources */,
 				E5454D7F26022A7E00A14DE6 /* CustomUITextField.swift in Sources */,
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,

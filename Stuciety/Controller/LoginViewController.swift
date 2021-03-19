@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
                 if let e = error {
                     self.showErrorMessage(with: e)
                 } else {
-                    //                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
+                    self.performSegue(withIdentifier: K.loginSegue, sender: self)
                     print("Successfully login")
                 }
             }
@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
         
         present(alert, animated: true, completion: nil)
     }
-
 }
 
 //MARK: - UITextFieldDelegate
