@@ -7,40 +7,7 @@
 
 import UIKit
 
-@IBDesignable class CustomUIButton: UIButton {
+@IBDesignable
+class CustomUIButton: UIButton {
     
-    @IBInspectable var cornerRadius: CGFloat = 5.0 {
-        didSet{
-            self.layer.cornerRadius = cornerRadius
-        }
-    }
-    
-    @IBInspectable var borderWidth: CGFloat = 2.0 {
-        didSet{
-            self.layer.borderWidth = borderWidth
-        }
-    }
-    
-    @IBInspectable var borderColor: UIColor = UIColor.clear {
-        didSet{
-            self.layer.borderColor = borderColor.cgColor
-        }
-    }
-    
-    @IBInspectable var shadowOpacity: Float = 1.0 {
-        didSet {
-            self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-            self.layer.shadowOffset = CGSize(width: 0.0, height: 3.0)
-            self.layer.shadowOpacity = shadowOpacity
-            self.layer.shadowRadius = 0.0
-        }
-    }
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
 }
