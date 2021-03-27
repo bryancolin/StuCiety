@@ -645,11 +645,13 @@
             </objects>
             <point key="canvasLocation" x="5715.9420289855079" y="1218.0803571428571"/>
         </scene>
-        <!--Lounge-->
+        <!--Navigation Controller-->
         <scene sceneID="cOB-Nr-jYl">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="bAZ-GU-V9D" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lounge" image="chat" id="hRp-bM-gb6"/>
+                    <tabBarItem key="tabBarItem" title="" image="home" landscapeImage="home" largeContentSizeImage="home" id="hRp-bM-gb6">
+                        <inset key="largeContentSizeImageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="VQo-6o-8Fm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -669,11 +671,11 @@
             </objects>
             <point key="canvasLocation" x="4808.695652173913" y="-331.47321428571428"/>
         </scene>
-        <!--Counselors-->
+        <!--Navigation Controller-->
         <scene sceneID="KcZ-G8-6VD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="05i-D5-ySk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Counselors" image="counselor" id="qcz-4r-C2p"/>
+                    <tabBarItem key="tabBarItem" title="" image="user" landscapeImage="user" largeContentSizeImage="user" id="qcz-4r-C2p"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="cDh-hT-eTJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
@@ -693,11 +695,11 @@
             </objects>
             <point key="canvasLocation" x="4808.695652173913" y="438.61607142857139"/>
         </scene>
-        <!--Settings-->
+        <!--Navigation Controller-->
         <scene sceneID="BTj-bZ-Ku6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfQ-21-511" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="1D9-qq-kFp">
+                    <tabBarItem key="tabBarItem" title="" image="settings" landscapeImage="settings" largeContentSizeImage="settings" id="1D9-qq-kFp">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -719,11 +721,11 @@
             </objects>
             <point key="canvasLocation" x="4806" y="1981"/>
         </scene>
-        <!--Questionnaire-->
+        <!--Navigation Controller-->
         <scene sceneID="1vh-dm-eYF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tVD-Ep-SdQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Questionnaire" image="questionnaire" id="2KA-eW-pGP">
+                    <tabBarItem key="tabBarItem" title="" image="list" landscapeImage="list" largeContentSizeImage="list" id="2KA-eW-pGP">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -752,10 +754,10 @@
         </designable>
     </designables>
     <resources>
-        <image name="chat" width="20" height="20"/>
-        <image name="counselor" width="20" height="20"/>
-        <image name="questionnaire" width="20" height="20"/>
+        <image name="home" width="15" height="15"/>
+        <image name="list" width="15" height="15"/>
         <image name="settings" width="15" height="15"/>
+        <image name="user" width="15" height="15"/>
         <namedColor name="BrandLightBlue">
             <color red="0.89399999380111694" green="0.98400002717971802" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
