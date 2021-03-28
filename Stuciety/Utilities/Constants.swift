@@ -9,10 +9,25 @@ import Foundation
 
 struct K {
     static let appName = "Stuciety"
+    static let chatVC = "chatVC"
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "MessageCell"
-    static let registerSegue = "RegisterToHome"
-    static let loginSegue = "LoginToHome"
+    
+    struct Segue {
+        static let register = "RegisterToHome"
+        static let login = "LoginToHome"
+        static let chat = "ToChat"
+    }
+    
+    struct LoungeTable {
+        static let cellIdentifier = "LoungeTableReusableCell"
+        static let collectionCellIdentifier = "LoungeCollectionReusableCell"
+    }
+    
+    struct CounselorTable {
+        static let cellIdentifier = "CounselorTableReusableCell"
+        static let collectionCellIdentifier = "CounselorCollectionReusableCell"
+    }
     
     struct BrandColors {
         static let purple = "BrandPurple"

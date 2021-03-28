@@ -9,31 +9,65 @@ import UIKit
 import Firebase
 
 class HomeViewController: UIViewController {
-
+    
+    @IBOutlet weak var tableList: UITableView!
+    
+    var topics = Topic.fetchTopics()
+    var selectedTopic: Topic?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableList.dataSource = self
+        tableList.delegate = self
+        
         // Do any additional setup after loading the view.
         Auth.auth().addStateDidChangeListener { auth, user in
-          if let currentUser = user {
-            // User is signed in. Show home screen
-            print(currentUser)
-          } else {
-            // No User is signed in. Show user the login screen
-            print("No User is signed in")
-          }
+            if let currentUser = user {
+                // User is signed in. Show home screen
+                print(currentUser)
+            } else {
+                // No User is signed in. Show user the login screen
+                print("No User is signed in")
+            }
         }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == K.Segue.chat {
+            let destinationVC = segue.destination as! ChatViewController
+            destinationVC.roomTitle = selectedTopic?.label
+        }
     }
-    */
-
 }
+
+//MARK: - TableViewDataSource
+
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return topics.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.LoungeTable.cellIdentifier, for: indexPath) as? LoungeTableViewCell else {
+            fatalError("Unable to create topic table view cell")
+        }
+        let topic = topics[indexPath.row]
+        cell.delegate = self
+        cell.topics = topic
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 220
+    }
+}
+
+extension HomeViewController: TableViewInsideCollectionViewDelegate {
+    func cellTaped(topic: Topic?) {
+        selectedTopic = topic
+        self.performSegue(withIdentifier: K.Segue.chat, sender: self)
+    }
+}
+
