@@ -18,11 +18,6 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func loginPressed(_ sender: CustomUIButton) {
@@ -45,33 +40,5 @@ class LoginViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
         
         present(alert, animated: true, completion: nil)
-    }
-}
-
-//MARK: - UITextFieldDelegate
-
-extension LoginViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else {
-            // if keyboard size is not available for some reason, dont do anything
-            return
-        }
-        
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: keyboardSize.height , right: 0.0)
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        let contentInsets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
-        // reset back the content inset to zero after keyboard is gone
-        scrollView.contentInset = contentInsets
-        scrollView.scrollIndicatorInsets = contentInsets
     }
 }

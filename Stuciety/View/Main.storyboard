@@ -368,7 +368,7 @@
             <objects>
                 <viewController id="gLL-tb-GyQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wb2-Im-fmB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="pQ4-2t-gLH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -560,7 +560,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="ocH-rm-gLU" customClass="HomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbP-2H-4Ob">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KvD-Zl-dsw">
@@ -704,7 +704,7 @@
             <objects>
                 <viewController storyboardIdentifier="chatVC" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="X9N-ja-pHc" customClass="ChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z3z-vR-jzu">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="fnX-C6-T4e"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -720,7 +720,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="7tU-dq-7uW" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ICU-xq-qvd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="qao-Eb-kUL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -736,7 +736,7 @@
             <objects>
                 <viewController id="zay-R1-0Cw" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="miE-hh-Rzs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="DPn-3d-hsz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -755,7 +755,7 @@
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" backIndicatorImage="back_btn" largeTitles="YES" id="VQo-6o-8Fm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="VQo-6o-8Fm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
@@ -857,7 +857,6 @@
     </designables>
     <resources>
         <image name="Nothing" width="2400" height="1256"/>
-        <image name="back_btn" width="13" height="21"/>
         <image name="home" width="15" height="15"/>
         <image name="list" width="15" height="15"/>
         <image name="settings" width="15" height="15"/>
