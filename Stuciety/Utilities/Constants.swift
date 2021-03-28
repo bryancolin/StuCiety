@@ -9,9 +9,6 @@ import Foundation
 
 struct K {
     static let appName = "Stuciety"
-    static let chatVC = "chatVC"
-    static let cellIdentifier = "ReusableCell"
-    static let cellNibName = "MessageCell"
     
     struct Segue {
         static let register = "RegisterToHome"
@@ -27,6 +24,11 @@ struct K {
     struct CounselorTable {
         static let cellIdentifier = "CounselorTableReusableCell"
         static let collectionCellIdentifier = "CounselorCollectionReusableCell"
+    }
+    
+    struct Room {
+        static let cellIdentifier = "ReusableCell"
+        static let cellNibName = "MessageCell"
     }
     
     struct BrandColors {
