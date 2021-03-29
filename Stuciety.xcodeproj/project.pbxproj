@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E531DADA2605DE2800010B62 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531DAD92605DE2800010B62 /* CustomUIView.swift */; };
 		E539D56826047E7800839E5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539D56726047E7700839E5A /* HomeViewController.swift */; };
+		E54061C32611F36A006C1AD4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54061C22611F36A006C1AD4 /* Message.swift */; };
 		E54144F12604D9D500ADF901 /* CustomUITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54144F02604D9D500ADF901 /* CustomUITabBar.swift */; };
 		E5454D7F26022A7E00A14DE6 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */; };
 		E5454D8026022A7E00A14DE6 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */; };
@@ -49,6 +50,7 @@
 		B3135AD34672CD451F473D5D /* Pods-Stuciety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stuciety.debug.xcconfig"; path = "Target Support Files/Pods-Stuciety/Pods-Stuciety.debug.xcconfig"; sourceTree = "<group>"; };
 		E531DAD92605DE2800010B62 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		E539D56726047E7700839E5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E54061C22611F36A006C1AD4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E54144F02604D9D500ADF901 /* CustomUITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBar.swift; sourceTree = "<group>"; };
 		E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				E57492A0260EFCD90094670E /* Topic.swift */,
+				E54061C22611F36A006C1AD4 /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */,
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
+				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
 				E5823963260F28E500286D3A /* ChatViewController.swift in Sources */,
 				E57492A1260EFCD90094670E /* Topic.swift in Sources */,
 			);

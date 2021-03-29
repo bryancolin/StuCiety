@@ -6,11 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class ChatViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
+    
+    let db = Firestore.firestore()
     
     var roomTitle: String?
     
@@ -23,9 +26,71 @@ class ChatViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         self.title = roomTitle
         
+        messageTextField.delegate = self
         tableView.dataSource = self
+        
+        loadMessages()
+    }
+    
+    func loadMessages() {
+        
+        db.collection(K.FStore.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addSnapshotListener { (querySnapshot, error) in
+            self.messages = []
+            
+            if let e = error {
+                print("There was an issue retrieving data from Firestore. \(e)")
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        let data = doc.data()
+                        print(data[K.FStore.bodyField])
+                    }
+                }
+            }
+        }
+        
+//        DispatchQueue.main.async {
+//            self.tableView.reloadData()
+//            let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+//            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+//        }
+    }
+    
+    @IBAction func sendPressed(_ sender: UIButton) {
+        performAction()
+    }
+    
+    func performAction() {
+        if messageTextField.text != "" {
+            if let messageBody = messageTextField.text, let messageSender = Auth.auth().currentUser?.email {
+                db.collection(K.FStore.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addDocument(data: [
+                    K.FStore.senderField: messageSender,
+                    K.FStore.bodyField: messageBody,
+                    K.FStore.dateField: Date().timeIntervalSince1970
+                ]) { (error) in
+                    if let e = error {
+                        print("There was an issue retrieving data from Firestore. \(e)")
+                    } else {
+                        self.messageTextField.text = ""
+                        print("Successfully saved data.")
+                    }
+                }
+            }
+        }
     }
 }
+
+//MARK: - UITextFieldDelegate
+
+extension ChatViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        messageTextField.resignFirstResponder()
+        return true
+    }
+}
+
+//MARK: - UITableViewDataSource
 
 extension ChatViewController: UITableViewDataSource {
     
@@ -36,7 +101,7 @@ extension ChatViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Room.cellIdentifier, for: indexPath) as UITableViewCell
-        cell.textLabel?.text = messages[indexPath.row]
+//        cell.textLabel?.text = messages[indexPath.row]
         
         return cell
     }
