@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ProgressHUD
+import Validator
 
 class RegisterViewController: UIViewController {
     
@@ -18,5 +20,20 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func registerPressed(_ sender: UIButton) {
+        
+        guard nameTextField.text != "" else {
+            return ProgressHUD.showError("Name field is empty")
+        }
+        
+        guard emailTextField.text != "" else {
+            return ProgressHUD.showError("Email field is empty")
+        }
+        
+        guard passwordTextField.text != "" else {
+            return ProgressHUD.showError("Password field is empty")
+        }
     }
 }

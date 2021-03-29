@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import ProgressHUD
 
 class LoginViewController: UIViewController {
     
@@ -21,24 +22,16 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginPressed(_ sender: CustomUIButton) {
-        
+        ProgressHUD.showProgress(0.42)
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let e = error {
-                    self.showErrorMessage(with: e)
+                if error != nil {
+                    ProgressHUD.showFailed("Invalid email or password")
                 } else {
                     self.performSegue(withIdentifier: K.Segue.login, sender: self)
                     print("Successfully login")
                 }
             }
         }
-    }
-    
-    func showErrorMessage(with e: Error) {
-        let message = e.localizedDescription
-        let alert = UIAlertController(title: "Oops", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Try again", style: .default, handler: nil))
-        
-        present(alert, animated: true, completion: nil)
     }
 }
