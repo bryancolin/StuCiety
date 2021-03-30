@@ -18,11 +18,17 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        self.emailTextField.tag = 0
+        self.passwordTextField.tag = 1
+        
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
     
     @IBAction func loginPressed(_ sender: CustomUIButton) {
-        ProgressHUD.showProgress(0.42)
+        
+        ProgressHUD.show()
+        
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
                 if error != nil {
@@ -32,6 +38,26 @@ class LoginViewController: UIViewController {
                     print("Successfully login")
                 }
             }
+        }
+    }
+}
+
+//MARK: - UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.tagBasedTextField(textField)
+        return true
+    }
+    
+    private func tagBasedTextField(_ textField: UITextField) {
+        let nextTextFieldTag = textField.tag + 1
+        
+        if let nextTextField = textField.superview?.viewWithTag(nextTextFieldTag) as? UITextField {
+            nextTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
         }
     }
 }

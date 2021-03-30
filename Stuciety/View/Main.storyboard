@@ -319,6 +319,7 @@
                         <outlet property="nameTextField" destination="tXB-jJ-ziT" id="NRV-95-quA"/>
                         <outlet property="passwordTextField" destination="EGf-pO-RWV" id="MVL-u4-l7A"/>
                         <outlet property="scrollView" destination="efH-OM-cIg" id="9sD-Dl-CGc"/>
+                        <segue destination="KqW-e3-TtX" kind="show" identifier="RegisterToHome" id="DxU-1h-vQ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kWW-Vj-AOa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -448,7 +449,7 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="12345678" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bryancolin12" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3">
                                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="laz-Ka-3Zb"/>
@@ -933,6 +934,9 @@
             <size key="intrinsicContentSize" width="-1" height="83"/>
         </designable>
     </designables>
+    <inferredMetricsTieBreakers>
+        <segue reference="JL6-hn-v0e"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Nothing" width="2400" height="1256"/>
         <image name="home" width="15" height="15"/>
