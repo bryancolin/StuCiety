@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "settings@2x-1.png",
+      "filename" : "settings.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,7 +11,7 @@
       "scale" : "2x"
     },
     {
-      "filename" : "settings@2x-2.png",
+      "filename" : "settings@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

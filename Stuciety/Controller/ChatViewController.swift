@@ -18,10 +18,10 @@ class ChatViewController: UIViewController {
     var roomTitle: String?
     
     var messages = ["Hello", "test"]
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         self.title = roomTitle
@@ -43,17 +43,21 @@ class ChatViewController: UIViewController {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
-                        print(data[K.FStore.bodyField])
+                        print(data[K.FStore.senderField], data[K.FStore.bodyField])
+//                        if let sender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
+//
+//                            DispatchQueue.main.async {
+//                                self.tableView.reloadData()
+//                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+//                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
+//                            }
+//                        }
                     }
+                    
+                    
                 }
             }
         }
-        
-//        DispatchQueue.main.async {
-//            self.tableView.reloadData()
-//            let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
-//            self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-//        }
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
@@ -62,7 +66,7 @@ class ChatViewController: UIViewController {
     
     func performAction() {
         if messageTextField.text != "" {
-            if let messageBody = messageTextField.text, let messageSender = Auth.auth().currentUser?.email {
+            if let messageBody = messageTextField.text, let messageSender = Auth.auth().currentUser?.uid {
                 db.collection(K.FStore.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addDocument(data: [
                     K.FStore.senderField: messageSender,
                     K.FStore.bodyField: messageBody,
@@ -98,10 +102,10 @@ extension ChatViewController: UITableViewDataSource {
         return messages.count
     }
     
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Room.cellIdentifier, for: indexPath) as UITableViewCell
-//        cell.textLabel?.text = messages[indexPath.row]
+        //        cell.textLabel?.text = messages[indexPath.row]
         
         return cell
     }

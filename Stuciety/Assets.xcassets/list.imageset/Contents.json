@@ -1,12 +1,12 @@
 {
   "images" : [
     {
-      "filename" : "list@3x-2.png",
+      "filename" : "list.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "list@3x-1.png",
+      "filename" : "list@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
