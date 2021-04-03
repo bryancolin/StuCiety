@@ -29,6 +29,7 @@
 		E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */; };
 		E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9826023143005D1D0B /* LoginViewController.swift */; };
 		E5B3BA9B26023150005D1D0B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */; };
+		E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E099DD261894EC004CFE69 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +71,7 @@
 		E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E5B3BA9826023143005D1D0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		E5E099DD261894EC004CFE69 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E75663564263D437D738F6B6 /* Pods_Stuciety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stuciety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */,
 				E539D56726047E7700839E5A /* HomeViewController.swift */,
 				E5823962260F28E500286D3A /* ChatViewController.swift */,
+				E5E099DD261894EC004CFE69 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				E5454D7F26022A7E00A14DE6 /* CustomUITextField.swift in Sources */,
 				E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */,
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
+				E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */,
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
 				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
 				E5823963260F28E500286D3A /* ChatViewController.swift in Sources */,

@@ -65,6 +65,7 @@ class RegisterViewController: UIViewController {
                         }
                     }
                     
+                    ProgressHUD.dismiss()
                     self.performSegue(withIdentifier: K.Segue.register, sender: self)
                 }
             }

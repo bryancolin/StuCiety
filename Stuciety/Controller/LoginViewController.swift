@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
                     ProgressHUD.showFailed("Invalid email or password")
                 } else {
                     self.performSegue(withIdentifier: K.Segue.login, sender: self)
+                    ProgressHUD.dismiss()
                     print("Successfully login")
                 }
             }
