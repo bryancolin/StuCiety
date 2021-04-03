@@ -31,6 +31,10 @@ struct K {
         static let cellNibName = "MessageCell"
     }
     
+    struct Settings {
+        static let cellIdentifier = "SettingsReusableCell"
+    }
+    
     struct BrandColors {
         static let purple = "BrandPurple"
         static let lightPurple = "BrandLightPurple"
