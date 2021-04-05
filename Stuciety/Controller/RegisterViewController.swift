@@ -59,14 +59,25 @@ class RegisterViewController: UIViewController {
                 if error != nil {
                     ProgressHUD.showFailed("Email have been registered. Please try again with another email")
                 } else {
-                    self.db.collection("students").addDocument(data: ["name": name, "email": email, "result": "", "uid": result!.user.uid]) { (error) in
-                        if error != nil {
-                            ProgressHUD.showFailed("Error saving user data")
-                        }
-                    }
                     
-                    ProgressHUD.dismiss()
-                    self.performSegue(withIdentifier: K.Segue.register, sender: self)
+                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                    changeRequest?.displayName = name
+                    
+                    changeRequest?.commitChanges(completion: { (error) in
+                        if error != nil {
+                            ProgressHUD.showFailed("Something went wrong. Please try again.")
+                        } else {
+                            
+                            self.db.collection("students").addDocument(data: ["email": email, "displayName": name, "result": "", "uid": result!.user.uid]) { (error) in
+                                if error != nil {
+                                    ProgressHUD.showFailed("Error saving user data")
+                                }
+                            }
+                            
+                            ProgressHUD.dismiss()
+                            self.performSegue(withIdentifier: K.Segue.register, sender: self)
+                        }
+                    })
                 }
             }
         }
