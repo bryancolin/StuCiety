@@ -2,111 +2,179 @@
 //  ChatViewController.swift
 //  Stuciety
 //
-//  Created by bryan colin on 3/27/21.
+//  Created by bryan colin on 4/5/21.
 //
 
 import UIKit
 import Firebase
+import InputBarAccessoryView
+import MessageKit
 
-class ChatViewController: UIViewController {
+struct Message {
+    let senderId: String
+    let senderName: String
+    let created: Double
+    let text: String
+    let messageId: String
+}
+
+extension Message: MessageType {
+    var sender: SenderType {
+        return Sender(senderId: senderId, displayName: senderName)
+    }
     
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var messageTextField: UITextField!
+    var sentDate: Date {
+        return NSDate(timeIntervalSince1970: created) as Date
+    }
     
-    let db = Firestore.firestore()
+    var kind: MessageKind {
+        return .text(text)
+    }
+}
+
+class ChatViewController: MessagesViewController {
     
     var roomTitle: String?
+    var messages: [Message] = []
     
-    var messages = ["Hello", "test"]
+    let db = Firestore.firestore()
+    var currentUser: User = Auth.auth().currentUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         self.title = roomTitle
+        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         
-        messageTextField.delegate = self
-        tableView.dataSource = self
+        messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
         
-        loadMessages()
-    }
-    
-    func loadMessages() {
-        
-        db.collection(K.FStore.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addSnapshotListener { (querySnapshot, error) in
-            self.messages = []
-            
-            if let e = error {
-                print("There was an issue retrieving data from Firestore. \(e)")
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        let data = doc.data()
-                        print(data[K.FStore.senderField], data[K.FStore.bodyField])
-//                        if let sender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
-//
-//                            DispatchQueue.main.async {
-//                                self.tableView.reloadData()
-//                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
-//                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
-//                            }
-//                        }
-                    }
-                    
-                    
-                }
-            }
-        }
-    }
-    
-    @IBAction func sendPressed(_ sender: UIButton) {
-        performAction()
-    }
-    
-    func performAction() {
-        if messageTextField.text != "" {
-            if let messageBody = messageTextField.text, let messageSender = Auth.auth().currentUser?.uid {
-                db.collection(K.FStore.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addDocument(data: [
-                    K.FStore.senderField: messageSender,
-                    K.FStore.bodyField: messageBody,
-                    K.FStore.dateField: Date().timeIntervalSince1970
-                ]) { (error) in
-                    if let e = error {
-                        print("There was an issue retrieving data from Firestore. \(e)")
-                    } else {
-                        self.messageTextField.text = ""
-                        print("Successfully saved data.")
-                    }
-                }
-            }
-        }
+        messageInputBar.delegate = self
+        messageInputBar = iMessageInputBar()
+        messageInputBar.inputTextView.placeholder = "Enter a message"
     }
 }
 
-//MARK: - UITextFieldDelegate
+//MARK: - MessagesDataSource
 
-extension ChatViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        messageTextField.resignFirstResponder()
-        return true
+extension ChatViewController: MessagesDataSource {
+    func currentSender() -> SenderType {
+        return Sender(senderId: currentUser.uid, displayName: currentUser.displayName ?? "Unknown")
     }
-}
-
-//MARK: - UITableViewDataSource
-
-extension ChatViewController: UITableViewDataSource {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messages[indexPath.section]
+    }
+    
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messages.count
     }
     
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 12
+    }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.Room.cellIdentifier, for: indexPath) as UITableViewCell
-        //        cell.textLabel?.text = messages[indexPath.row]
+    func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        return NSAttributedString(string: message.sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
+    }
+    
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 12
+    }
+    
+    func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "hh:mm a"
+        return NSAttributedString(string: formatter.string(from: message.sentDate), attributes: [.font: UIFont.systemFont(ofSize: 10)])
+    }
+}
+
+//MARK: - MessagesLayoutDelegate
+
+extension ChatViewController: MessagesLayoutDelegate {
+    func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 1
+    }
+    
+    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return .zero
+    }
+}
+
+//MARK: - MessagesDisplayDelegate
+
+extension ChatViewController: MessagesDisplayDelegate {
+    
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? UIColor(named: K.BrandColors.purple)! as UIColor : .clear
+    }
+    
+    func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        return isFromCurrentSender(message: message) ? UIColor.white : UIColor.black
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        //        let message = messages[indexPath.section]
+        //        let color = message.member.color
+        //        avatarView.backgroundColor = color
+    }
+    
+    func messageStyle(for message: MessageType, at indexPath: IndexPath, in  messagesCollectionView: MessagesCollectionView) -> MessageStyle {
+        let borderColor: UIColor = isFromCurrentSender(message: message) ? .clear: UIColor(named: K.BrandColors.purple)! as UIColor
+        return .bubbleOutline(borderColor)
+    }
+}
+
+//MARK: - InputBarAccessoryViewDelegate
+
+extension ChatViewController: InputBarAccessoryViewDelegate {
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        let newMessage = Message(senderId: currentUser.uid, senderName: currentUser.displayName ?? "Unkown", created: Date().timeIntervalSince1970, text: text, messageId: UUID().uuidString)
         
-        return cell
+        messages.append(newMessage)
+        inputBar.inputTextView.text = ""
+        
+        // Send button activity animation
+        inputBar.sendButton.startAnimating()
+        inputBar.inputTextView.placeholder = "Sending..."
+        DispatchQueue.global(qos: .default).async {
+            // fake send request task
+            sleep(1)
+            DispatchQueue.main.async { [weak self] in
+                inputBar.sendButton.stopAnimating()
+                inputBar.inputTextView.placeholder = "Aa"
+                
+                self?.messagesCollectionView.reloadData()
+                self?.messagesCollectionView.scrollToLastItem()
+            }
+        }
+    }
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didChangeIntrinsicContentTo size: CGSize) {
+        inputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
+        inputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
+        if #available(iOS 13, *) {
+            inputBar.inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
+        } else {
+            inputBar.inputTextView.layer.borderColor = UIColor.lightGray.cgColor
+        }
+        inputBar.inputTextView.layer.borderWidth = 1.0
+        inputBar.inputTextView.layer.cornerRadius = 16.0
+        inputBar.inputTextView.layer.masksToBounds = true
+        inputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
+        inputBar.setRightStackViewWidthConstant(to: 38, animated: false)
+//        inputBar.setStackViewItems([sendButton, InputBarButtonItem.fixedSpace(2)], forStack: .right, animated: false)
+//        inputBar.sendButton.imageView?.backgroundColor = tintColor
+        inputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        inputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
+        inputBar.sendButton.image = #imageLiteral(resourceName: "ic_up")
+        inputBar.sendButton.title = nil
+        inputBar.sendButton.imageView?.layer.cornerRadius = 16
+        inputBar.sendButton.backgroundColor = .clear
+        inputBar.middleContentViewPadding.right = -38
+        inputBar.separatorLine.isHidden = true
+        inputBar.isTranslucent = true
     }
 }

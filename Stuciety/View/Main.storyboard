@@ -366,7 +366,7 @@
             <objects>
                 <viewController id="gLL-tb-GyQ" customClass="SettingsViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wb2-Im-fmB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IL2-B6-dnN">
@@ -573,7 +573,7 @@
                         <outlet property="emailTextField" destination="09E-70-VUK" id="XKJ-kE-w4v"/>
                         <outlet property="passwordTextField" destination="Sug-2L-Bv3" id="5kp-hb-Z1W"/>
                         <outlet property="scrollView" destination="S56-0e-SK4" id="egp-Dp-mhN"/>
-                        <segue destination="KqW-e3-TtX" kind="show" identifier="LoginToHome" id="JL6-hn-v0e"/>
+                        <segue destination="KqW-e3-TtX" kind="show" identifier="LoginToHome" id="Ivm-vC-QbZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0H-cw-Sif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -585,7 +585,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="ocH-rm-gLU" customClass="HomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbP-2H-4Ob">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KvD-Zl-dsw">
@@ -717,7 +717,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="7tU-dq-7uW" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ICU-xq-qvd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="qao-Eb-kUL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -733,87 +733,12 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="ChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1h-1w-70u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yWF-BE-R9X">
-                                <rect key="frame" x="0.0" y="56" width="414" height="662"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ReusableCell" id="lIn-yu-f2J">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lIn-yu-f2J" id="pMB-rn-eTv">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pDk-oD-h51">
-                                <rect key="frame" x="0.0" y="718" width="414" height="90"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Messages..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gd5-3m-mzF">
-                                        <rect key="frame" x="20" y="20" width="319" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="Xk4-6i-kIQ"/>
-                                        </constraints>
-                                        <color key="textColor" name="BrandPurple"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="send" textContentType="email"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="2"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" name="BrandPurple"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVs-cg-Exk">
-                                        <rect key="frame" x="359" y="20" width="35" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="f8x-Zt-Bou"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="send"/>
-                                        <connections>
-                                            <action selector="sendPressed:" destination="YVg-S4-2ev" eventType="touchUpInside" id="CEC-km-oL5"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="nVs-cg-Exk" firstAttribute="leading" secondItem="gd5-3m-mzF" secondAttribute="trailing" constant="20" id="Gcs-90-qku"/>
-                                    <constraint firstAttribute="bottom" secondItem="gd5-3m-mzF" secondAttribute="bottom" constant="20" symbolic="YES" id="Q4U-S0-Iox"/>
-                                    <constraint firstItem="gd5-3m-mzF" firstAttribute="top" secondItem="pDk-oD-h51" secondAttribute="top" constant="20" symbolic="YES" id="RaA-9f-0if"/>
-                                    <constraint firstItem="gd5-3m-mzF" firstAttribute="leading" secondItem="pDk-oD-h51" secondAttribute="leading" constant="20" symbolic="YES" id="a2a-xq-GhR"/>
-                                    <constraint firstItem="nVs-cg-Exk" firstAttribute="top" secondItem="pDk-oD-h51" secondAttribute="top" constant="20" symbolic="YES" id="qFw-WY-uHU"/>
-                                    <constraint firstAttribute="trailing" secondItem="nVs-cg-Exk" secondAttribute="trailing" constant="20" symbolic="YES" id="rYK-bl-fSO"/>
-                                    <constraint firstAttribute="bottom" secondItem="nVs-cg-Exk" secondAttribute="bottom" constant="20" symbolic="YES" id="yae-3V-sqK"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zd0-gc-NQ0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="pDk-oD-h51" firstAttribute="bottom" secondItem="zd0-gc-NQ0" secondAttribute="bottom" id="0xd-uG-gfq"/>
-                            <constraint firstItem="pDk-oD-h51" firstAttribute="top" secondItem="yWF-BE-R9X" secondAttribute="bottom" id="Fsc-cy-bdV"/>
-                            <constraint firstItem="yWF-BE-R9X" firstAttribute="top" secondItem="zd0-gc-NQ0" secondAttribute="top" id="Xxp-yg-Yz3"/>
-                            <constraint firstItem="pDk-oD-h51" firstAttribute="top" secondItem="yWF-BE-R9X" secondAttribute="bottom" id="akb-f3-yLU"/>
-                            <constraint firstItem="yWF-BE-R9X" firstAttribute="trailing" secondItem="zd0-gc-NQ0" secondAttribute="trailing" id="kdd-28-OjP"/>
-                            <constraint firstItem="yWF-BE-R9X" firstAttribute="leading" secondItem="zd0-gc-NQ0" secondAttribute="leading" id="obp-Lk-ISJ"/>
-                            <constraint firstItem="pDk-oD-h51" firstAttribute="trailing" secondItem="zd0-gc-NQ0" secondAttribute="trailing" id="tYi-xt-f5V"/>
-                            <constraint firstItem="pDk-oD-h51" firstAttribute="leading" secondItem="zd0-gc-NQ0" secondAttribute="leading" id="xt3-57-GHx"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Room" largeTitleDisplayMode="never" id="E1K-Qg-JMR"/>
-                    <connections>
-                        <outlet property="messageTextField" destination="gd5-3m-mzF" id="deb-oC-mSH"/>
-                        <outlet property="tableView" destination="yWF-BE-R9X" id="ZOI-zm-nol"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Evh-aA-zuv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -824,7 +749,7 @@
             <objects>
                 <viewController id="zay-R1-0Cw" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="miE-hh-Rzs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="DPn-3d-hsz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -944,13 +869,12 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="DxU-1h-vQ8"/>
+        <segue reference="Ivm-vC-QbZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Nothing" width="2400" height="1256"/>
         <image name="home" width="16.5" height="16.5"/>
         <image name="list" width="16.5" height="16.5"/>
-        <image name="send" width="16.5" height="16.5"/>
         <image name="settings" width="16.5" height="16.5"/>
         <image name="user" width="16.5" height="16.5"/>
         <namedColor name="BrandLightBlue">
