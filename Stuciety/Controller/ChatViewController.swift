@@ -50,9 +50,8 @@ class ChatViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         
+        messageInputBar = CustomUIInputBar()
         messageInputBar.delegate = self
-        messageInputBar = iMessageInputBar()
-        messageInputBar.inputTextView.placeholder = "Enter a message"
     }
 }
 
@@ -144,37 +143,11 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             sleep(1)
             DispatchQueue.main.async { [weak self] in
                 inputBar.sendButton.stopAnimating()
-                inputBar.inputTextView.placeholder = "Aa"
+                inputBar.inputTextView.placeholder = "Enter a message"
                 
                 self?.messagesCollectionView.reloadData()
                 self?.messagesCollectionView.scrollToLastItem()
             }
         }
-    }
-    
-    func inputBar(_ inputBar: InputBarAccessoryView, didChangeIntrinsicContentTo size: CGSize) {
-        inputBar.inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
-        inputBar.inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
-        if #available(iOS 13, *) {
-            inputBar.inputTextView.layer.borderColor = UIColor.systemGray2.cgColor
-        } else {
-            inputBar.inputTextView.layer.borderColor = UIColor.lightGray.cgColor
-        }
-        inputBar.inputTextView.layer.borderWidth = 1.0
-        inputBar.inputTextView.layer.cornerRadius = 16.0
-        inputBar.inputTextView.layer.masksToBounds = true
-        inputBar.inputTextView.scrollIndicatorInsets = UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-        inputBar.setRightStackViewWidthConstant(to: 38, animated: false)
-//        inputBar.setStackViewItems([sendButton, InputBarButtonItem.fixedSpace(2)], forStack: .right, animated: false)
-//        inputBar.sendButton.imageView?.backgroundColor = tintColor
-        inputBar.sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
-        inputBar.sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        inputBar.sendButton.image = #imageLiteral(resourceName: "ic_up")
-        inputBar.sendButton.title = nil
-        inputBar.sendButton.imageView?.layer.cornerRadius = 16
-        inputBar.sendButton.backgroundColor = .clear
-        inputBar.middleContentViewPadding.right = -38
-        inputBar.separatorLine.isHidden = true
-        inputBar.isTranslucent = true
     }
 }
