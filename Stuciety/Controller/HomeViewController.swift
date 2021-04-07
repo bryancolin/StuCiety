@@ -20,17 +20,6 @@ class HomeViewController: UIViewController {
         
         tableList.dataSource = self
         tableList.delegate = self
-        
-//        // Do any additional setup after loading the view.
-//        Auth.auth().addStateDidChangeListener { auth, user in
-//            if let currentUser = user {
-//                // User is signed in. Show home screen
-//                print(currentUser)
-//            } else {
-//                // No User is signed in. Show user the login screen
-//                print("No User is signed in")
-//            }
-//        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

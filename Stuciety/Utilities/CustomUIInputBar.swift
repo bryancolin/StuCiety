@@ -35,8 +35,8 @@ final class CustomUIInputBar: InputBarAccessoryView {
     
     func customInputTextView() {
         inputTextView.placeholder = "Enter a message"
-        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 36)
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 36)
+        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 36)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 36)
         
         let color = UIColor(named: K.BrandColors.purple)
         if #available(iOS 13, *) {

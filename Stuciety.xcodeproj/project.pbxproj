@@ -26,8 +26,6 @@
 		E5767A6A2602200100E851B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5767A692602200100E851B2 /* Assets.xcassets */; };
 		E5767A6D2602200100E851B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */; };
 		E57E4D5C261B19FD00C8EFCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */; };
-		E57F1E52261B068D002ED019 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57F1E51261B068D002ED019 /* Chat.swift */; };
-		E5823963260F28E500286D3A /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5823962260F28E500286D3A /* ChatsViewController.swift */; };
 		E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */; };
 		E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */; };
 		E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9826023143005D1D0B /* LoginViewController.swift */; };
@@ -71,8 +69,6 @@
 		E5767A6C2602200100E851B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5767A6E2602200100E851B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		E57F1E51261B068D002ED019 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
-		E5823962260F28E500286D3A /* ChatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIInputBar.swift; sourceTree = "<group>"; };
 		E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E5B3BA9826023143005D1D0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +115,6 @@
 				E5B3BA9826023143005D1D0B /* LoginViewController.swift */,
 				E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */,
 				E539D56726047E7700839E5A /* HomeViewController.swift */,
-				E5823962260F28E500286D3A /* ChatsViewController.swift */,
 				E5E099DD261894EC004CFE69 /* SettingsViewController.swift */,
 				E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */,
 			);
@@ -168,7 +163,6 @@
 			children = (
 				E57492A0260EFCD90094670E /* Topic.swift */,
 				E54061C22611F36A006C1AD4 /* Message.swift */,
-				E57F1E51261B068D002ED019 /* Chat.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -326,7 +320,6 @@
 			files = (
 				E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */,
 				E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */,
-				E57F1E52261B068D002ED019 /* Chat.swift in Sources */,
 				E5B3BA9B26023150005D1D0B /* RegisterViewController.swift in Sources */,
 				E5454D8026022A7E00A14DE6 /* CustomUIButton.swift in Sources */,
 				E531DADA2605DE2800010B62 /* CustomUIView.swift in Sources */,
@@ -342,7 +335,6 @@
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
 				E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */,
 				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
-				E5823963260F28E500286D3A /* ChatsViewController.swift in Sources */,
 				E57492A1260EFCD90094670E /* Topic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

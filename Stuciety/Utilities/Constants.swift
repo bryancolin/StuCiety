@@ -43,10 +43,11 @@ struct K {
     }
     
     struct FStore {
-        static let collectionName = "topics"
+        static let chatCollectionName = "rooms"
         static let childCollectionName = "messages"
-        static let senderField = "sender"
         static let bodyField = "body"
-        static let dateField = "date"
+        static let dateField = "createdAt"
+        static let senderIdField = "senderId"
+        static let senderNameField = "senderName"
     }
 }

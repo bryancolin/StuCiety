@@ -8,29 +8,8 @@
 import UIKit
 import Firebase
 import InputBarAccessoryView
+import IQKeyboardManagerSwift
 import MessageKit
-
-struct Message {
-    let senderId: String
-    let senderName: String
-    let created: Double
-    let text: String
-    let messageId: String
-}
-
-extension Message: MessageType {
-    var sender: SenderType {
-        return Sender(senderId: senderId, displayName: senderName)
-    }
-    
-    var sentDate: Date {
-        return NSDate(timeIntervalSince1970: created) as Date
-    }
-    
-    var kind: MessageKind {
-        return .text(text)
-    }
-}
 
 class ChatViewController: MessagesViewController {
     
@@ -52,6 +31,69 @@ class ChatViewController: MessagesViewController {
         
         messageInputBar = CustomUIInputBar()
         messageInputBar.delegate = self
+        
+        loadMessages()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        IQKeyboardManager.shared.enable = true
+    }
+    
+    private func loadMessages() {
+        
+        db.collection(K.FStore.chatCollectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName)
+            .order(by: K.FStore.dateField, descending: false)
+            .addSnapshotListener { (querySnapshot, error) in
+                self.messages = []
+                
+                if let e = error {
+                    print("There was an issue retrieving data from Firestore. \(e)")
+                } else {
+                    if let snapshotDocuments = querySnapshot?.documents {
+                        for doc in snapshotDocuments {
+                            let data = doc.data()
+                            
+                            if let id = data["id"] as? String,
+                               let messageBody = data[K.FStore.bodyField] as? String,
+                               let createdAt = data[K.FStore.dateField] as? Double,
+                               let senderId = data[K.FStore.senderIdField] as? String,
+                               let senderName = data[K.FStore.senderNameField] as? String {
+                                
+                                let newMessage = Message(id: id, body: messageBody, createdAt: createdAt, senderId: senderId, senderName: senderName)
+                                self.messages.append(newMessage)
+                                
+                                DispatchQueue.main.async {
+                                    self.messagesCollectionView.reloadData()
+                                    self.messagesCollectionView.scrollToLastItem()
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    }
+    
+    private func save(_ message: Message) {
+        
+        let data: [String: Any] = [
+            "id": message.id,
+            K.FStore.bodyField: message.body,
+            K.FStore.dateField: message.createdAt,
+            K.FStore.senderIdField: message.senderId,
+            K.FStore.senderNameField: message.senderName,
+        ]
+        
+        db.collection(K.FStore.chatCollectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addDocument(data: data) { (error) in
+            if let e = error {
+                print("There was an issue retrieving data from Firestore. \(e)")
+            } else {
+                print("Successfully saved data.")
+            }
+        }
     }
 }
 
@@ -92,12 +134,17 @@ extension ChatViewController: MessagesDataSource {
 //MARK: - MessagesLayoutDelegate
 
 extension ChatViewController: MessagesLayoutDelegate {
-    func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 1
-    }
     
     func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
         return .zero
+    }
+    
+    func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 0
+    }
+    
+    func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
+        return CGSize(width: 0, height: 8)
     }
 }
 
@@ -106,22 +153,31 @@ extension ChatViewController: MessagesLayoutDelegate {
 extension ChatViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? UIColor(named: K.BrandColors.purple)! as UIColor : .clear
+        return isFromCurrentSender(message: message) ? .clear : UIColor(named: K.BrandColors.purple)! as UIColor
     }
     
     func textColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
-        return isFromCurrentSender(message: message) ? UIColor.white : UIColor.black
-    }
-    
-    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        //        let message = messages[indexPath.section]
-        //        let color = message.member.color
-        //        avatarView.backgroundColor = color
+        return isFromCurrentSender(message: message) ? UIColor.black : UIColor.white
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in  messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        let borderColor: UIColor = isFromCurrentSender(message: message) ? .clear: UIColor(named: K.BrandColors.purple)! as UIColor
+        let borderColor: UIColor = isFromCurrentSender(message: message) ? UIColor(named: K.BrandColors.purple)! as UIColor : .clear
         return .bubbleOutline(borderColor)
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        avatarView.isHidden = true
+        
+        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
+            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
+            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+            
+            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
+            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
+            
+            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+        }
     }
 }
 
@@ -130,9 +186,12 @@ extension ChatViewController: MessagesDisplayDelegate {
 extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        let newMessage = Message(senderId: currentUser.uid, senderName: currentUser.displayName ?? "Unkown", created: Date().timeIntervalSince1970, text: text, messageId: UUID().uuidString)
+        let newMessage = Message(id: UUID().uuidString, body: text, createdAt: Date().timeIntervalSince1970, senderId: currentUser.uid, senderName: currentUser.displayName ?? "Unkown")
         
-        messages.append(newMessage)
+        // Save Message
+        save(newMessage)
+        
+        // Empty TextField
         inputBar.inputTextView.text = ""
         
         // Send button activity animation
