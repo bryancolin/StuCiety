@@ -106,6 +106,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E5428DEB261D8D2700DA0039 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E5767A692602200100E851B2 /* Assets.xcassets */,
+				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
+				E5767A6E2602200100E851B2 /* Info.plist */,
+				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E5454D7226022A0700A14DE6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,10 +204,7 @@
 				E574929F260EFCC80094670E /* Model */,
 				E5454D7326022A1900A14DE6 /* View */,
 				E5454D7226022A0700A14DE6 /* Controller */,
-				E5767A692602200100E851B2 /* Assets.xcassets */,
-				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
-				E5767A6E2602200100E851B2 /* Info.plist */,
-				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
+				E5428DEB261D8D2700DA0039 /* Supporting Files */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = Stuciety;
