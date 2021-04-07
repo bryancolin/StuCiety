@@ -11,7 +11,8 @@ struct K {
     static let appName = "Stuciety"
     
     struct Segue {
-        static let register = "RegisterToHome"
+        static let register = "RegisterToProfile"
+        static let profile = "ProfileToHome"
         static let login = "LoginToHome"
         static let chat = "ToChat"
     }

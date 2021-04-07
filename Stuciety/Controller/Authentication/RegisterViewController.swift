@@ -37,43 +37,43 @@ class RegisterViewController: UIViewController {
         guard nameTextField.text != "" else {
             return ProgressHUD.showError("Name field is empty")
         }
-        
+
         guard emailTextField.text != "" else {
             return ProgressHUD.showError("Email field is empty")
         }
-        
+
         guard isValidEmail(emailTextField.text!) else {
             return ProgressHUD.showError("Email is not valid")
         }
-        
+
         guard passwordTextField.text != "" else {
             return ProgressHUD.showError("Password field is empty")
         }
-        
+
         guard isValidPassword(passwordTextField.text!) else {
             return ProgressHUD.showError("Password is not strong enough")
         }
-        
-        if let name = nameTextField.text ,let email = emailTextField.text, let password = passwordTextField.text {
+
+        if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                 if error != nil {
                     ProgressHUD.showFailed("Email have been registered. Please try again with another email")
                 } else {
-                    
+
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = name
-                    
+
                     changeRequest?.commitChanges(completion: { (error) in
                         if error != nil {
                             ProgressHUD.showFailed("Something went wrong. Please try again.")
                         } else {
-                            
-                            self.db.collection("students").addDocument(data: ["email": email, "displayName": name, "result": "", "uid": result!.user.uid]) { (error) in
+
+                            self.db.collection("students").document(result!.user.uid).setData(["email": email, "displayName": name, "result": "", "photoURL": ""]) { error in
                                 if error != nil {
                                     ProgressHUD.showFailed("Error saving user data")
                                 }
                             }
-                            
+
                             ProgressHUD.dismiss()
                             self.performSegue(withIdentifier: K.Segue.register, sender: self)
                         }
@@ -81,7 +81,6 @@ class RegisterViewController: UIViewController {
                 }
             }
         }
-        
     }
     
     func isValidEmail(_ email: String) -> Bool {

@@ -31,6 +31,7 @@
 		E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9826023143005D1D0B /* LoginViewController.swift */; };
 		E5B3BA9B26023150005D1D0B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */; };
 		E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E099DD261894EC004CFE69 /* SettingsViewController.swift */; };
+		E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +75,7 @@
 		E5B3BA9826023143005D1D0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		E5E099DD261894EC004CFE69 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		E75663564263D437D738F6B6 /* Pods_Stuciety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stuciety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -106,28 +108,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E5428DEB261D8D2700DA0039 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E5767A692602200100E851B2 /* Assets.xcassets */,
-				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
-				E5767A6E2602200100E851B2 /* Info.plist */,
-				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		E5454D7226022A0700A14DE6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
 				E574929A260EFA790094670E /* TableViewCell */,
 				E5749299260EFA4E0094670E /* CollectionViewCell */,
 				E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */,
-				E5B3BA9826023143005D1D0B /* LoginViewController.swift */,
-				E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */,
+				E5C4F787261DAFAF00EE4643 /* Authentication */,
 				E539D56726047E7700839E5A /* HomeViewController.swift */,
-				E5E099DD261894EC004CFE69 /* SettingsViewController.swift */,
 				E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */,
+				E5E099DD261894EC004CFE69 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -204,10 +194,23 @@
 				E574929F260EFCC80094670E /* Model */,
 				E5454D7326022A1900A14DE6 /* View */,
 				E5454D7226022A0700A14DE6 /* Controller */,
-				E5428DEB261D8D2700DA0039 /* Supporting Files */,
+				E5767A692602200100E851B2 /* Assets.xcassets */,
+				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
+				E5767A6E2602200100E851B2 /* Info.plist */,
+				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = Stuciety;
+			sourceTree = "<group>";
+		};
+		E5C4F787261DAFAF00EE4643 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				E5B3BA9826023143005D1D0B /* LoginViewController.swift */,
+				E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */,
+				E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +346,7 @@
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
 				E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */,
 				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
+				E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */,
 				E57492A1260EFCD90094670E /* Topic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

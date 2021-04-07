@@ -8,6 +8,7 @@ target 'Stuciety' do
   # Pods for Stuciety
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
+  pod 'Firebase/Storage'
   pod 'InputBarAccessoryView'
   pod 'IQKeyboardManagerSwift'
   pod 'MessageKit'
