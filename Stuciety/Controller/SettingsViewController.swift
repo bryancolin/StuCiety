@@ -31,6 +31,12 @@ class SettingsViewController: UIViewController {
             ProgressHUD.showFailed("Error signing out \(signOutError)")
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Segue.account {
+            _ = segue.destination as! AccountViewController
+        }
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -67,8 +73,15 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 7 {
-            signOut()
+        
+        switch indexPath.row {
+        case 0:
+            self.performSegue(withIdentifier: K.Segue.account, sender: self)
+            break
+        case 7: signOut()
+            break
+        default:
+            return
         }
     }
     

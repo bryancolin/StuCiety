@@ -15,6 +15,7 @@ struct K {
         static let profile = "ProfileToHome"
         static let login = "LoginToHome"
         static let chat = "ToChat"
+        static let account = "ToAccount"
     }
     
     struct LoungeTable {

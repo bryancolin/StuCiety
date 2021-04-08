@@ -501,11 +501,71 @@
                     <navigationItem key="navigationItem" title="Settings" id="7sC-Fs-B09"/>
                     <connections>
                         <outlet property="tableView" destination="IL2-B6-dnN" id="lxI-S2-Iy0"/>
+                        <segue destination="kxH-St-Fu4" kind="show" identifier="ToAccount" id="SNE-tu-haY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHH-y4-tYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5715.9420289855079" y="1980.8035714285713"/>
+        </scene>
+        <!--Account View Controller-->
+        <scene sceneID="pTc-8i-jKH">
+            <objects>
+                <viewController storyboardIdentifier="accountVC" hidesBottomBarWhenPushed="YES" id="kxH-St-Fu4" customClass="AccountViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MhK-Y6-eP5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stuciety_app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="iDU-H6-6bK">
+                                <rect key="frame" x="132" y="158" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="gcJ-f8-ezd"/>
+                                    <constraint firstAttribute="height" constant="150" id="uEZ-wb-aoM"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="cVh-WB-NyR">
+                                <rect key="frame" x="157" y="333" width="100" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="dIs-6R-uBI"/>
+                                    <constraint firstAttribute="width" constant="100" id="rqw-iQ-de5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" name="BrandPurple"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" name="BrandLightBlue"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="0HS-es-fu5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cVh-WB-NyR" firstAttribute="top" secondItem="iDU-H6-6bK" secondAttribute="bottom" constant="25" id="I1p-Mw-c9t"/>
+                            <constraint firstItem="iDU-H6-6bK" firstAttribute="centerX" secondItem="MhK-Y6-eP5" secondAttribute="centerX" id="aPY-NT-QpM"/>
+                            <constraint firstItem="iDU-H6-6bK" firstAttribute="top" secondItem="0HS-es-fu5" secondAttribute="top" constant="50" id="efd-mM-xtL"/>
+                            <constraint firstItem="cVh-WB-NyR" firstAttribute="centerX" secondItem="MhK-Y6-eP5" secondAttribute="centerX" id="upV-ns-rci"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UAX-Tc-e5e"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="cVh-WB-NyR" id="F9S-Ii-3xj"/>
+                        <outlet property="profilePicture" destination="iDU-H6-6bK" id="qzQ-fc-ByT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iMs-Km-vLj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6711.594202898551" y="1980.8035714285713"/>
         </scene>
         <!--Login-->
         <scene sceneID="Q8j-AJ-YiS">
