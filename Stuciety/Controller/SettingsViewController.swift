@@ -10,14 +10,14 @@ import Firebase
 import ProgressHUD
 
 class SettingsViewController: UIViewController {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
-    var lists = ["Account", "Notifications", "About", "Additional Info", "Sign Out"]
+    var lists = ["Account", "Notifications", "About", "Additional Info", "", "", "", "Sign Out"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
@@ -39,20 +39,17 @@ class SettingsViewController: UIViewController {
     }
 }
 
-extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
+//MARK: - UITableViewDataSource
+
+extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lists.count + 3
+        return lists.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.Settings.cellIdentifier, for: indexPath)
-        
-        if indexPath.row < 4 {
-            cell.textLabel?.text = lists[indexPath.row]
-        } else if indexPath.row == 7 {
-            cell.textLabel?.text = lists[indexPath.row - 3]
-        }
+        cell.textLabel?.text = lists[indexPath.row]
         
         return cell
     }
@@ -60,17 +57,26 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         cell.textLabel?.textColor = UIColor(named: K.BrandColors.purple)
-        
-        if indexPath.row < 4 {
-            cell.accessoryType = .disclosureIndicator
-            cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(named: K.BrandColors.lightBlue) : .white
-        } else if indexPath.row == 7 {
-            cell.textLabel?.textAlignment = .center
-            cell.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
-        }
-        
         cell.tintColor = UIColor(named: K.BrandColors.purple)
+        
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.textAlignment = .left
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(named: K.BrandColors.lightBlue) : .white
+        
+        if indexPath.row >= 4 {
+            cell.accessoryType = .none
+            cell.backgroundColor = .white
+            if indexPath.row == 7 {
+                cell.textLabel?.textAlignment = .center
+                cell.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
+            }
+        }
     }
+}
+
+//MARK: - UITableViewDelegate
+
+extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -84,5 +90,4 @@ extension SettingsViewController: UITableViewDelegate, UITableViewDataSource {
             return
         }
     }
-    
 }
