@@ -13,14 +13,15 @@ class CustomUIView: UIView {
 }
 
 extension UIView {
-
+    
     @IBInspectable
-    var borderColor: UIColor {
+    var cornerRadius: CGFloat {
         get {
-            return UIColor(cgColor: layer.borderColor!)
+            return layer.cornerRadius
         }
         set {
-            layer.borderColor = newValue.cgColor
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
         }
     }
     
@@ -35,33 +36,23 @@ extension UIView {
     }
 
     @IBInspectable
-    var cornerRadius: CGFloat {
+    var borderColor: UIColor {
         get {
-            return layer.cornerRadius
+            return UIColor(cgColor: layer.borderColor!)
         }
         set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
+            layer.borderColor = newValue.cgColor
         }
     }
     
     @IBInspectable
-    var shadowColor: UIColor {
+    var shadowRadius: CGFloat {
         get {
-            return UIColor(cgColor: layer.shadowColor!)
+            return layer.shadowRadius
         }
         set {
-            layer.shadowColor = newValue.cgColor
-        }
-    }
-
-    @IBInspectable
-    var shadowOffset: CGSize {
-        get {
-            return layer.shadowOffset
-        }
-        set {
-            layer.shadowOffset = newValue
+            layer.masksToBounds = false
+            layer.shadowRadius = newValue
         }
     }
     
@@ -71,17 +62,37 @@ extension UIView {
             return layer.shadowOpacity
         }
         set {
+            layer.masksToBounds = false
             layer.shadowOpacity = newValue
         }
     }
 
     @IBInspectable
-    var shadowRadius: CGFloat {
+    var shadowOffset: CGSize {
         get {
-            return layer.shadowRadius
+            return layer.shadowOffset
         }
         set {
-            layer.shadowRadius = newValue
+            layer.masksToBounds = false
+            layer.shadowOffset = newValue
         }
     }
+    
+    @IBInspectable
+    var shadowColor: UIColor? {
+        get {
+            if let color = layer.shadowColor {
+                return UIColor(cgColor: color)
+            }
+            return nil
+        }
+        set {
+            if let color = newValue {
+                layer.shadowColor = color.cgColor
+            } else {
+                layer.shadowColor = nil
+            }
+        }
+    }
+
 }
