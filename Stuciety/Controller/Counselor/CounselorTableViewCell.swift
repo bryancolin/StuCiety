@@ -12,7 +12,13 @@ class CounselorTableViewCell: UITableViewCell {
     @IBOutlet weak var counselorName: UILabel!
     @IBOutlet weak var counselorArea: UILabel!
     @IBOutlet weak var counselorPhoto: UIImageView!
-
+    
+    var counselor: Counselor! {
+        didSet {
+            self.updateUI()
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,5 +33,12 @@ class CounselorTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func updateUI() {
+        if let counselor = counselor {
+            counselorName.text = counselor.displayName
+            counselorArea.text = counselor.area[0]
+            counselorPhoto.image = UIImage(named: "stuciety_app_icon")
+        }
+    }
 }

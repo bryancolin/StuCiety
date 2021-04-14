@@ -27,8 +27,9 @@ class CounselorViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.CounselorTable.Segue.details {
-            let destinationVC = segue.destination as! CounselorDetailsViewController
-            destinationVC.counselorDetails = selectedCounselor
+            if let destinationVC = segue.destination as? CounselorDetailsViewController {
+                destinationVC.counselorDetails = selectedCounselor
+            }
         }
     }
 
@@ -43,9 +44,7 @@ extension CounselorViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.CounselorTable.cellIdentifier, for: indexPath) as! CounselorTableViewCell
-        cell.counselorName.text = counselors[indexPath.row].displayName
-        cell.counselorArea.text = counselors[indexPath.row].area[0]
-        cell.counselorPhoto.image = UIImage(named: "stuciety_app_icon")
+        cell.counselor = counselors[indexPath.row]
         return cell
     }
 }
