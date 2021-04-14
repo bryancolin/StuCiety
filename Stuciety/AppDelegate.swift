@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         ProgressHUD.animationType = .circleStrokeSpin
         ProgressHUD.colorAnimation = UIColor(named: K.BrandColors.purple)!
+        
         return true
     }
 

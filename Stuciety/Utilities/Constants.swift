@@ -15,7 +15,6 @@ struct K {
         static let profile = "ProfileToHome"
         static let login = "LoginToHome"
         static let chat = "ToChat"
-        static let account = "ToAccount"
     }
     
     struct LoungeTable {
@@ -26,6 +25,10 @@ struct K {
     struct CounselorTable {
         static let cellIdentifier = "CounselorTableReusableCell"
         static let collectionCellIdentifier = "CounselorCollectionReusableCell"
+        
+        struct Segue {
+            static let details = "ToCounselorDetails"
+        }
     }
     
     struct Room {
@@ -35,6 +38,10 @@ struct K {
     
     struct Settings {
         static let cellIdentifier = "SettingsReusableCell"
+        
+        struct Segue {
+            static let account = "ToAccount"
+        }
     }
     
     struct BrandColors {

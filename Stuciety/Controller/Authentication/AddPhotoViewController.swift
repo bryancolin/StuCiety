@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 import ProgressHUD
 
 class AddPhotoViewController: UIViewController {
@@ -50,11 +51,11 @@ class AddPhotoViewController: UIViewController {
             return ProgressHUD.showFailed("Please select image")
         }
         
-        guard let image = imageData?.pngData() else {
+        guard let image = imageData?.jpegData(compressionQuality: 0.5) else {
             return ProgressHUD.showFailed("Failed to compress")
         }
         
-        let thisUserPhotoStorageRef = storage.child("users/\(currentUser?.uid ?? "-1")").child("photo.png")
+        let thisUserPhotoStorageRef = storage.child("users/\(currentUser?.uid ?? "-1")").child("photo.jpeg")
         
         thisUserPhotoStorageRef.putData(image, metadata: nil) { (metadata, error) in
             guard metadata != nil else {

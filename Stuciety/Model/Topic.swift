@@ -9,7 +9,6 @@ import Foundation
 import UIKit
 
 struct Topic {
-    
     var featuredImage: UIImage
     var label: String
     

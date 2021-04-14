@@ -34,7 +34,7 @@ extension UIView {
             layer.borderWidth = newValue
         }
     }
-
+    
     @IBInspectable
     var borderColor: UIColor {
         get {
@@ -52,7 +52,7 @@ extension UIView {
         }
         set {
             layer.masksToBounds = false
-            layer.shadowRadius = newValue
+            layer.shadowRadius = newValue / 2
         }
     }
     
@@ -66,7 +66,7 @@ extension UIView {
             layer.shadowOpacity = newValue
         }
     }
-
+    
     @IBInspectable
     var shadowOffset: CGSize {
         get {
@@ -94,5 +94,5 @@ extension UIView {
             }
         }
     }
-
+    
 }
