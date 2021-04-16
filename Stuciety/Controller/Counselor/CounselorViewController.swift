@@ -6,23 +6,24 @@
 //
 
 import UIKit
+import Firebase
 
 class CounselorViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
-    var selectedCounselor: Counselor?
     
-    let counselors: [Counselor] = [
-        Counselor(id: "1", displayName: "Kevin", email: "kevin@staff.com", biography: "I'm Dr Psych, your consultation counselors. I'll be explaining how this counseling works. I'm a professional licensed counselors - so you can feel comfortable openly sharing your concerns with me.", area: ["Depression", "Anxiety"], license: ["Licensed Mental Health Counselor", "LMHC 000001"], photoURL: "a"),
-        Counselor(id: "1", displayName: "Bryan", email: "kevin@staff.com", biography: "I'm Dr Psych, your consultation counselors. I'll be explaining how this counseling works. I'm a professional licensed counselors - so you can feel comfortable openly sharing your concerns with me.", area: ["Depression", "Anxiety"], license: ["Licensed Mental Health Counselor", "LMHC 000001"], photoURL: "a")
-    ]
+    @IBOutlet weak var tableView: UITableView!
+    
+    let db = Firestore.firestore()
+    var counselors: [Counselor] = []
+    var selectedCounselor: Counselor?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        
+        loadCounselors()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,7 +33,22 @@ class CounselorViewController: UIViewController {
             }
         }
     }
-
+    
+    func loadCounselors() {
+        db.collection(K.FStore.Counselor.collectionName).addSnapshotListener { [self] (querySnapshot, err) in
+            if let e = err {
+                print("Error getting documents: \(e)")
+            } else {
+                for doc in querySnapshot!.documents {
+                    if let counselor = Counselor(uid: doc.documentID, dictionary: doc.data()) {
+                        counselors.append(counselor)
+                    }
+                }
+                
+                tableView.reloadData()
+            }
+        }
+    }
 }
 
 //MARK: - UITableViewDataSource
@@ -56,6 +72,16 @@ extension CounselorViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCounselor = counselors[indexPath.row]
         self.performSegue(withIdentifier: K.CounselorTable.Segue.details, sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        /// an enum of type TableAnimation - determines the animation to be applied to the tableViewCells
+        let currentTableAnimation: TableAnimation = .fadeIn(duration: 0.85, delay: 0.03)
+        
+        /// fetch the animation from the TableAnimation enum and initialze the TableViewAnimator class
+        let animation = currentTableAnimation.getAnimation()
+        let animator = TableViewAnimator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
     }
 }
 

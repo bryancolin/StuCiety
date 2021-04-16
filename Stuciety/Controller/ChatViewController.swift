@@ -45,8 +45,8 @@ class ChatViewController: MessagesViewController {
     
     private func loadMessages() {
         
-        db.collection(K.FStore.chatCollectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName)
-            .order(by: K.FStore.dateField, descending: false)
+        db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName)
+            .order(by: K.FStore.Message.dateField, descending: false)
             .addSnapshotListener { (querySnapshot, error) in
                 self.messages = []
                 
@@ -58,10 +58,10 @@ class ChatViewController: MessagesViewController {
                             let data = doc.data()
                             
                             if let id = data["id"] as? String,
-                               let messageBody = data[K.FStore.bodyField] as? String,
-                               let createdAt = data[K.FStore.dateField] as? Double,
-                               let senderId = data[K.FStore.senderIdField] as? String,
-                               let senderName = data[K.FStore.senderNameField] as? String {
+                               let messageBody = data[K.FStore.Message.bodyField] as? String,
+                               let createdAt = data[K.FStore.Message.dateField] as? Double,
+                               let senderId = data[K.FStore.Message.senderIdField] as? String,
+                               let senderName = data[K.FStore.Message.senderNameField] as? String {
                                 
                                 let newMessage = Message(id: id, body: messageBody, createdAt: createdAt, senderId: senderId, senderName: senderName)
                                 self.messages.append(newMessage)
@@ -81,13 +81,13 @@ class ChatViewController: MessagesViewController {
         
         let data: [String: Any] = [
             "id": message.id,
-            K.FStore.bodyField: message.body,
-            K.FStore.dateField: message.createdAt,
-            K.FStore.senderIdField: message.senderId,
-            K.FStore.senderNameField: message.senderName,
+            K.FStore.Message.bodyField: message.body,
+            K.FStore.Message.dateField: message.createdAt,
+            K.FStore.Message.senderIdField: message.senderId,
+            K.FStore.Message.senderNameField: message.senderName,
         ]
         
-        db.collection(K.FStore.chatCollectionName).document(roomTitle!.lowercased()).collection(K.FStore.childCollectionName).addDocument(data: data) { (error) in
+        db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(data: data) { (error) in
             if let e = error {
                 print("There was an issue retrieving data from Firestore. \(e)")
             } else {

@@ -38,7 +38,14 @@ class CounselorTableViewCell: UITableViewCell {
         if let counselor = counselor {
             counselorName.text = counselor.displayName
             counselorArea.text = counselor.area[0]
-            counselorPhoto.image = UIImage(named: "stuciety_app_icon")
+            
+            let url = URL(string: counselor.photoURL)
+            
+            if let data = try? Data(contentsOf: url!) {
+                DispatchQueue.main.async {
+                    self.counselorPhoto.image = UIImage(data: data)
+                }
+            }
         }
     }
 }

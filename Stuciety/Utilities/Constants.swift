@@ -52,11 +52,26 @@ struct K {
     }
     
     struct FStore {
-        static let chatCollectionName = "rooms"
-        static let childCollectionName = "messages"
-        static let bodyField = "body"
-        static let dateField = "createdAt"
-        static let senderIdField = "senderId"
-        static let senderNameField = "senderName"
+        
+        struct Message {
+            static let collectionName = "rooms"
+            static let childCollectionName = "messages"
+            static let bodyField = "body"
+            static let dateField = "createdAt"
+            static let senderIdField = "senderId"
+            static let senderNameField = "senderName"
+        }
+        
+        struct Counselor {
+            static let collectionName = "counselors"
+            
+            static let id = "id"
+            static let name = "displayName"
+            static let email = "email"
+            static let biography = "biography"
+            static let area = "area"
+            static let license = "license"
+            static let photoURL = "photoURL"
+        }
     }
 }

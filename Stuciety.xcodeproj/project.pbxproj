@@ -28,6 +28,8 @@
 		E578153C26257A4A00E424B4 /* CounselorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578153B26257A4A00E424B4 /* CounselorViewController.swift */; };
 		E57E4D5C261B19FD00C8EFCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */; };
 		E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */; };
+		E59F03052629649E00E0E475 /* TableAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F03042629649E00E0E475 /* TableAnimations.swift */; };
+		E59F03072629650E00E0E475 /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F03062629650E00E0E475 /* Tables.swift */; };
 		E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */; };
 		E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9826023143005D1D0B /* LoginViewController.swift */; };
 		E5B3BA9B26023150005D1D0B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */; };
@@ -77,6 +79,8 @@
 		E578153B26257A4A00E424B4 /* CounselorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorViewController.swift; sourceTree = "<group>"; };
 		E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIInputBar.swift; sourceTree = "<group>"; };
+		E59F03042629649E00E0E475 /* TableAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAnimations.swift; sourceTree = "<group>"; };
+		E59F03062629650E00E0E475 /* Tables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tables.swift; sourceTree = "<group>"; };
 		E5B3BA9626023132005D1D0B /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		E5B3BA9826023143005D1D0B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E5B3BA9A26023150005D1D0B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			children = (
 				E5C5EB382625A3AE00B78932 /* Counselor.swift */,
 				E54061C22611F36A006C1AD4 /* Message.swift */,
+				E59F03062629650E00E0E475 /* Tables.swift */,
 				E57492A0260EFCD90094670E /* Topic.swift */,
 			);
 			path = Model;
@@ -183,6 +188,7 @@
 		E5767A5F26021FFB00E851B2 /* Stuciety */ = {
 			isa = PBXGroup;
 			children = (
+				E59F03032629647700E0E475 /* Animation */,
 				E5767A6026021FFB00E851B2 /* AppDelegate.swift */,
 				E5767A6226021FFB00E851B2 /* SceneDelegate.swift */,
 				E574929F260EFCC80094670E /* Model */,
@@ -195,6 +201,14 @@
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = Stuciety;
+			sourceTree = "<group>";
+		};
+		E59F03032629647700E0E475 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				E59F03042629649E00E0E475 /* TableAnimations.swift */,
+			);
+			path = Animation;
 			sourceTree = "<group>";
 		};
 		E5C4F787261DAFAF00EE4643 /* Authentication */ = {
@@ -372,6 +386,8 @@
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
 				E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */,
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
+				E59F03072629650E00E0E475 /* Tables.swift in Sources */,
+				E59F03052629649E00E0E475 /* TableAnimations.swift in Sources */,
 				E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */,
 				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
 				E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */,
