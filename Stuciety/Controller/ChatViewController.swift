@@ -47,24 +47,16 @@ class ChatViewController: MessagesViewController {
         
         db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName)
             .order(by: K.FStore.Message.dateField, descending: false)
-            .addSnapshotListener { (querySnapshot, error) in
-                self.messages = []
+            .addSnapshotListener { [self] (querySnapshot, error) in
+                messages = []
                 
                 if let e = error {
                     print("There was an issue retrieving data from Firestore. \(e)")
                 } else {
                     if let snapshotDocuments = querySnapshot?.documents {
                         for doc in snapshotDocuments {
-                            let data = doc.data()
-                            
-                            if let id = data["id"] as? String,
-                               let messageBody = data[K.FStore.Message.bodyField] as? String,
-                               let createdAt = data[K.FStore.Message.dateField] as? Double,
-                               let senderId = data[K.FStore.Message.senderIdField] as? String,
-                               let senderName = data[K.FStore.Message.senderNameField] as? String {
-                                
-                                let newMessage = Message(id: id, body: messageBody, createdAt: createdAt, senderId: senderId, senderName: senderName)
-                                self.messages.append(newMessage)
+                            if let message = Message(dictionary: doc.data()) {
+                                messages.append(message)
                                 
                                 DispatchQueue.main.async {
                                     self.messagesCollectionView.reloadData()
@@ -80,7 +72,7 @@ class ChatViewController: MessagesViewController {
     private func save(_ message: Message) {
         
         let data: [String: Any] = [
-            "id": message.id,
+            K.FStore.Message.idField: message.id,
             K.FStore.Message.bodyField: message.body,
             K.FStore.Message.dateField: message.createdAt,
             K.FStore.Message.senderIdField: message.senderId,
@@ -171,13 +163,13 @@ extension ChatViewController: MessagesDisplayDelegate {
         if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
             layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
             layout.textMessageSizeCalculator.incomingAvatarSize = .zero
-            
-            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-            
-            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-            messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
         }
+        
+        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
+        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
+        
+        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
     }
 }
 
@@ -199,13 +191,10 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         inputBar.inputTextView.placeholder = "Sending..."
         DispatchQueue.global(qos: .default).async {
             // fake send request task
-            sleep(1)
-            DispatchQueue.main.async { [weak self] in
+            sleep(0)
+            DispatchQueue.main.async {
                 inputBar.sendButton.stopAnimating()
                 inputBar.inputTextView.placeholder = "Enter a message"
-                
-                self?.messagesCollectionView.reloadData()
-                self?.messagesCollectionView.scrollToLastItem()
             }
         }
     }

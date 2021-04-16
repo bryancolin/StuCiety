@@ -875,8 +875,8 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ns7-yn-Gif">
                                                                                 <rect key="frame" x="50" y="157" width="100" height="21"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                                <nil key="textColor"/>
-                                                                                <color key="highlightedColor" red="0.3411764706" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <color key="textColor" red="0.3411764706" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

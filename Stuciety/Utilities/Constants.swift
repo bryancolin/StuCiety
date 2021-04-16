@@ -56,6 +56,8 @@ struct K {
         struct Message {
             static let collectionName = "rooms"
             static let childCollectionName = "messages"
+            
+            static let idField = "id"
             static let bodyField = "body"
             static let dateField = "createdAt"
             static let senderIdField = "senderId"
@@ -64,7 +66,7 @@ struct K {
         
         struct Counselor {
             static let collectionName = "counselors"
-            
+
             static let id = "id"
             static let name = "displayName"
             static let email = "email"
