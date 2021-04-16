@@ -39,9 +39,11 @@ class CounselorViewController: UIViewController {
             if let e = err {
                 print("Error getting documents: \(e)")
             } else {
-                for doc in querySnapshot!.documents {
-                    if let counselor = Counselor(uid: doc.documentID, dictionary: doc.data()) {
-                        counselors.append(counselor)
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        if let counselor = Counselor(uid: doc.documentID, dictionary: doc.data()) {
+                            counselors.append(counselor)
+                        }
                     }
                 }
                 
