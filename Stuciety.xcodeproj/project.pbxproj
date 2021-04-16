@@ -191,15 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				E59F03032629647700E0E475 /* Animation */,
-				E5767A6026021FFB00E851B2 /* AppDelegate.swift */,
-				E5767A6226021FFB00E851B2 /* SceneDelegate.swift */,
 				E574929F260EFCC80094670E /* Model */,
 				E5454D7326022A1900A14DE6 /* View */,
 				E5454D7226022A0700A14DE6 /* Controller */,
 				E5767A692602200100E851B2 /* Assets.xcassets */,
-				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
-				E5767A6E2602200100E851B2 /* Info.plist */,
-				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
+				E5DAE5662629C6EE00266FBE /* Supporting Files */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = Stuciety;
@@ -251,6 +247,18 @@
 				E58F1118262986FE00266B12 /* LoungeRoomViewController.swift */,
 			);
 			path = Lounge;
+			sourceTree = "<group>";
+		};
+		E5DAE5662629C6EE00266FBE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E5767A6026021FFB00E851B2 /* AppDelegate.swift */,
+				E5767A6226021FFB00E851B2 /* SceneDelegate.swift */,
+				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
+				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
+				E5767A6E2602200100E851B2 /* Info.plist */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,7 +545,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QL7B6ZXFS7;
-				INFOPLIST_FILE = Stuciety/Info.plist;
+				INFOPLIST_FILE = "Stuciety/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -557,7 +565,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QL7B6ZXFS7;
-				INFOPLIST_FILE = Stuciety/Info.plist;
+				INFOPLIST_FILE = "Stuciety/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

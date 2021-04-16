@@ -70,24 +70,23 @@ class AddPhotoViewController: UIViewController {
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.photoURL = downloadURL
                 
-                changeRequest?.commitChanges(completion: { (error) in
+                changeRequest?.commitChanges(completion: { [self] (error) in
                     if error != nil {
                         ProgressHUD.showFailed("Something went wrong. Please try again.")
                     } else {
-                        self.db.collection("students").document(self.currentUser?.uid ?? "0").updateData([
+                        db.collection("students").document(currentUser?.uid ?? "0").updateData([
                             "photoURL": downloadURL.absoluteString
                         ]) { error in
                             if error != nil {
                                 ProgressHUD.showFailed("Error saving user photo")
                             } else {
                                 ProgressHUD.dismiss()
-                                self.performSegue(withIdentifier: K.Segue.profile, sender: self)
+                                performSegue(withIdentifier: K.Segue.profile, sender: self)
                             }
                         }
                     }
                 })
             }
-            
         }
     }
 }

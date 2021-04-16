@@ -23,18 +23,18 @@ class SettingsViewController: UIViewController {
         tableView.delegate = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Settings.Segue.account {
+            _ = segue.destination as! AccountViewController
+        }
+    }
+    
     func signOut() {
         do {
             try Auth.auth().signOut()
             view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
             ProgressHUD.showFailed("Error signing out \(signOutError)")
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Settings.Segue.account {
-            _ = segue.destination as! AccountViewController
         }
     }
 }

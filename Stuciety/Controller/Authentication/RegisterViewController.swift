@@ -71,11 +71,11 @@ class RegisterViewController: UIViewController {
                             self.db.collection("students").document(result!.user.uid).setData(["email": email, "displayName": name, "result": "", "photoURL": ""]) { error in
                                 if error != nil {
                                     ProgressHUD.showFailed("Error saving user data")
+                                } else {
+                                    ProgressHUD.dismiss()
+                                    self.performSegue(withIdentifier: K.Segue.register, sender: self)
                                 }
                             }
-
-                            ProgressHUD.dismiss()
-                            self.performSegue(withIdentifier: K.Segue.register, sender: self)
                         }
                     })
                 }

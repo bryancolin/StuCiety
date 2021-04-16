@@ -20,7 +20,6 @@ final class CustomUIInputBar: InputBarAccessoryView {
     }
     
     func configure() {
-        
         customInputTextView()
         
         setRightStackViewWidthConstant(to: 38, animated: false)
