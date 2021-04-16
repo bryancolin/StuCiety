@@ -53,25 +53,6 @@ extension SettingsViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        cell.textLabel?.textColor = UIColor(named: K.BrandColors.purple)
-        cell.tintColor = UIColor(named: K.BrandColors.purple)
-        
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.textAlignment = .left
-        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(named: K.BrandColors.lightBlue) : .white
-        
-        if indexPath.row >= 4 {
-            cell.accessoryType = .none
-            cell.backgroundColor = .white
-            if indexPath.row == 7 {
-                cell.textLabel?.textAlignment = .center
-                cell.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
-            }
-        }
-    }
 }
 
 //MARK: - UITableViewDelegate
@@ -89,6 +70,25 @@ extension SettingsViewController: UITableViewDelegate {
             break
         default:
             return
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.textLabel?.textColor = UIColor(named: K.BrandColors.purple)
+        cell.tintColor = UIColor(named: K.BrandColors.purple)
+        
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.textAlignment = .left
+        cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(named: K.BrandColors.lightBlue) : .white
+        
+        if indexPath.row >= 4 {
+            cell.accessoryType = .none
+            cell.backgroundColor = .white
+            if indexPath.row == 7 {
+                cell.textLabel?.textAlignment = .center
+                cell.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
+            }
         }
     }
 }
