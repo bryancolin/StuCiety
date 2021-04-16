@@ -14,10 +14,10 @@ struct Topic {
     
     static func fetchTopics() -> [[Topic]] {
         return [
-            [Topic(featuredImage: UIImage(named: "COVID-19")!, label: "COVID-19")],
+            [Topic(featuredImage: #imageLiteral(resourceName: "COVID-19"), label: "COVID-19")],
             [
-                Topic(featuredImage: UIImage(named: "Civil")!, label: "Civil"),
-                Topic(featuredImage: UIImage(named: "Software")!, label: "Software")
+                Topic(featuredImage: #imageLiteral(resourceName: "Civil"), label: "Civil"),
+                Topic(featuredImage: #imageLiteral(resourceName: "Software"), label: "Software")
             ]
         ]
     }
