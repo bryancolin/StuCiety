@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Counselor {
     var id: String
@@ -14,7 +15,7 @@ struct Counselor {
     var biography: String
     var area: [String]
     var license: [String]
-    var photoURL: String
+    var photo: UIImage
 }
 
 extension Counselor {
@@ -27,6 +28,12 @@ extension Counselor {
               let license = dictionary[K.FStore.Counselor.license] as? [String],
               let photoURL = dictionary[K.FStore.Counselor.photoURL] as? String else { return nil }
         
-        self.init(id: uid, displayName: name, email: email, biography: biography, area: area, license: license, photoURL: photoURL)
+        let url = URL(string: photoURL)
+        
+        guard let data = try? Data(contentsOf: url!) else {
+            return nil
+        }
+        
+        self.init(id: uid, displayName: name, email: email, biography: biography, area: area, license: license, photo: UIImage(data: data)!)
     }
 }

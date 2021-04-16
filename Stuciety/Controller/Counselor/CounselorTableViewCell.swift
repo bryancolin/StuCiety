@@ -30,22 +30,13 @@ class CounselorTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func updateUI() {
         if let counselor = counselor {
             counselorName.text = counselor.displayName
-            counselorArea.text = counselor.area[0]
-            
-            let url = URL(string: counselor.photoURL)
-            
-            if let data = try? Data(contentsOf: url!) {
-                DispatchQueue.main.async {
-                    self.counselorPhoto.image = UIImage(data: data)
-                }
-            }
+            counselorArea.text = "Area: \(counselor.area[0])"
+            counselorPhoto.image = counselor.photo
         }
     }
 }

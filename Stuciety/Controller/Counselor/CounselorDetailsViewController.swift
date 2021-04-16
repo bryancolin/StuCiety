@@ -24,6 +24,7 @@ class CounselorDetailsViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         
         if let counselor = counselorDetails {
+            counselorPhoto.image = counselor.photo
             counselorName.text = counselor.displayName
             counselorBio.text = counselor.biography
             counselorLicense.text = counselor.license[0] + "\n" + counselor.license[1]
@@ -33,7 +34,6 @@ class CounselorDetailsViewController: UIViewController {
                     counselorArea.text! += ", "
                 }
             }
-            
         }
     }
 }
