@@ -919,6 +919,20 @@
                                                                 </userDefinedRuntimeAttributes>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="200" height="200"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                                    <real key="value" value="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                                    <size key="value" width="0.0" height="2"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
                                                             <connections>
                                                                 <outlet property="featuredImageView" destination="Tqa-Ta-Zc8" id="iqV-ob-lU4"/>
                                                                 <outlet property="textLabel" destination="ns7-yn-Gif" id="Wbr-uZ-9cD"/>
@@ -1417,7 +1431,7 @@
         <!--Room-->
         <scene sceneID="uEB-Fh-fye">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="ChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="LoungeRoomViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1h-1w-70u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

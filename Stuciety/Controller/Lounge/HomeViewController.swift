@@ -24,7 +24,7 @@ class HomeViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Segue.chat {
-            if let destinationVC = segue.destination as? ChatViewController {
+            if let destinationVC = segue.destination as? LoungeRoomViewController {
                 destinationVC.roomTitle = selectedTopic?.label
             }
         }
