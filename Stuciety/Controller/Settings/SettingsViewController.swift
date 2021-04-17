@@ -12,6 +12,9 @@ import ProgressHUD
 class SettingsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var aboutView: UIView!
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    var effect: UIVisualEffect!
     
     var lists = ["Account", "Notifications", "About", "Additional Info", "", "", "", "Sign Out"]
     
@@ -21,6 +24,11 @@ class SettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
+        
+        // Hide Visual Effect
+        effect = visualEffectView.effect
+        visualEffectView.effect = nil
+        visualEffectView.isHidden = true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,6 +43,34 @@ class SettingsViewController: UIViewController {
             view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         } catch let signOutError as NSError {
             ProgressHUD.showFailed("Error signing out \(signOutError)")
+        }
+    }
+    
+    func showAbout() {
+        self.view.addSubview(aboutView)
+        aboutView.center = self.view.center
+        aboutView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+        aboutView.alpha = 0
+        
+        // Add animation on About Pop Up View
+        UIView.animate(withDuration: 0.4) {
+            self.visualEffectView.isHidden = false
+            self.visualEffectView.effect = self.effect
+            self.aboutView.alpha = 1
+            self.aboutView.transform = CGAffineTransform.identity
+        }
+    }
+    
+    @IBAction func quitAbout(_ sender: UIButton) {
+        // Add out animation on About Pop Up View
+        UIView.animate(withDuration: 0.3, animations: {
+            self.aboutView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
+            self.aboutView.alpha = 0
+            
+            self.visualEffectView.effect = nil
+        }) { (success: Bool) in
+            self.aboutView.removeFromSuperview()
+            self.visualEffectView.isHidden = true
         }
     }
 }
@@ -64,6 +100,9 @@ extension SettingsViewController: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             self.performSegue(withIdentifier: K.Settings.Segue.account, sender: self)
+            break
+        case 2:
+            showAbout()
             break
         case 7:
             signOut()

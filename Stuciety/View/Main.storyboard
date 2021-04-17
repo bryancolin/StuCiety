@@ -527,7 +527,7 @@
             <objects>
                 <viewController id="gLL-tb-GyQ" customClass="SettingsViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wb2-Im-fmB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IL2-B6-dnN">
@@ -546,32 +546,164 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Tz-B0-R6S">
+                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W0j-3H-0mh">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lE9-iT-Vcv">
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="575"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yDB-I4-dCy">
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="575"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="regular"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                </view>
+                                <blurEffect style="regular"/>
+                            </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pQ4-2t-gLH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="8Tz-B0-R6S" firstAttribute="leading" secondItem="pQ4-2t-gLH" secondAttribute="leading" id="8yz-dE-HZn"/>
                             <constraint firstItem="IL2-B6-dnN" firstAttribute="bottom" secondItem="pQ4-2t-gLH" secondAttribute="bottom" id="HUb-Gz-05c"/>
                             <constraint firstItem="IL2-B6-dnN" firstAttribute="leading" secondItem="pQ4-2t-gLH" secondAttribute="leading" id="YFJ-1A-hbk"/>
+                            <constraint firstItem="8Tz-B0-R6S" firstAttribute="top" secondItem="pQ4-2t-gLH" secondAttribute="top" id="bjQ-7a-FZt"/>
                             <constraint firstItem="IL2-B6-dnN" firstAttribute="trailing" secondItem="pQ4-2t-gLH" secondAttribute="trailing" id="hjF-RN-XLV"/>
                             <constraint firstItem="IL2-B6-dnN" firstAttribute="top" secondItem="pQ4-2t-gLH" secondAttribute="top" constant="5" id="lhC-L8-XHh"/>
+                            <constraint firstItem="pQ4-2t-gLH" firstAttribute="trailing" secondItem="8Tz-B0-R6S" secondAttribute="trailing" id="t7D-yT-xZU"/>
+                            <constraint firstItem="pQ4-2t-gLH" firstAttribute="bottom" secondItem="8Tz-B0-R6S" secondAttribute="bottom" id="tBZ-Vf-uCK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="7sC-Fs-B09"/>
                     <connections>
+                        <outlet property="aboutView" destination="VMj-De-TBo" id="ncO-Vf-t2u"/>
                         <outlet property="tableView" destination="IL2-B6-dnN" id="lxI-S2-Iy0"/>
+                        <outlet property="visualEffectView" destination="8Tz-B0-R6S" id="Fd9-rs-6sC"/>
                         <segue destination="Dpq-tm-iwB" kind="show" identifier="ToAccount" id="x4t-m2-ZXc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eHH-y4-tYV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="VMj-De-TBo">
+                    <rect key="frame" x="0.0" y="0.0" width="286" height="209"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wzv-aH-xWz">
+                            <rect key="frame" x="0.0" y="0.0" width="286" height="209"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stuciety_app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="2ki-65-UvJ">
+                                    <rect key="frame" x="105.5" y="30" width="75" height="75"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="75" id="Ll6-5u-Ucp"/>
+                                        <constraint firstAttribute="height" constant="75" id="Z8e-yk-Wzu"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="37.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                            <real key="value" value="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                            <size key="value" width="0.0" height="2"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Version 1.0.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="ohQ-wN-xAf">
+                                    <rect key="frame" x="107" y="142" width="72" height="15"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Copyright @  2021" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gIc-Ox-mW8">
+                                    <rect key="frame" x="91" y="165" width="105" height="15"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="StuCiety" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-Xp-ScK">
+                                    <rect key="frame" x="109" y="113" width="71" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" name="BrandPurple"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dYw-B4-zgr">
+                                    <rect key="frame" x="5" y="5" width="20" height="20"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="M0R-Hr-M5x"/>
+                                        <constraint firstAttribute="width" constant="20" id="W9Z-mo-wNv"/>
+                                    </constraints>
+                                    <color key="tintColor" name="BrandPurple"/>
+                                    <state key="normal" title="Button" image="xmark" catalog="system"/>
+                                    <connections>
+                                        <action selector="quitAbout:" destination="gLL-tb-GyQ" eventType="touchUpInside" id="PYg-ZE-BDR"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="dYw-B4-zgr" firstAttribute="leading" secondItem="Wzv-aH-xWz" secondAttribute="leading" constant="5" id="Dxm-Lc-eFo"/>
+                                <constraint firstItem="dYw-B4-zgr" firstAttribute="top" secondItem="Wzv-aH-xWz" secondAttribute="top" constant="5" id="Ife-aH-r06"/>
+                                <constraint firstItem="2ki-65-UvJ" firstAttribute="top" secondItem="Wzv-aH-xWz" secondAttribute="top" constant="30" id="PDR-Fe-ur3"/>
+                                <constraint firstItem="2ki-65-UvJ" firstAttribute="centerX" secondItem="Wzv-aH-xWz" secondAttribute="centerX" id="RLH-hL-FrW"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <viewLayoutGuide key="safeArea" id="UWi-S5-dtL"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="Wzv-aH-xWz" firstAttribute="trailing" secondItem="UWi-S5-dtL" secondAttribute="trailing" id="MlI-Q3-46N"/>
+                        <constraint firstItem="Wzv-aH-xWz" firstAttribute="top" secondItem="VMj-De-TBo" secondAttribute="top" id="PdY-ep-bYH"/>
+                        <constraint firstItem="Wzv-aH-xWz" firstAttribute="bottom" secondItem="UWi-S5-dtL" secondAttribute="bottom" id="Rap-uj-Xmz"/>
+                        <constraint firstItem="Wzv-aH-xWz" firstAttribute="leading" secondItem="UWi-S5-dtL" secondAttribute="leading" id="yR4-kr-BUA"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </objects>
-            <point key="canvasLocation" x="5715.9420289855079" y="1980.8035714285713"/>
+            <point key="canvasLocation" x="5717" y="2144"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="DrO-3n-uHJ">
             <objects>
                 <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Dpq-tm-iwB" customClass="AccountViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XkS-Om-OeU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGI-dA-Zzd">
@@ -648,7 +780,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNz-Cb-hQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6794" y="1981"/>
+            <point key="canvasLocation" x="6794" y="2144"/>
         </scene>
         <!--Login-->
         <scene sceneID="Q8j-AJ-YiS">
@@ -831,7 +963,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="ocH-rm-gLU" customClass="HomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbP-2H-4Ob">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KvD-Zl-dsw">
@@ -984,7 +1116,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="7tU-dq-7uW" customClass="CounselorViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ICU-xq-qvd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-8J-zA0">
@@ -1159,7 +1291,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="9Nk-aV-fzT" customClass="CounselorDetailsViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fec-LB-yNz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-Ly-ga4">
@@ -1433,7 +1565,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="LoungeRoomViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1h-1w-70u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="zd0-gc-NQ0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1449,7 +1581,7 @@
             <objects>
                 <viewController id="zay-R1-0Cw" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="miE-hh-Rzs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="DPn-3d-hsz"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1534,7 +1666,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGB-qR-yz9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4806" y="1981"/>
+            <point key="canvasLocation" x="4807" y="2144"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1vh-dm-eYF">
@@ -1578,6 +1710,7 @@
         <image name="settings" width="16.5" height="16.5"/>
         <image name="stuciety_app_icon" width="166.5" height="166.5"/>
         <image name="user" width="16.5" height="16.5"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="BrandLightBlue">
             <color red="0.89399999380111694" green="0.98400002717971802" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
