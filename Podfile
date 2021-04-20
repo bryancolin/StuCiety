@@ -13,7 +13,8 @@ target 'Stuciety' do
   pod 'IQKeyboardManagerSwift'
   pod 'MessageKit'
   pod 'ProgressHUD'
-  pod 'SDWebImage'
   pod 'RandomColorSwift'
+  pod 'SDWebImage'
+  pod 'SkeletonView'
   
 end

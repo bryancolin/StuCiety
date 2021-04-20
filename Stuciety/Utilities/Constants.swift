@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import SkeletonView
 
 struct K {
-    static let appName = "Stuciety"
+    static let appName = "StuCiety"
+    static let gradient = SkeletonGradient(baseColor: UIColor.clouds)
     
     struct Segue {
         static let register = "RegisterToProfile"

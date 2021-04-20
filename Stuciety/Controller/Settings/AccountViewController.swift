@@ -17,12 +17,6 @@ class AccountViewController: UIViewController {
     var currentUser: User? = Auth.auth().currentUser
     
     override func viewWillAppear(_ animated: Bool) {
-        setupImageView()
-        
-        if let image = currentUser?.photoURL {
-            let imageURL = image.absoluteString
-            getProfile(with: imageURL)
-        }
     }
     
     override func viewDidLoad() {
@@ -30,13 +24,13 @@ class AccountViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
-    }
-    
-    func setupImageView() {
-        profilePicture.layer.masksToBounds = false
-        profilePicture.layer.borderColor = UIColor.black.cgColor
+        
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2
         profilePicture.clipsToBounds = true
+        
+        if let imageURL = currentUser?.photoURL?.absoluteString {
+            getProfile(with: imageURL)
+        }
     }
     
     //Call this function in VC where your `ImageView` is
