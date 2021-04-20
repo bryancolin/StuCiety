@@ -78,7 +78,7 @@ extension CounselorViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         /// an enum of type TableAnimation - determines the animation to be applied to the tableViewCells
-        let currentTableAnimation: TableAnimation = .fadeIn(duration: 0.85, delay: 0.03)
+        let currentTableAnimation: TableAnimation = .fadeIn(duration: 0.5, delay: 0.03)
         
         /// fetch the animation from the TableAnimation enum and initialze the TableViewAnimator class
         let animation = currentTableAnimation.getAnimation()
