@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RandomColorSwift
 
 class LoungeCollectionViewCell: UICollectionViewCell {
     
@@ -19,11 +20,17 @@ class LoungeCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    var delegate: TableViewInsideCollectionViewDelegate?
+    
     func updateUI() {
         if let topic = topic {
             featuredImageView.image = topic.featuredImage
             textLabel.text = topic.label
-            view.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
+            view.backgroundColor = randomColor(hue: .random, luminosity: .light)
         }
+    }
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        delegate?.cellTaped(topic: topic)
     }
 }

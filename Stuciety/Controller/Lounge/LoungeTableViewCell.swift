@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol TableViewInsideCollectionViewDelegate: UIViewController {
+protocol TableViewInsideCollectionViewDelegate {
     func cellTaped(topic: Topic?)
 }
 
@@ -15,7 +15,7 @@ class LoungeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    weak var delegate: TableViewInsideCollectionViewDelegate?
+    var delegate: TableViewInsideCollectionViewDelegate?
     var topics: [Topic]?
 
     override func awakeFromNib() {
@@ -50,6 +50,7 @@ extension LoungeTableViewCell: UICollectionViewDataSource {
         }
         let topic = topics?[indexPath.item]
         cell.topic = topic
+        cell.delegate = delegate
         
         return cell
     }

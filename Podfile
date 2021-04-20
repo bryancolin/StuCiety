@@ -14,5 +14,6 @@ target 'Stuciety' do
   pod 'MessageKit'
   pod 'ProgressHUD'
   pod 'SDWebImage'
+  pod 'RandomColorSwift'
   
 end

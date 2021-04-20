@@ -16,18 +16,20 @@ class AccountViewController: UIViewController {
     
     var currentUser: User? = Auth.auth().currentUser
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
-        
+    override func viewWillAppear(_ animated: Bool) {
         setupImageView()
         
         if let image = currentUser?.photoURL {
             let imageURL = image.absoluteString
             getProfile(with: imageURL)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
     }
     
     func setupImageView() {

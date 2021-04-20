@@ -314,6 +314,7 @@ PODS:
   - nanopb/encode (2.30907.0)
   - ProgressHUD (13.5)
   - PromisesObjC (1.2.12)
+  - RandomColorSwift (2.0.0)
   - SDWebImage (5.10.4):
     - SDWebImage/Core (= 5.10.4)
   - SDWebImage/Core (5.10.4)
@@ -326,6 +327,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - MessageKit
   - ProgressHUD
+  - RandomColorSwift
   - SDWebImage
 
 SPEC REPOS:
@@ -350,6 +352,7 @@ SPEC REPOS:
     - nanopb
     - ProgressHUD
     - PromisesObjC
+    - RandomColorSwift
     - SDWebImage
 
 SPEC CHECKSUMS:
@@ -373,8 +376,9 @@ SPEC CHECKSUMS:
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   ProgressHUD: 028e3828c7b582022c34a74604fc6073f8628d99
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  RandomColorSwift: d18b9b025403137b5543a002187489b06cc1782b
   SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
 
-PODFILE CHECKSUM: f73f60e7668a44515cce7790630b5f7b7bc9c9e2
+PODFILE CHECKSUM: 65b3dd50ab98006c7b0edb20c865fe7a64b2fec7
 
 COCOAPODS: 1.10.1
