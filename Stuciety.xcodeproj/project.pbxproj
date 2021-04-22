@@ -17,6 +17,10 @@
 		E5454D8F26022B8000A14DE6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */; };
 		E5454D9126022BC800A14DE6 /* Pods_Stuciety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75663564263D437D738F6B6 /* Pods_Stuciety.framework */; };
 		E5454D9226022BC800A14DE6 /* Pods_Stuciety.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E75663564263D437D738F6B6 /* Pods_Stuciety.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E54A51F226319A630003D110 /* QuestionnaireCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */; };
+		E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */; };
+		E54A51F626319ECF0003D110 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */; };
+		E54A51F726319ECF0003D110 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */; };
 		E54A9B042602554000EFC6B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A9B032602554000EFC6B8 /* Constants.swift */; };
 		E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574929B260EFAA60094670E /* LoungeTableViewCell.swift */; };
 		E574929E260EFC5A0094670E /* LoungeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574929D260EFC5A0094670E /* LoungeCollectionViewCell.swift */; };
@@ -68,6 +72,10 @@
 		E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		E5454D8A26022ABB00A14DE6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCollectionViewCell.swift; sourceTree = "<group>"; };
+		E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionnaireCollectionViewCell.xib; sourceTree = "<group>"; };
+		E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		E54A9B032602554000EFC6B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E574929B260EFAA60094670E /* LoungeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeTableViewCell.swift; sourceTree = "<group>"; };
 		E574929D260EFC5A0094670E /* LoungeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -216,6 +224,10 @@
 			isa = PBXGroup;
 			children = (
 				E5B112C0262EB6330043889A /* QuestionnaireViewController.swift */,
+				E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */,
+				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
+				E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */,
+				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
 			);
 			path = Questionnaire;
 			sourceTree = "<group>";
@@ -332,7 +344,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E54A51F726319ECF0003D110 /* AccountCollectionViewCell.xib in Resources */,
 				E5767A6D2602200100E851B2 /* LaunchScreen.storyboard in Resources */,
+				E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */,
 				E5454D8F26022B8000A14DE6 /* GoogleService-Info.plist in Resources */,
 				E5767A6A2602200100E851B2 /* Assets.xcassets in Resources */,
 				E5454D8B26022ABC00A14DE6 /* Main.storyboard in Resources */,
@@ -394,7 +408,9 @@
 				E5454D8026022A7E00A14DE6 /* CustomUIButton.swift in Sources */,
 				E531DADA2605DE2800010B62 /* CustomUIView.swift in Sources */,
 				E5767A6126021FFB00E851B2 /* AppDelegate.swift in Sources */,
+				E54A51F226319A630003D110 /* QuestionnaireCollectionViewCell.swift in Sources */,
 				E5C84C58261EF1AE00559C53 /* AccountViewController.swift in Sources */,
+				E54A51F626319ECF0003D110 /* AccountCollectionViewCell.swift in Sources */,
 				E539D56826047E7800839E5A /* HomeViewController.swift in Sources */,
 				E5CF8A1726258D6500E69C22 /* CounselorTableViewCell.swift in Sources */,
 				E578153C26257A4A00E424B4 /* CounselorViewController.swift in Sources */,

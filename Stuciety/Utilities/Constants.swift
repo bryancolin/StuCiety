@@ -38,6 +38,11 @@ struct K {
         static let cellNibName = "MessageCell"
     }
     
+    struct QuestionnaireCollection {
+        static let cell1Identifier = "AccountReusableCell"
+        static let cell2Identifier = "QuestionnaireReusableCell"
+    }
+    
     struct Settings {
         static let cellIdentifier = "SettingsReusableCell"
         

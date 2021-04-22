@@ -11,42 +11,91 @@ import SkeletonView
 
 class QuestionnaireViewController: UIViewController {
     
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var statusLabel: UILabel!
-    @IBOutlet weak var profilePicture: UIImageView!
-    @IBOutlet weak var cardView: UIView!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     var currentUser: User? = Auth.auth().currentUser
+    
+    var questionnaires = ["Health", "Anxiety", "Emotional Wellness"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        profilePicture.layer.cornerRadius = profilePicture.frame.height/2
-        profilePicture.clipsToBounds = true
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
-        // Do any additional setup after loading the view.
-        if let user = currentUser {
-            nameLabel.text = user.displayName
-            
-            guard let imageURL = user.photoURL?.absoluteString else { return }
-            let url = URL(string: imageURL)
-            guard let data = try? Data(contentsOf: url!) else { return }
-            profilePicture.image = UIImage(data: data)
-            
-        }
-        
-        showAnimatedGradient()
+        collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell1Identifier)
+        collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell2Identifier)
     }
     
-    func showAnimatedGradient() {
-        nameLabel.showAnimatedGradientSkeleton(usingGradient: K.gradient)
-        statusLabel.showAnimatedGradientSkeleton(usingGradient: K.gradient)
-        profilePicture.showAnimatedGradientSkeleton(usingGradient: K.gradient)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) { [self] in
-            nameLabel.hideSkeleton(transition: .crossDissolve(0.25))
-            statusLabel.hideSkeleton(transition: .crossDissolve(0.25))
-            profilePicture.hideSkeleton(transition: .crossDissolve(0.25))
+        collectionView.isSkeletonable = true
+        collectionView.showAnimatedGradientSkeleton(usingGradient: K.gradient)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+            collectionView.hideSkeleton(transition: .crossDissolve(0.25))
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        self.collectionView.reloadData()
+    }
+}
+
+//MARK: - SkeletonCollectionViewDataSource
+
+extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
+    func numSections(in collectionSkeletonView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1 + questionnaires.count
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return indexPath.row == 0 ? K.QuestionnaireCollection.cell1Identifier : K.QuestionnaireCollection.cell2Identifier
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 1 + questionnaires.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if indexPath.row == 0 {
+            let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell1Identifier, for: indexPath) as! AccountCollectionViewCell
+            cell1.configure()
+            return cell1
+        } else {
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell2Identifier, for: indexPath) as! QuestionnaireCollectionViewCell
+            cell2.configure(name: questionnaires[indexPath.row - 1])
+            return cell2
+        }
+    }
+}
+
+//MARK: - UICollectionViewDelegate
+
+extension QuestionnaireViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            self.performSegue(withIdentifier: K.Settings.Segue.account, sender: self)
+        }
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension QuestionnaireViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let height: CGFloat = (collectionView.frame.size.width - space) / 2.0
+        let width: CGFloat = indexPath.row == 0 ? (collectionView.frame.size.width - 20) : height
+        
+        return CGSize(width: width, height: height)
     }
 }
