@@ -61,7 +61,9 @@ extension CounselorViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.CounselorTable.cellIdentifier, for: indexPath) as! CounselorTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.CounselorTable.cellIdentifier, for: indexPath) as? CounselorTableViewCell else {
+            fatalError("Unable to create topic table view cell")
+        }
         cell.counselor = counselors[indexPath.row]
         return cell
     }
