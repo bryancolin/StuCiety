@@ -31,9 +31,9 @@ class HomeViewController: UIViewController {
     }
 }
 
-//MARK: - TableViewDataSource
+//MARK: - UITableViewDataSource
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return topics.count
     }
@@ -48,6 +48,11 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
+}
+
+//MARK: - UITableViewDelegate
+
+extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 220
