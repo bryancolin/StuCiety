@@ -21,6 +21,9 @@ class AccountCollectionViewCell: UICollectionViewCell {
         
         nameLabel.linesCornerRadius = 5
         statusLabel.linesCornerRadius = 5
+        
+        profilePicture.layer.cornerRadius = 5
+        profilePicture.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
     }
     
     func configure() {
