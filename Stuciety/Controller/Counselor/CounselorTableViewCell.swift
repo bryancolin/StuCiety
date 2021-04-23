@@ -22,8 +22,6 @@ class CounselorTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        counselorPhoto.layer.masksToBounds = false
-        counselorPhoto.layer.borderColor = UIColor.black.cgColor
         counselorPhoto.layer.cornerRadius = counselorPhoto.frame.height/2
         counselorPhoto.clipsToBounds = true
     }

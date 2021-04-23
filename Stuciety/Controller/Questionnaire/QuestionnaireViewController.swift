@@ -97,7 +97,7 @@ extension QuestionnaireViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-        let height: CGFloat = indexPath.row == 0 ? 232 : (collectionView.frame.size.width - space) / 2.0
+        let height: CGFloat = (collectionView.frame.size.width - space) / 2.0
         let width: CGFloat = indexPath.row == 0 ? (collectionView.frame.size.width - 20) : height
         
         return CGSize(width: width, height: height)

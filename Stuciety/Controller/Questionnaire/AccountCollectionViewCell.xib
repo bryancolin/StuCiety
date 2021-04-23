@@ -69,18 +69,51 @@
                                         <rect key="frame" x="188" y="0.0" width="184" height="232"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zyN-JS-ZMZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="184" height="232"/>
+                                                <rect key="frame" x="10" y="10" width="164" height="212"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
+                                            <visualEffectView opaque="NO" alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmb-Ek-Gcp">
+                                                <rect key="frame" x="10" y="10" width="164" height="212"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="0iw-Rq-CMR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="164" height="212"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vR-8Z-6lB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="84"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pYE-zb-W2d">
+                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="84"/>
+                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            </view>
+                                                            <vibrancyEffect>
+                                                                <blurEffect style="regular"/>
+                                                            </vibrancyEffect>
+                                                        </visualEffectView>
+                                                    </subviews>
+                                                </view>
+                                                <blurEffect style="regular"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </visualEffectView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="zyN-JS-ZMZ" secondAttribute="trailing" id="8Cl-YC-CrL"/>
-                                            <constraint firstAttribute="bottom" secondItem="zyN-JS-ZMZ" secondAttribute="bottom" id="9XM-72-egT"/>
-                                            <constraint firstItem="zyN-JS-ZMZ" firstAttribute="leading" secondItem="1Gp-tI-J6i" secondAttribute="leading" id="Klb-v7-C0g"/>
-                                            <constraint firstItem="zyN-JS-ZMZ" firstAttribute="top" secondItem="1Gp-tI-J6i" secondAttribute="top" id="ubB-5F-RMs"/>
+                                            <constraint firstItem="zyN-JS-ZMZ" firstAttribute="leading" secondItem="1Gp-tI-J6i" secondAttribute="leading" constant="10" id="0ya-Qv-dPG"/>
+                                            <constraint firstItem="pmb-Ek-Gcp" firstAttribute="top" secondItem="1Gp-tI-J6i" secondAttribute="top" constant="10" id="5Hz-sO-Afk"/>
+                                            <constraint firstAttribute="bottom" secondItem="pmb-Ek-Gcp" secondAttribute="bottom" constant="10" id="Qgi-zr-Rpd"/>
+                                            <constraint firstAttribute="trailing" secondItem="pmb-Ek-Gcp" secondAttribute="trailing" constant="10" id="SUL-Hj-c8Z"/>
+                                            <constraint firstItem="pmb-Ek-Gcp" firstAttribute="leading" secondItem="1Gp-tI-J6i" secondAttribute="leading" constant="10" id="Wcz-vo-wgL"/>
+                                            <constraint firstAttribute="trailing" secondItem="zyN-JS-ZMZ" secondAttribute="trailing" constant="10" id="WvU-ku-XfD"/>
+                                            <constraint firstAttribute="bottom" secondItem="zyN-JS-ZMZ" secondAttribute="bottom" constant="10" id="llI-TB-2aa"/>
+                                            <constraint firstItem="zyN-JS-ZMZ" firstAttribute="top" secondItem="1Gp-tI-J6i" secondAttribute="top" constant="10" id="sGc-iL-6yD"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
