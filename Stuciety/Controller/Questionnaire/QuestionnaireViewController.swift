@@ -14,7 +14,12 @@ class QuestionnaireViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     var currentUser: User? = Auth.auth().currentUser
     
-    var questionnaires = ["Health", "Anxiety", "Emotional Wellness"]
+    var questionnaires: [Questionnaire] = [
+        Questionnaire(id: "1", title: "Health", description: "This is health sample", createdBy: "Bryan", question:
+                        [Question(text: "Are you happy?"), Question(text: "Are you sad?")]),
+        Questionnaire(id: "2", title: "Wellness", description: "This is welness sample", createdBy: "Bryan", question: [Question(text: "Are you Healthy?")])
+    ]
+    var selectedQuestionnaire = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +46,14 @@ class QuestionnaireViewController: UIViewController {
         super.viewWillTransition(to: size, with: coordinator)
         self.collectionView.reloadData()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.QuestionnaireCollection.Segue.start {
+            if let destinationVC = segue.destination as? StartViewController {
+                destinationVC.questionnaire = questionnaires[selectedQuestionnaire - 1]
+            }
+        }
+    }
 }
 
 //MARK: - SkeletonCollectionViewDataSource
@@ -65,15 +78,15 @@ extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell1Identifier, for: indexPath) as? AccountCollectionViewCell else {
-                fatalError("Unable to create topic table view cell")
+                fatalError("Unable to create topic collection view cell")
             }
             cell1.configure()
             return cell1
         } else {
             guard let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell2Identifier, for: indexPath) as? QuestionnaireCollectionViewCell else {
-                fatalError("Unable to create topic table view cell")
+                fatalError("Unable to create topic collection view cell")
             }
-            cell2.configure(name: questionnaires[indexPath.row - 1])
+            cell2.configure(name: questionnaires[indexPath.row - 1].title)
             return cell2
         }
     }
@@ -85,7 +98,10 @@ extension QuestionnaireViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            self.performSegue(withIdentifier: K.Settings.Segue.account, sender: self)
+            self.performSegue(withIdentifier: K.Segue.account, sender: self)
+        } else {
+            selectedQuestionnaire = indexPath.row
+            self.performSegue(withIdentifier: K.QuestionnaireCollection.Segue.start, sender: self)
         }
     }
 }

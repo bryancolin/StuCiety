@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Settings.Segue.account {
+        if segue.identifier == K.Segue.account {
             _ = segue.destination as! AccountViewController
         }
     }
@@ -99,7 +99,7 @@ extension SettingsViewController: UITableViewDelegate {
         
         switch indexPath.row {
         case 0:
-            self.performSegue(withIdentifier: K.Settings.Segue.account, sender: self)
+            self.performSegue(withIdentifier: K.Segue.account, sender: self)
             break
         case 2:
             showAbout()
