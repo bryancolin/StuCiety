@@ -16,8 +16,8 @@ class QuestionnaireViewController: UIViewController {
     
     var questionnaires: [Questionnaire] = [
         Questionnaire(id: "1", title: "Health", description: "This is health sample", createdBy: "Bryan", question:
-                        [Question(text: "Are you happy?"), Question(text: "Are you sad?")]),
-        Questionnaire(id: "2", title: "Wellness", description: "This is welness sample", createdBy: "Bryan", question: [Question(text: "Are you Healthy?")])
+                        [Question(text: "Are you happy?", answer: ""), Question(text: "Are you sad?", answer: "")]),
+        Questionnaire(id: "2", title: "Wellness", description: "This is welness sample", createdBy: "Bryan", question: [Question(text: "Are you Healthy?", answer: "")])
     ]
     var selectedQuestionnaire = 0
     
@@ -40,6 +40,8 @@ class QuestionnaireViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
             collectionView.hideSkeleton(transition: .crossDissolve(0.25))
         }
+        
+        print(questionnaires)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -49,8 +51,9 @@ class QuestionnaireViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.QuestionnaireCollection.Segue.start {
-            if let destinationVC = segue.destination as? StartViewController {
+            if let destinationVC = segue.destination as? QuestionHomeViewController {
                 destinationVC.questionnaire = questionnaires[selectedQuestionnaire - 1]
+                destinationVC.complete = false
             }
         }
     }

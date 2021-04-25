@@ -174,7 +174,7 @@
                                                                         </constraints>
                                                                         <color key="textColor" name="BrandPurple"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                                        <textInputTraits key="textInputTraits" textContentType="name"/>
+                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                                 <real key="value" value="5"/>
@@ -1552,22 +1552,22 @@
             </objects>
             <point key="canvasLocation" x="5715.9420289855079" y="1218.0803571428571"/>
         </scene>
-        <!--Start View Controller-->
+        <!--Question Home View Controller-->
         <scene sceneID="UkP-mC-Hfz">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="Tfq-bv-V6N" customClass="StartViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Tfq-bv-V6N" customClass="QuestionHomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVk-Pw-KQk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePC-HA-2lV">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbC-Qt-N1A">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha7-IB-Bpt">
-                                                <rect key="frame" x="45" y="657" width="324" height="50"/>
+                                                <rect key="frame" x="45" y="723" width="324" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="eUc-mT-JA6"/>
@@ -1588,11 +1588,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="startPressed:" destination="Tfq-bv-V6N" eventType="touchUpInside" id="COT-xc-Lgx"/>
+                                                    <action selector="buttonPressed:" destination="Tfq-bv-V6N" eventType="touchUpInside" id="COT-xc-Lgx"/>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ioQ-R9-21p">
-                                                <rect key="frame" x="45" y="196" width="324" height="300"/>
+                                                <rect key="frame" x="45" y="229" width="324" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="0WB-xR-cZf"/>
                                                 </constraints>
@@ -1634,6 +1634,7 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="GCT-FZ-P7o"/>
                     <connections>
+                        <outlet property="buttonLabel" destination="Ha7-IB-Bpt" id="T3f-uR-HRj"/>
                         <outlet property="descriptionLabel" destination="ioQ-R9-21p" id="vk2-tQ-WGH"/>
                         <segue destination="6bO-ew-Znp" kind="show" identifier="ToQuestion" id="wDm-f4-dMv"/>
                     </connections>
@@ -1747,25 +1748,25 @@
         <!--Question View Controller-->
         <scene sceneID="g4k-sZ-ucQ">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="6bO-ew-Znp" customClass="QuestionViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="6bO-ew-Znp" customClass="QuestionViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qrg-L4-FcU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whX-7C-ogB">
-                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFV-7a-DUC" userLabel="Top View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="78.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RL-p9-YR4">
-                                                <rect key="frame" x="181" y="29" width="52" height="20.5"/>
+                                                <rect key="frame" x="181" y="32.5" width="52" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tli-vn-heO">
-                                                <rect key="frame" x="267" y="24.5" width="30" height="30"/>
+                                                <rect key="frame" x="267" y="27.5" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="77B-r5-OIb"/>
                                                     <constraint firstAttribute="width" constant="30" id="It3-4a-g6x"/>
@@ -1776,7 +1777,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDk-ai-cIM">
-                                                <rect key="frame" x="117" y="24.5" width="30" height="30"/>
+                                                <rect key="frame" x="117" y="27.5" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="6ea-tL-u5V"/>
                                                     <constraint firstAttribute="height" constant="30" id="tyw-IH-alj"/>
@@ -1797,10 +1798,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gb-vp-69O" userLabel="MiddleTop View">
-                                        <rect key="frame" x="0.0" y="78.5" width="414" height="471.5"/>
+                                        <rect key="frame" x="0.0" y="85" width="414" height="511.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wmk-U7-0hf">
-                                                <rect key="frame" x="45" y="10" width="324" height="451.5"/>
+                                                <rect key="frame" x="45" y="10" width="324" height="491.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1814,33 +1815,31 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDX-sK-ZXd" userLabel="MiddleBottom View">
-                                        <rect key="frame" x="0.0" y="550" width="414" height="236"/>
+                                        <rect key="frame" x="0.0" y="596.5" width="414" height="255.5"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CT2-e7-Qcu">
-                                                <rect key="frame" x="45" y="0.0" width="324" height="191"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                <color key="textColor" systemColor="labelColor"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Input Here" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="0MT-Qm-StN">
+                                                <rect key="frame" x="45" y="0.0" width="324" height="210.5"/>
+                                                <color key="textColor" name="BrandPurple"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="1"/>
+                                                        <real key="value" value="2"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" name="BrandPurple"/>
                                                     </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="6"/>
-                                                    </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
-                                            </textView>
+                                            </textField>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="CT2-e7-Qcu" secondAttribute="trailing" constant="45" id="3SO-xw-gXi"/>
-                                            <constraint firstItem="CT2-e7-Qcu" firstAttribute="leading" secondItem="CDX-sK-ZXd" secondAttribute="leading" constant="45" id="DHa-sM-1Um"/>
-                                            <constraint firstItem="CT2-e7-Qcu" firstAttribute="top" secondItem="CDX-sK-ZXd" secondAttribute="top" id="lpf-Qy-OhC"/>
-                                            <constraint firstAttribute="bottom" secondItem="CT2-e7-Qcu" secondAttribute="bottom" constant="45" id="nIo-sf-PZQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="0MT-Qm-StN" secondAttribute="trailing" constant="45" id="1dk-3G-rRq"/>
+                                            <constraint firstItem="0MT-Qm-StN" firstAttribute="top" secondItem="CDX-sK-ZXd" secondAttribute="top" id="3Ya-Cm-8eK"/>
+                                            <constraint firstAttribute="bottom" secondItem="0MT-Qm-StN" secondAttribute="bottom" constant="45" id="5KL-ST-I5d"/>
+                                            <constraint firstItem="0MT-Qm-StN" firstAttribute="leading" secondItem="CDX-sK-ZXd" secondAttribute="leading" constant="45" id="hSj-Em-qTK"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -1874,9 +1873,12 @@
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="3fD-0D-Wmd"/>
                     <connections>
-                        <outlet property="answerTextView" destination="CT2-e7-Qcu" id="SIC-rr-agO"/>
+                        <outlet property="answerTextField" destination="0MT-Qm-StN" id="tcx-Er-ifl"/>
+                        <outlet property="backButton" destination="XDk-ai-cIM" id="yJz-L6-HL8"/>
+                        <outlet property="nextButton" destination="tli-vn-heO" id="kNX-NU-VQ5"/>
                         <outlet property="questionLabel" destination="Wmk-U7-0hf" id="2av-kg-1IM"/>
                         <outlet property="questionNumberLabel" destination="2RL-p9-YR4" id="4by-aT-5jv"/>
+                        <segue destination="Tfq-bv-V6N" kind="show" identifier="ToFinish" id="mio-F5-uAv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvf-MQ-4Gs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1890,8 +1892,9 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
+        <segue reference="mio-F5-uAv"/>
         <segue reference="uGy-mz-xCO"/>
-        <segue reference="hPp-3z-syf"/>
+        <segue reference="Ivm-vC-QbZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Nothing" width="2400" height="1256"/>
@@ -1909,9 +1912,6 @@
         <namedColor name="BrandPurple">
             <color red="0.47099998593330383" green="0.40799999237060547" blue="0.90200001001358032" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
