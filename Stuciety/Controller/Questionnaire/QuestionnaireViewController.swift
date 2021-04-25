@@ -67,10 +67,28 @@ class QuestionnaireViewController: UIViewController {
                         db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
                             if let document = document, document.exists {
                                 if let data = document.data() {
-                                    if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, document: document) {
-                                        questionnaires.append(questionnaire)
+                                    document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
+                                        if let e = error {
+                                            print("Error getting documents: \(e)")
+                                        } else {
+                                            if let snapshotDocuments = querySnapshot?.documents {
+                                                var questions: [Question] = []
+                                                
+                                                for doc in snapshotDocuments {
+                                                    if let question = Question(dictionary: doc.data()) {
+                                                        questions.append(question)
+                                                    }
+                                                }
+                                                
+                                                if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, questions: questions) {
+                                                    questionnaires.append(questionnaire)
+                                                }
+                                            }
+                                            
+                                            collectionView.reloadData()
+                                        }
                                     }
-                                    collectionView.reloadData()
+                                    
                                 }
                             }
                         }

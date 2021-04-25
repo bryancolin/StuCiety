@@ -18,11 +18,11 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.emailTextField.tag = 0
-        self.passwordTextField.tag = 1
+        emailTextField.tag = 0
+        passwordTextField.tag = 1
         
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func loginPressed(_ sender: CustomUIButton) {
@@ -31,12 +31,22 @@ class LoginViewController: UIViewController {
         
         if let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if error != nil {
-                    ProgressHUD.showFailed("Invalid email or password")
+                if let e = error {
+                    if let errorCode = AuthErrorCode(rawValue: e._code) {
+                        switch errorCode {
+                        case .invalidEmail:
+                            ProgressHUD.showFailed("Invalid email. Please try again.")
+                        case .wrongPassword:
+                            ProgressHUD.showFailed("Wrong Password. Please try again.")
+                        case .networkError:
+                            ProgressHUD.showFailed("Network error. Please try again.")
+                        default:
+                            ProgressHUD.showFailed("Unknown error occurred")
+                        }
+                    }
                 } else {
                     self.performSegue(withIdentifier: K.Segue.login, sender: self)
                     ProgressHUD.dismiss()
-                    print("Successfully login")
                 }
             }
         }

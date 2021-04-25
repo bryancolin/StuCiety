@@ -56,10 +56,18 @@ class RegisterViewController: UIViewController {
 
         if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
             Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                if error != nil {
-                    ProgressHUD.showFailed("Email have been registered. Please try again with another email")
+                if let e = error {
+                    if let errorCode = AuthErrorCode(rawValue: e._code) {
+                        switch errorCode {
+                        case .emailAlreadyInUse:
+                            ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
+                        case .networkError:
+                            ProgressHUD.showFailed("Network error. Please try again.")
+                        default:
+                            ProgressHUD.showFailed("Unknown error occurred")
+                        }
+                    }
                 } else {
-
                     let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                     changeRequest?.displayName = name
 
