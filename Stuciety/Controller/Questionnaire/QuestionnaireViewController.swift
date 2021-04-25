@@ -8,17 +8,16 @@
 import UIKit
 import Firebase
 import SkeletonView
+import Firebase
 
 class QuestionnaireViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let db = Firestore.firestore()
     var currentUser: User? = Auth.auth().currentUser
     
-    var questionnaires: [Questionnaire] = [
-        Questionnaire(id: "1", title: "Health", description: "This is health sample", createdBy: "Bryan", question:
-                        [Question(text: "Are you happy?", answer: ""), Question(text: "Are you sad?", answer: "")]),
-        Questionnaire(id: "2", title: "Wellness", description: "This is welness sample", createdBy: "Bryan", question: [Question(text: "Are you Healthy?", answer: "")])
-    ]
+    var questionnaires: [Questionnaire] = []
     var selectedQuestionnaire = 0
     
     override func viewDidLoad() {
@@ -29,6 +28,8 @@ class QuestionnaireViewController: UIViewController {
         
         collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell1Identifier)
         collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell2Identifier)
+        
+        loadQuestionnaires()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,8 +41,6 @@ class QuestionnaireViewController: UIViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
             collectionView.hideSkeleton(transition: .crossDissolve(0.25))
         }
-        
-        print(questionnaires)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -54,6 +53,48 @@ class QuestionnaireViewController: UIViewController {
             if let destinationVC = segue.destination as? QuestionHomeViewController {
                 destinationVC.questionnaire = questionnaires[selectedQuestionnaire - 1]
                 destinationVC.complete = false
+            }
+        }
+    }
+    
+    func loadQuestionnaires() {
+        db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").getDocument {[self] (document, error) in
+            if let document = document, document.exists {
+                
+                if let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String] {
+                    for questionnaireId in questionnairesId {
+                        
+                        db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
+                            if let document = document, document.exists {
+                                if let data = document.data() {
+                                    document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
+                                        if let e = error {
+                                            print("Error getting documents: \(e)")
+                                        } else {
+                                            var questions: [Question] = []
+                                            
+                                            if let snapshotDocuments = querySnapshot?.documents {
+                                                for doc in snapshotDocuments {
+                                                    if let question = Question(dictionary: doc.data()) {
+                                                        questions.append(question)
+                                                    }
+                                                }
+                                            }
+                                            
+                                            if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, question: questions) {
+                                                questionnaires.append(questionnaire)
+                                            }
+                                            
+                                            collectionView.reloadData()
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print("Document does not exist")
             }
         }
     }

@@ -89,5 +89,31 @@ struct K {
             static let license = "license"
             static let photoURL = "photoURL"
         }
+        
+        struct Student {
+            static let collectionName = "students"
+            
+            static let id = "id"
+            static let name = "displayName"
+            static let email = "email"
+            static let photoURL = "photoURL"
+            static let questionnaires = "questionnaires"
+        }
+        
+        struct Questionnaire {
+            static let collectionName = "questionnaires"
+            static let childCollectionName = "question"
+            
+            struct Child {
+                static let text = "text"
+                static let answer = "answer"
+            }
+            
+            static let id = "id"
+            static let title = "title"
+            static let description = "description"
+            static let createdBy = "createdBy"
+            static let result = "result"
+        }
     }
 }

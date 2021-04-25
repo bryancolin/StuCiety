@@ -22,7 +22,6 @@
 		E54A51F626319ECF0003D110 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */; };
 		E54A51F726319ECF0003D110 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */; };
 		E54A9B042602554000EFC6B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A9B032602554000EFC6B8 /* Constants.swift */; };
-		E54FEB5B263552F500CEF44F /* QuestionnaireBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54FEB5A263552F500CEF44F /* QuestionnaireBrain.swift */; };
 		E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574929B260EFAA60094670E /* LoungeTableViewCell.swift */; };
 		E574929E260EFC5A0094670E /* LoungeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574929D260EFC5A0094670E /* LoungeCollectionViewCell.swift */; };
 		E57492A1260EFCD90094670E /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57492A0260EFCD90094670E /* Topic.swift */; };
@@ -82,7 +81,6 @@
 		E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		E54A9B032602554000EFC6B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		E54FEB5A263552F500CEF44F /* QuestionnaireBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireBrain.swift; sourceTree = "<group>"; };
 		E574929B260EFAA60094670E /* LoungeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeTableViewCell.swift; sourceTree = "<group>"; };
 		E574929D260EFC5A0094670E /* LoungeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeCollectionViewCell.swift; sourceTree = "<group>"; };
 		E57492A0260EFCD90094670E /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -188,7 +186,6 @@
 				E57492A0260EFCD90094670E /* Topic.swift */,
 				E5E0EDA32632B15300D52230 /* Questionnaire.swift */,
 				E59D1AE2263424100042EEED /* Question.swift */,
-				E54FEB5A263552F500CEF44F /* QuestionnaireBrain.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -455,7 +452,6 @@
 				E59F03072629650E00E0E475 /* Tables.swift in Sources */,
 				E59F03052629649E00E0E475 /* TableAnimations.swift in Sources */,
 				E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */,
-				E54FEB5B263552F500CEF44F /* QuestionnaireBrain.swift in Sources */,
 				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
 				E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */,
 				E57492A1260EFCD90094670E /* Topic.swift in Sources */,
