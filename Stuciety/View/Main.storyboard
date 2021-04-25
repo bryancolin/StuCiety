@@ -1490,7 +1490,7 @@
         <!--Room-->
         <scene sceneID="uEB-Fh-fye">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="LoungeRoomViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="ChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1h-1w-70u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

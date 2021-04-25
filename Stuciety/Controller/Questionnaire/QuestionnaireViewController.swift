@@ -67,27 +67,10 @@ class QuestionnaireViewController: UIViewController {
                         db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
                             if let document = document, document.exists {
                                 if let data = document.data() {
-                                    document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
-                                        if let e = error {
-                                            print("Error getting documents: \(e)")
-                                        } else {
-                                            var questions: [Question] = []
-                                            
-                                            if let snapshotDocuments = querySnapshot?.documents {
-                                                for doc in snapshotDocuments {
-                                                    if let question = Question(dictionary: doc.data()) {
-                                                        questions.append(question)
-                                                    }
-                                                }
-                                            }
-                                            
-                                            if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, question: questions) {
-                                                questionnaires.append(questionnaire)
-                                            }
-                                            
-                                            collectionView.reloadData()
-                                        }
+                                    if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, document: document) {
+                                        questionnaires.append(questionnaire)
                                     }
+                                    collectionView.reloadData()
                                 }
                             }
                         }

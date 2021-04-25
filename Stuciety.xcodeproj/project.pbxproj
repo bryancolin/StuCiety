@@ -31,7 +31,6 @@
 		E5767A6D2602200100E851B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */; };
 		E578153C26257A4A00E424B4 /* CounselorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E578153B26257A4A00E424B4 /* CounselorViewController.swift */; };
 		E57E4D5C261B19FD00C8EFCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */; };
-		E58F1119262986FE00266B12 /* LoungeRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E58F1118262986FE00266B12 /* LoungeRoomViewController.swift */; };
 		E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */; };
 		E59D1AE1263421200042EEED /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D1AE0263421200042EEED /* QuestionViewController.swift */; };
 		E59D1AE3263424100042EEED /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D1AE2263424100042EEED /* Question.swift */; };
@@ -92,7 +91,6 @@
 		E5767A6E2602200100E851B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E578153B26257A4A00E424B4 /* CounselorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorViewController.swift; sourceTree = "<group>"; };
 		E57E4D5B261B19FD00C8EFCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		E58F1118262986FE00266B12 /* LoungeRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeRoomViewController.swift; sourceTree = "<group>"; };
 		E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIInputBar.swift; sourceTree = "<group>"; };
 		E59D1AE0263421200042EEED /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		E59D1AE2263424100042EEED /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -276,7 +274,6 @@
 				E539D56726047E7700839E5A /* HomeViewController.swift */,
 				E574929B260EFAA60094670E /* LoungeTableViewCell.swift */,
 				E574929D260EFC5A0094670E /* LoungeCollectionViewCell.swift */,
-				E58F1118262986FE00266B12 /* LoungeRoomViewController.swift */,
 			);
 			path = Lounge;
 			sourceTree = "<group>";
@@ -445,7 +442,6 @@
 				E5C5EB3B2625A7DC00B78932 /* CounselorDetailsViewController.swift in Sources */,
 				E57E4D5C261B19FD00C8EFCA /* ChatViewController.swift in Sources */,
 				E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */,
-				E58F1119262986FE00266B12 /* LoungeRoomViewController.swift in Sources */,
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
 				E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */,
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
