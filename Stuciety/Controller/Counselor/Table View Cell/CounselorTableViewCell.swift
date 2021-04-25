@@ -2,7 +2,7 @@
 //  CounselorTableViewCell.swift
 //  Stuciety
 //
-//  Created by bryan colin on 4/13/21.
+//  Created by bryan colin on 4/25/21.
 //
 
 import UIKit
@@ -12,7 +12,7 @@ class CounselorTableViewCell: UITableViewCell {
     @IBOutlet weak var counselorName: UILabel!
     @IBOutlet weak var counselorArea: UILabel!
     @IBOutlet weak var counselorPhoto: UIImageView!
-    
+
     var counselor: Counselor! {
         didSet {
             self.updateUI()
@@ -21,7 +21,7 @@ class CounselorTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
         counselorPhoto.layer.cornerRadius = counselorPhoto.frame.height/2
         counselorPhoto.clipsToBounds = true
     }

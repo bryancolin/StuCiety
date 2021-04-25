@@ -23,7 +23,15 @@ class CounselorViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
+        tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.CounselorTable.cellIdentifier)
         loadCounselors()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if tableView != nil {
+            self.tableView.reloadData()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

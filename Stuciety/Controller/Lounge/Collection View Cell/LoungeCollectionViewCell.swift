@@ -2,7 +2,7 @@
 //  LoungeCollectionViewCell.swift
 //  Stuciety
 //
-//  Created by bryan colin on 3/27/21.
+//  Created by bryan colin on 4/25/21.
 //
 
 import UIKit
@@ -21,6 +21,11 @@ class LoungeCollectionViewCell: UICollectionViewCell {
     }
     
     var delegate: TableViewInsideCollectionViewDelegate?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
     
     func updateUI() {
         if let topic = topic {

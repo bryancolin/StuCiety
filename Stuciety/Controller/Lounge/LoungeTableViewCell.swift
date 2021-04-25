@@ -23,12 +23,12 @@ class LoungeTableViewCell: UITableViewCell {
         
         collectionView.dataSource = self
         collectionView.delegate = self
+        
+        collectionView.register(UINib(nibName: "LoungeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.LoungeTable.collectionCellIdentifier)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 }
 
@@ -75,6 +75,14 @@ extension LoungeTableViewCell: UICollectionViewDelegate {
 extension LoungeTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width , height: collectionView.frame.height - (collectionView.safeAreaInsets.top + collectionView.safeAreaInsets.bottom))
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        
+        let space: CGFloat = (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let spaceInBetween: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + space
+        
+        let height: CGFloat = (collectionView.frame.size.width - spaceInBetween) / 2.0
+        let width: CGFloat = (collectionView.frame.size.width - space)
+        
+        return CGSize(width: 200, height: 200)
     }
 }
