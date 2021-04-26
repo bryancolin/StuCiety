@@ -21,74 +21,60 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.nameTextField.tag = 0
-        self.emailTextField.tag = 1
-        self.passwordTextField.tag = 2
+        nameTextField.tag = 0
+        emailTextField.tag = 1
+        passwordTextField.tag = 2
         
-        self.nameTextField.delegate = self
-        self.emailTextField.delegate = self
-        self.passwordTextField.delegate = self
+        nameTextField.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
         
         ProgressHUD.show()
         
-        guard nameTextField.text != "" else {
-            return ProgressHUD.showError("Name field is empty")
+        guard nameTextField.text != "" else { return ProgressHUD.showError("Name field is empty") }
+        
+        guard emailTextField.text != "" else { return ProgressHUD.showError("Email field is empty") }
+        guard isValidEmail(emailTextField.text!) else { return ProgressHUD.showError("Email is not valid") }
+        
+        guard passwordTextField.text != "" else { return ProgressHUD.showError("Password field is empty") }
+        guard isValidPassword(passwordTextField.text!) else { return ProgressHUD.showError("Password is not strong enough") }
+        
+        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
+            return ProgressHUD.showError("Something went wrong. Please try again")
         }
-
-        guard emailTextField.text != "" else {
-            return ProgressHUD.showError("Email field is empty")
-        }
-
-        guard isValidEmail(emailTextField.text!) else {
-            return ProgressHUD.showError("Email is not valid")
-        }
-
-        guard passwordTextField.text != "" else {
-            return ProgressHUD.showError("Password field is empty")
-        }
-
-        guard isValidPassword(passwordTextField.text!) else {
-            return ProgressHUD.showError("Password is not strong enough")
-        }
-
-        if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-                if let e = error {
-                    if let errorCode = AuthErrorCode(rawValue: e._code) {
-                        switch errorCode {
-                        case .emailAlreadyInUse:
-                            ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
-                        case .networkError:
-                            ProgressHUD.showFailed("Network error. Please try again.")
-                        default:
-                            ProgressHUD.showFailed("Unknown error occurred")
-                        }
+        
+        Auth.auth().createUser(withEmail: email, password: password) {[self] (result, error) in
+            if let e = error {
+                if let errorCode = AuthErrorCode(rawValue: e._code) {
+                    switch errorCode {
+                    case .emailAlreadyInUse:
+                        ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
+                    case .networkError:
+                        ProgressHUD.showFailed("Network error. Please try again.")
+                    default:
+                        ProgressHUD.showFailed("Unknown error occurred")
                     }
-                } else {
-                    let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                    changeRequest?.displayName = name
-
-                    changeRequest?.commitChanges(completion: { (error) in
-                        if error != nil {
-                            ProgressHUD.showFailed("Something went wrong. Please try again.")
-                        } else {
-
-                            self.db.collection("students").document(result!.user.uid).setData(["email": email, "displayName": name, "result": "", "photoURL": ""]) { error in
-                                if error != nil {
-                                    ProgressHUD.showFailed("Error saving user data")
-                                } else {
-                                    ProgressHUD.dismiss()
-                                    self.performSegue(withIdentifier: K.Segue.register, sender: self)
-                                }
-                            }
-                        }
-                    })
                 }
+            } else {
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                changeRequest?.displayName = name
+                
+                changeRequest?.commitChanges(completion: { error in
+                    guard error == nil else { return ProgressHUD.showFailed("Something went wrong. Please try again.") }
+                    
+                    db.collection("students").document(result!.user.uid).setData(["email": email, "displayName": name, "result": "", "photoURL": ""]) { error in
+                        guard error == nil else { return ProgressHUD.showFailed("Error saving user data") }
+                        
+                        ProgressHUD.dismiss()
+                        performSegue(withIdentifier: K.Segue.register, sender: self)
+                    }
+                })
             }
         }
+        
     }
     
     func isValidEmail(_ email: String) -> Bool {

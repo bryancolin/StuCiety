@@ -24,7 +24,6 @@ class AddPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         label.text = "Welcome, \(currentUser?.displayName ?? "No-User")"
         nextButton.isHidden = true
         setupImageView()
@@ -47,43 +46,30 @@ class AddPhotoViewController: UIViewController {
         
         ProgressHUD.show()
         
-        guard imageData != nil else {
-            return ProgressHUD.showFailed("Please select image")
-        }
-        
-        guard let image = imageData?.jpegData(compressionQuality: 0.5) else {
-            return ProgressHUD.showFailed("Failed to compress")
-        }
+        guard imageData != nil else { return ProgressHUD.showFailed("Please select an image") }
+        guard let image = imageData?.jpegData(compressionQuality: 0.5) else { return ProgressHUD.showFailed("Failed to compress") }
         
         let thisUserPhotoStorageRef = storage.child("users/\(currentUser?.uid ?? "-1")").child("photo.jpeg")
         
         thisUserPhotoStorageRef.putData(image, metadata: nil) { (metadata, error) in
-            guard metadata != nil else {
-                return ProgressHUD.showFailed("Error while uploading")
-            }
+            guard metadata != nil else { return ProgressHUD.showFailed("Error while uploading") }
             
             thisUserPhotoStorageRef.downloadURL { (url, error) in
-                guard let downloadURL = url else {
-                    return ProgressHUD.showFailed("An error occured after uploading and then getting the URL")
-                }
+                guard let downloadURL = url else { return ProgressHUD.showFailed("An error occured after uploading and then getting the URL") }
                 
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
                 changeRequest?.photoURL = downloadURL
                 
                 changeRequest?.commitChanges(completion: { [self] (error) in
-                    if error != nil {
-                        ProgressHUD.showFailed("Something went wrong. Please try again.")
-                    } else {
-                        db.collection("students").document(currentUser?.uid ?? "0").updateData([
-                            "photoURL": downloadURL.absoluteString
-                        ]) { error in
-                            if error != nil {
-                                ProgressHUD.showFailed("Error saving user photo")
-                            } else {
-                                ProgressHUD.dismiss()
-                                performSegue(withIdentifier: K.Segue.profile, sender: self)
-                            }
-                        }
+                    guard error == nil else { return ProgressHUD.showFailed("Something went wrong. Please try again.") }
+                    
+                    db.collection("students").document(currentUser?.uid ?? "0").updateData([
+                        "photoURL": downloadURL.absoluteString
+                    ]) { error in
+                        guard error == nil else { return ProgressHUD.showFailed("Error saving user photo") }
+                        
+                        ProgressHUD.dismiss()
+                        performSegue(withIdentifier: K.Segue.profile, sender: self)
                     }
                 })
             }
@@ -106,7 +92,8 @@ extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationC
         let alert = UIAlertController(title: "Profile Picture", message: "Choose actions", preferredStyle: UIAlertController.Style.alert)
         
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Choose a Photo", style: .default) { (action) in self.showImagePickerController(sourceType: .photoLibrary)
+        alert.addAction(UIAlertAction(title: "Choose a Photo", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .photoLibrary)
         })
         alert.addAction(UIAlertAction(title: "Take a New Photo", style: .default) { (action) in
             self.showImagePickerController(sourceType: .camera)
