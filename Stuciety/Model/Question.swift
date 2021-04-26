@@ -8,13 +8,14 @@
 import Foundation
 
 struct Question {
+    let no: String
     var text: String
     var answer: String
 }
 
 extension Question {
-    init?(dictionary: [String: Any]) {
+    init?(no: String, dictionary: [String: Any]) {
         guard let text = dictionary[K.FStore.Questionnaire.Child.text] as? String else { return nil }
-        self.init(text: text, answer: "")
+        self.init(no: no, text: text, answer: "")
     }
 }

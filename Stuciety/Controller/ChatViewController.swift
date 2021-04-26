@@ -75,7 +75,7 @@ class ChatViewController: MessagesViewController {
             K.FStore.Message.bodyField: message.body,
             K.FStore.Message.dateField: message.createdAt,
             K.FStore.Message.senderIdField: message.senderId,
-            K.FStore.Message.senderNameField: message.senderName,
+            K.FStore.Message.senderNameField: message.senderName
         ]
         
         db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(data: data) { (error) in

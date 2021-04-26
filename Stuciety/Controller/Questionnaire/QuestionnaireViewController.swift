@@ -81,7 +81,7 @@ class QuestionnaireViewController: UIViewController {
                                                 var questions: [Question] = []
                                                 
                                                 for doc in snapshotDocuments {
-                                                    if let question = Question(dictionary: doc.data()) {
+                                                    if let question = Question(no: doc.documentID, dictionary: doc.data()) {
                                                         questions.append(question)
                                                     }
                                                 }
