@@ -162,6 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				E5454D8A26022ABB00A14DE6 /* Main.storyboard */,
+				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
+				E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */,
+				E5F9F9552635AF5A0055C7D5 /* LoungeCollectionViewCell.xib */,
+				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,9 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */,
-				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
 				E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */,
-				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
 			);
 			path = "Collection View Cell";
 			sourceTree = "<group>";
@@ -309,7 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				E5F9F94D2635A61E0055C7D5 /* CounselorTableViewCell.swift */,
-				E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */,
 			);
 			path = "Table View Cell";
 			sourceTree = "<group>";
@@ -318,7 +319,6 @@
 			isa = PBXGroup;
 			children = (
 				E5F9F9542635AF5A0055C7D5 /* LoungeCollectionViewCell.swift */,
-				E5F9F9552635AF5A0055C7D5 /* LoungeCollectionViewCell.xib */,
 			);
 			path = "Collection View Cell";
 			sourceTree = "<group>";

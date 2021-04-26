@@ -21,6 +21,7 @@ class QuestionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Questions"
         answerTextField.delegate = self
         updateUI()
     }

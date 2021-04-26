@@ -19,7 +19,7 @@ class QuestionHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
+        self.title = !complete ? "Start" : "Finish"
         self.navigationItem.setHidesBackButton(complete, animated: true)
         updateUI()
     }

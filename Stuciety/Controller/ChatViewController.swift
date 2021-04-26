@@ -23,7 +23,6 @@ class ChatViewController: MessagesViewController {
         super.viewDidLoad()
         
         self.title = roomTitle
-        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self

@@ -16,14 +16,8 @@ class AccountViewController: UIViewController {
     
     var currentUser: User? = Auth.auth().currentUser
     
-    override func viewWillAppear(_ animated: Bool) {
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         
         profilePicture.layer.cornerRadius = profilePicture.frame.height/2
         profilePicture.clipsToBounds = true

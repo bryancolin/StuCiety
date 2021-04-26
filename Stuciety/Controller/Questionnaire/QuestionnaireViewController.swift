@@ -29,7 +29,11 @@ class QuestionnaireViewController: UIViewController {
         collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell1Identifier)
         collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell2Identifier)
         
-        loadQuestionnaires()
+        DispatchQueue.global().async {
+            DispatchQueue.main.async { [self] in
+                loadQuestionnaires()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

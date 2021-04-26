@@ -19,9 +19,6 @@ class CounselorDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.navigationController?.navigationBar.tintColor = UIColor(named: K.BrandColors.purple)
         
         if let counselor = counselorDetails {
             counselorPhoto.image = counselor.photo
