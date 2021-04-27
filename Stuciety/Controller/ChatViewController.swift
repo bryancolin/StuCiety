@@ -11,9 +11,12 @@ import InputBarAccessoryView
 import IQKeyboardManagerSwift
 import MessageKit
 
+
+
 class ChatViewController: MessagesViewController {
     
     var roomTitle: String?
+    
     var messages: [Message] = []
     
     let db = Firestore.firestore()
@@ -24,22 +27,55 @@ class ChatViewController: MessagesViewController {
         
         self.title = roomTitle
         
+        configureMessageCollectionView()
         messagesCollectionView.messagesDataSource = self
-        messagesCollectionView.messagesLayoutDelegate = self
-        messagesCollectionView.messagesDisplayDelegate = self
         
         messageInputBar = CustomUIInputBar()
         messageInputBar.delegate = self
+        
+        scrollsToLastItemOnKeyboardBeginsEditing = true
         
         loadMessages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = false
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         IQKeyboardManager.shared.enable = true
+    }
+    
+    func configureMessageCollectionView() {
+        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
+        layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
+        
+        layout?.setMessageOutgoingAvatarSize(.zero)
+        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
+        
+        layout?.setMessageIncomingAvatarSize(.zero)
+        layout?.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
+        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
+        
+        messagesCollectionView.messagesLayoutDelegate = self
+        messagesCollectionView.messagesDisplayDelegate = self
+    }
+    
+    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
+        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages[indexPath.section].senderId == messages[indexPath.section - 1].senderId
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages.count else { return false }
+        return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
     }
     
     private func loadMessages() {
@@ -103,22 +139,27 @@ extension ChatViewController: MessagesDataSource {
         return messages.count
     }
     
-    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 12
+    func cellTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        if isTimeLabelVisible(at: indexPath) {
+            return NSAttributedString(string: MessageKitDateFormatter.shared.string(from: message.sentDate), attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 10), NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        }
+        return nil
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        return NSAttributedString(string: message.sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
-    }
-    
-    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 12
+        if !isPreviousMessageSameSender(at: indexPath) {
+            return NSAttributedString(string: message.sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
+        }
+        return nil
     }
     
     func messageBottomLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "hh:mm a"
-        return NSAttributedString(string: formatter.string(from: message.sentDate), attributes: [.font: UIFont.systemFont(ofSize: 10)])
+        if !isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "hh:mm a"
+            return NSAttributedString(string: formatter.string(from: message.sentDate), attributes: [.font: UIFont.systemFont(ofSize: 10)])
+        }
+        return nil
     }
 }
 
@@ -133,9 +174,20 @@ extension ChatViewController: MessagesLayoutDelegate {
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 0
     }
+    func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return isTimeLabelVisible(at: indexPath) ? 18 : 0
+    }
     
-    func footerViewSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return CGSize(width: 0, height: 8)
+    func cellBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return 5
+    }
+    
+    func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return !isPreviousMessageSameSender(at: indexPath) ? 20 : 0
+    }
+    
+    func messageBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
+        return (!isNextMessageSameSender(at: indexPath) && isFromCurrentSender(message: message)) ? 16 : 0
     }
 }
 
@@ -152,23 +204,12 @@ extension ChatViewController: MessagesDisplayDelegate {
     }
     
     func messageStyle(for message: MessageType, at indexPath: IndexPath, in  messagesCollectionView: MessagesCollectionView) -> MessageStyle {
-        let borderColor: UIColor = isFromCurrentSender(message: message) ? UIColor(named: K.BrandColors.purple)! as UIColor : .clear
-        return .bubbleOutline(borderColor)
-    }
-    
-    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.isHidden = true
-        
-        if let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout {
-            layout.textMessageSizeCalculator.outgoingAvatarSize = .zero
-            layout.textMessageSizeCalculator.incomingAvatarSize = .zero
+        return .custom { [self] view in
+            view.borderWidth = 1
+            view.borderColor = isFromCurrentSender(message: message) ? UIColor(named: K.BrandColors.purple)! as UIColor : .clear
+            view.layer.cornerRadius = 16
+            view.layer.masksToBounds = false
         }
-        
-        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-        
-        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        messagesCollectionView.messagesCollectionViewFlowLayout.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
     }
 }
 
@@ -179,22 +220,28 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let newMessage = Message(id: UUID().uuidString, body: text, createdAt: Date().timeIntervalSince1970, senderId: currentUser.uid, senderName: currentUser.displayName ?? "Unkown")
         
-        // Save Message
-        save(newMessage)
-        
         // Empty TextField
-        inputBar.inputTextView.text = ""
+        inputBar.inputTextView.text = String()
         
         // Send button activity animation
         inputBar.sendButton.startAnimating()
         inputBar.inputTextView.placeholder = "Sending..."
+        inputBar.inputTextView.resignFirstResponder()
         DispatchQueue.global(qos: .default).async {
             // fake send request task
-            sleep(0)
+            sleep(1)
             DispatchQueue.main.async {
                 inputBar.sendButton.stopAnimating()
                 inputBar.inputTextView.placeholder = "Enter a message"
+                
+                // Save Messages
+                self.save(newMessage)
             }
         }
     }
+    
+    func inputBar(_ inputBar: InputBarAccessoryView, didSwipeTextViewWith gesture: UISwipeGestureRecognizer) {
+        inputBar.inputTextView.resignFirstResponder()
+    }
+    
 }

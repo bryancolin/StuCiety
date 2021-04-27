@@ -46,6 +46,7 @@
 		E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E099DD261894EC004CFE69 /* SettingsViewController.swift */; };
 		E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */; };
 		E5E0EDA42632B15300D52230 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0EDA32632B15300D52230 /* Questionnaire.swift */; };
+		E5E70FBF26381E0A00C8EB4D /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E70FBE26381E0A00C8EB4D /* Sender.swift */; };
 		E5F9F94F2635A61E0055C7D5 /* CounselorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9F94D2635A61E0055C7D5 /* CounselorTableViewCell.swift */; };
 		E5F9F9502635A61E0055C7D5 /* CounselorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */; };
 		E5F9F9562635AF5B0055C7D5 /* LoungeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9F9542635AF5A0055C7D5 /* LoungeCollectionViewCell.swift */; };
@@ -108,6 +109,7 @@
 		E5E099DD261894EC004CFE69 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		E5E0EDA32632B15300D52230 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
+		E5E70FBE26381E0A00C8EB4D /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		E5F9F94D2635A61E0055C7D5 /* CounselorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorTableViewCell.swift; sourceTree = "<group>"; };
 		E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounselorTableViewCell.xib; sourceTree = "<group>"; };
 		E5F9F9542635AF5A0055C7D5 /* LoungeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -174,11 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				E54A9B032602554000EFC6B8 /* Constants.swift */,
-				E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */,
-				E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */,
-				E54144F02604D9D500ADF901 /* CustomUITabBar.swift */,
-				E531DAD92605DE2800010B62 /* CustomUIView.swift */,
-				E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */,
+				E5E70FBD263810DD00C8EB4D /* Custom UI */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -188,6 +186,7 @@
 			children = (
 				E5C5EB382625A3AE00B78932 /* Counselor.swift */,
 				E54061C22611F36A006C1AD4 /* Message.swift */,
+				E5E70FBE26381E0A00C8EB4D /* Sender.swift */,
 				E59F03062629650E00E0E475 /* Tables.swift */,
 				E57492A0260EFCD90094670E /* Topic.swift */,
 				E5E0EDA32632B15300D52230 /* Questionnaire.swift */,
@@ -305,6 +304,18 @@
 				E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */,
 			);
 			path = "Collection View Cell";
+			sourceTree = "<group>";
+		};
+		E5E70FBD263810DD00C8EB4D /* Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */,
+				E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */,
+				E54144F02604D9D500ADF901 /* CustomUITabBar.swift */,
+				E531DAD92605DE2800010B62 /* CustomUIView.swift */,
+				E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */,
+			);
+			path = "Custom UI";
 			sourceTree = "<group>";
 		};
 		E5F9F9512635A9620055C7D5 /* Table View Cell */ = {
@@ -445,6 +456,7 @@
 			files = (
 				E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */,
 				E5E060D82632BA1400198399 /* QuestionHomeViewController.swift in Sources */,
+				E5E70FBF26381E0A00C8EB4D /* Sender.swift in Sources */,
 				E5F9F9562635AF5B0055C7D5 /* LoungeCollectionViewCell.swift in Sources */,
 				E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */,
 				E59D1AE3263424100042EEED /* Question.swift in Sources */,

@@ -21,31 +21,25 @@ final class CustomUIInputBar: InputBarAccessoryView {
     
     func configure() {
         customInputTextView()
-        
-        setRightStackViewWidthConstant(to: 38, animated: false)
-        setStackViewItems([sendButton, InputBarButtonItem.fixedSpace(2)], forStack: .right, animated: false)
-        
         customSendButton()
         
-        middleContentViewPadding.right = -38
+        shouldAnimateTextDidChangeLayout = true
         separatorLine.isHidden = true
         isTranslucent = false
     }
     
     func customInputTextView() {
         inputTextView.placeholder = "Enter a message"
-        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 12, bottom: 8, right: 36)
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 14, bottom: 8, right: 36)
+        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
         
-        let color = UIColor(named: K.BrandColors.purple)
         if #available(iOS 13, *) {
-            inputTextView.layer.borderColor = color?.cgColor
+            inputTextView.layer.borderColor = UIColor(named: K.BrandColors.purple)?.cgColor
         } else {
-            inputTextView.layer.borderColor = color?.cgColor
+            inputTextView.layer.borderColor = UIColor.lightGray.cgColor
         }
         
         inputTextView.backgroundColor = .clear
-        
         inputTextView.layer.borderWidth = 1.0
         inputTextView.layer.cornerRadius = 7.0
         inputTextView.layer.masksToBounds = true
@@ -54,7 +48,7 @@ final class CustomUIInputBar: InputBarAccessoryView {
     
     func customSendButton() {
         sendButton.imageView?.backgroundColor = tintColor
-        sendButton.contentEdgeInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+        sendButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 2, bottom: 2, right: 2)
         sendButton.setSize(CGSize(width: 36, height: 36), animated: false)
         sendButton.image = #imageLiteral(resourceName: "send")
         sendButton.title = nil

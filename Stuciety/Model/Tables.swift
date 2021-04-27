@@ -6,7 +6,6 @@
 //
 
 import Foundation
-
 import UIKit
 
 /// Enum provider for providing the animationTitle and an animation method from the factory

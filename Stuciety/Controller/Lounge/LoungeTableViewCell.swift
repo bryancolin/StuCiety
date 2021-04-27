@@ -75,14 +75,6 @@ extension LoungeTableViewCell: UICollectionViewDelegate {
 extension LoungeTableViewCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-        
-        let space: CGFloat = (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-        let spaceInBetween: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + space
-        
-        let height: CGFloat = (collectionView.frame.size.width - spaceInBetween) / 2.0
-        let width: CGFloat = (collectionView.frame.size.width - space)
-        
         return CGSize(width: 200, height: 200)
     }
 }

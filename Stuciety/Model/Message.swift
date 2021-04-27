@@ -29,12 +29,12 @@ extension Message {
 }
 
 extension Message: MessageType {
-    var messageId: String {
-        return id
-    }
-    
     var sender: SenderType {
         return Sender(senderId: senderId, displayName: senderName)
+    }
+    
+    var messageId: String {
+        return id
     }
     
     var sentDate: Date {
@@ -45,3 +45,5 @@ extension Message: MessageType {
         return .text(body)
     }
 }
+
+
