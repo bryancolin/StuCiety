@@ -29,25 +29,27 @@ class LoginViewController: UIViewController {
         
         ProgressHUD.show()
         
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-                if let e = error {
-                    if let errorCode = AuthErrorCode(rawValue: e._code) {
-                        switch errorCode {
-                        case .invalidEmail:
-                            ProgressHUD.showFailed("Invalid email. Please try again.")
-                        case .wrongPassword:
-                            ProgressHUD.showFailed("Wrong Password. Please try again.")
-                        case .networkError:
-                            ProgressHUD.showFailed("Network error. Please try again.")
-                        default:
-                            ProgressHUD.showFailed("Unknown error occurred")
-                        }
+        guard let email = emailTextField.text, let password = passwordTextField.text else {
+            return ProgressHUD.showError("Something went wrong. Please try again")
+        }
+        
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+            if let e = error {
+                if let errorCode = AuthErrorCode(rawValue: e._code) {
+                    switch errorCode {
+                    case .invalidEmail:
+                        ProgressHUD.showFailed("Invalid email. Please try again.")
+                    case .wrongPassword:
+                        ProgressHUD.showFailed("Wrong Password. Please try again.")
+                    case .networkError:
+                        ProgressHUD.showFailed("Network error. Please try again.")
+                    default:
+                        ProgressHUD.showFailed("Unknown error occurred")
                     }
-                } else {
-                    self.performSegue(withIdentifier: K.Segue.login, sender: self)
-                    ProgressHUD.dismiss()
                 }
+            } else {
+                self.performSegue(withIdentifier: K.Segue.login, sender: self)
+                ProgressHUD.dismiss()
             }
         }
     }

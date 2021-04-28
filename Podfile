@@ -9,6 +9,7 @@ target 'Stuciety' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'Firebase/Storage'
+  pod 'FirebaseFirestoreSwift', '~> 7.0-beta'
   pod 'InputBarAccessoryView'
   pod 'IQKeyboardManagerSwift'
   pod 'MessageKit'

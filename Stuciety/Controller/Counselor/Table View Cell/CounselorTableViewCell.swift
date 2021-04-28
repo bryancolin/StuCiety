@@ -34,7 +34,10 @@ class CounselorTableViewCell: UITableViewCell {
         if let counselor = counselor {
             counselorName.text = counselor.displayName
             counselorArea.text = "Area: \(counselor.area[0])"
-            counselorPhoto.image = counselor.photo
+            
+            let url = URL(string: counselor.photo)
+            guard let data = try? Data(contentsOf: url!) else { return }
+            counselorPhoto.image = UIImage(data: data)!
         }
     }
 }

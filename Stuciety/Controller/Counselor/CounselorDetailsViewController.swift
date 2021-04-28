@@ -21,7 +21,10 @@ class CounselorDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         if let counselor = counselorDetails {
-            counselorPhoto.image = counselor.photo
+            let url = URL(string: counselor.photo)
+            guard let data = try? Data(contentsOf: url!) else { return }
+            counselorPhoto.image = UIImage(data: data)!
+            
             counselorName.text = counselor.displayName
             counselorBio.text = counselor.biography
             counselorLicense.text = counselor.license[0] + "\n" + counselor.license[1]

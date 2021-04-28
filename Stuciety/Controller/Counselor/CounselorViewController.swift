@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestoreSwift
 
 class CounselorViewController: UIViewController {
     
@@ -44,19 +45,15 @@ class CounselorViewController: UIViewController {
     
     func loadCounselors() {
         db.collection(K.FStore.Counselor.collectionName).addSnapshotListener { [self] (querySnapshot, err) in
-            if let e = err {
-                print("Error getting documents: \(e)")
-            } else {
-                if let snapshotDocuments = querySnapshot?.documents {
-                    for doc in snapshotDocuments {
-                        if let counselor = Counselor(uid: doc.documentID, dictionary: doc.data()) {
-                            counselors.append(counselor)
-                        }
-                    }
-                }
-                
-                tableView.reloadData()
+            
+            guard err == nil else { return print("Error getting documents") }
+            guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
+            
+            counselors = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Counselor? in
+                return try? QueryDocumentSnapshot.data(as: Counselor.self)
             }
+            
+            tableView.reloadData()
         }
     }
 }
