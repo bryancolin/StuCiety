@@ -63,8 +63,8 @@ class AddPhotoViewController: UIViewController {
                 changeRequest?.commitChanges(completion: { [self] (error) in
                     guard error == nil else { return ProgressHUD.showFailed("Something went wrong. Please try again.") }
                     
-                    db.collection("students").document(currentUser?.uid ?? "0").updateData([
-                        "photoURL": downloadURL.absoluteString
+                    db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "0").updateData([
+                        K.FStore.Student.photoURL: downloadURL.absoluteString
                     ]) { error in
                         guard error == nil else { return ProgressHUD.showFailed("Error saving user photo") }
                         

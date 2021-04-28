@@ -31,12 +31,6 @@ class SettingsViewController: UIViewController {
         visualEffectView.isHidden = true
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Segue.account {
-            _ = segue.destination as! AccountViewController
-        }
-    }
-    
     func signOut() {
         do {
             try Auth.auth().signOut()

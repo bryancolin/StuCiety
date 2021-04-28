@@ -52,10 +52,6 @@ struct K {
     
     struct Settings {
         static let cellIdentifier = "SettingsReusableCell"
-        
-        struct Segue {
-            
-        }
     }
     
     struct BrandColors {
@@ -67,15 +63,15 @@ struct K {
     
     struct FStore {
         
-        struct Message {
-            static let collectionName = "rooms"
-            static let childCollectionName = "messages"
+        struct Student {
+            static let collectionName = "students"
             
-            static let idField = "id"
-            static let bodyField = "body"
-            static let dateField = "createdAt"
-            static let senderIdField = "senderId"
-            static let senderNameField = "senderName"
+            static let id = "id"
+            static let name = "displayName"
+            static let email = "email"
+            static let photoURL = "photoURL"
+            static let result = "result"
+            static let questionnaires = "questionnaires"
         }
         
         struct Counselor {
@@ -90,16 +86,17 @@ struct K {
             static let photoURL = "photoURL"
         }
         
-        struct Student {
-            static let collectionName = "students"
+        struct Message {
+            static let collectionName = "rooms"
+            static let childCollectionName = "messages"
             
-            static let id = "id"
-            static let name = "displayName"
-            static let email = "email"
-            static let photoURL = "photoURL"
-            static let questionnaires = "questionnaires"
+            static let idField = "id"
+            static let bodyField = "body"
+            static let dateField = "createdAt"
+            static let senderIdField = "senderId"
+            static let senderNameField = "senderName"
         }
-        
+
         struct Questionnaire {
             static let collectionName = "questionnaires"
             static let childCollectionName = "question"

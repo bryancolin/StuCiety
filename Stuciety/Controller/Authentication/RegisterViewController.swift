@@ -65,7 +65,15 @@ class RegisterViewController: UIViewController {
                 changeRequest?.commitChanges(completion: { error in
                     guard error == nil else { return ProgressHUD.showFailed("Something went wrong. Please try again.") }
                     
-                    db.collection("students").document(result!.user.uid).setData(["email": email, "displayName": name, "result": "", "photoURL": ""]) { error in
+                    db.collection(K.FStore.Student.collectionName).document(result!.user.uid).setData(
+                        [
+                            K.FStore.Student.email: email,
+                            K.FStore.Student.name: name,
+                            K.FStore.Student.photoURL: "",
+                            K.FStore.Student.result: "",
+                            K.FStore.Student.questionnaires: []
+                        ])
+                    { error in
                         guard error == nil else { return ProgressHUD.showFailed("Error saving user data") }
                         
                         ProgressHUD.dismiss()
