@@ -11,8 +11,6 @@ import InputBarAccessoryView
 import IQKeyboardManagerSwift
 import MessageKit
 
-
-
 class ChatViewController: MessagesViewController {
     
     var roomTitle: String?
@@ -174,6 +172,7 @@ extension ChatViewController: MessagesLayoutDelegate {
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return 0
     }
+    
     func cellTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return isTimeLabelVisible(at: indexPath) ? 18 : 0
     }
@@ -243,5 +242,4 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didSwipeTextViewWith gesture: UISwipeGestureRecognizer) {
         inputBar.inputTextView.resignFirstResponder()
     }
-    
 }

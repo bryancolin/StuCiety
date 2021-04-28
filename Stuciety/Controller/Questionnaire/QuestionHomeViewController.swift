@@ -62,17 +62,28 @@ class QuestionHomeViewController: UIViewController {
     func saveResult() {
         if let user = currentUser, let questionnaire = questionnaire {
             
-            let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(questionnaire.id)
+            let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire.id)
             
-            for question in questionnaire.question {
-                dbRef.document(question.no).setData([
-                    K.FStore.Questionnaire.Child.text: question.text,
-                    K.FStore.Questionnaire.Child.answer: question.answer
-                ]) { err in
-                    if let err = err {
-                        print("Error writing document: \(err)")
-                    } else {
-                        print("Document successfully written!")
+            dbRef.setData([
+                K.FStore.Questionnaire.description: questionnaire.description,
+                K.FStore.Questionnaire.createdBy: questionnaire.createdBy,
+                K.FStore.Questionnaire.title: questionnaire.title,
+                K.FStore.Questionnaire.result: ""
+            ]) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    for question in questionnaire.question {
+                        dbRef.collection(questionnaire.id).document(question.no).setData([
+                            K.FStore.Questionnaire.Child.text: question.text,
+                            K.FStore.Questionnaire.Child.answer: question.answer
+                        ]) { err in
+                            if let err = err {
+                                print("Error writing document: \(err)")
+                            } else {
+                                print("Document successfully written!")
+                            }
+                        }
                     }
                 }
             }
