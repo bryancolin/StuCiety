@@ -69,21 +69,16 @@ class QuestionHomeViewController: UIViewController {
                 K.FStore.Questionnaire.createdBy: questionnaire.createdBy,
                 K.FStore.Questionnaire.title: questionnaire.title,
                 K.FStore.Questionnaire.result: ""
-            ]) { err in
-                if let err = err {
-                    print("Error writing document: \(err)")
-                } else {
-                    for question in questionnaire.question {
-                        dbRef.collection(questionnaire.id).document(question.no).setData([
-                            K.FStore.Questionnaire.Child.text: question.text,
-                            K.FStore.Questionnaire.Child.answer: question.answer
-                        ]) { err in
-                            if let err = err {
-                                print("Error writing document: \(err)")
-                            } else {
-                                print("Document successfully written!")
-                            }
-                        }
+            ]) { error in
+                guard error == nil else { return print("Error getting documents") }
+                
+                for question in questionnaire.question {
+                    do {
+                        let _ = try dbRef.collection(K.FStore.Questionnaire.childCollectionName).document(question.id ?? "-1").setData(from: question)
+                        print("Document successfully written!")
+                    }
+                    catch {
+                        print(error)
                     }
                 }
             }

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import FirebaseFirestoreSwift
 
 struct Counselor: Identifiable, Codable {

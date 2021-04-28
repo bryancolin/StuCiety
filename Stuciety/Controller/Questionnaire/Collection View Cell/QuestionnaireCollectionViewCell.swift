@@ -24,7 +24,6 @@ class QuestionnaireCollectionViewCell: UICollectionViewCell {
         titleLabel.text = name
         view.backgroundColor = randomColor(hue: .random, luminosity: .light)
     }
-
 }
 
 

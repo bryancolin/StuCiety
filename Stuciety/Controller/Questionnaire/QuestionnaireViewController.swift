@@ -65,43 +65,32 @@ class QuestionnaireViewController: UIViewController {
     
     func loadQuestionnaires() {
         db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").getDocument {[self] (document, error) in
-            if let document = document, document.exists {
-                
-                if let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String] {
-                    for questionnaireId in questionnairesId {
+            guard let document = document, document.exists else { return print("Document does not exist") }
+            guard let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String] else { return print("Document Id is not found") }
+            
+            for questionnaireId in questionnairesId {
+                db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
+                    guard let document = document, document.exists else { return print("Document does not exist") }
+                    guard let data = document.data() else {return print("Document data not found")}
+                    
+                    document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
+                        guard error == nil else { return print("Error getting documents") }
+                        guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
                         
-                        db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
-                            if let document = document, document.exists {
-                                if let data = document.data() {
-                                    document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
-                                        if let e = error {
-                                            print("Error getting documents: \(e)")
-                                        } else {
-                                            if let snapshotDocuments = querySnapshot?.documents {
-                                                var questions: [Question] = []
-                                                
-                                                for doc in snapshotDocuments {
-                                                    if let question = Question(no: doc.documentID, dictionary: doc.data()) {
-                                                        questions.append(question)
-                                                    }
-                                                }
-                                                
-                                                if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, questions: questions) {
-                                                    questionnaires.append(questionnaire)
-                                                }
-                                            }
-                                            
-                                            collectionView.reloadData()
-                                        }
-                                    }
-                                    
-                                }
+                        var questions: [Question] = []
+                        for doc in snapshotDocuments {
+                            if let question = Question(no: doc.documentID, dictionary: doc.data()) {
+                                questions.append(question)
                             }
                         }
+                        
+                        if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, questions: questions) {
+                            questionnaires.append(questionnaire)
+                        }
+                        
+                        collectionView.reloadData()
                     }
                 }
-            } else {
-                print("Document does not exist")
             }
         }
     }
