@@ -6,25 +6,21 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 import MessageKit
 
-struct Message {
-    let id: String
+struct Message: Identifiable, Codable {
+    @DocumentID var id: String?
     let body: String
     let createdAt: Double
     let senderId: String
     let senderName: String
-}
-
-extension Message {
-    init?(dictionary: [String: Any]) {
-        guard let id = dictionary[K.FStore.Message.idField] as? String,
-              let messageBody = dictionary[K.FStore.Message.bodyField] as? String,
-              let createdAt = dictionary[K.FStore.Message.dateField] as? Double,
-              let senderId = dictionary[K.FStore.Message.senderIdField] as? String,
-              let senderName = dictionary[K.FStore.Message.senderNameField] as? String else { return nil }
-        
-        self.init(id: id, body: messageBody, createdAt: createdAt, senderId: senderId, senderName: senderName)
+    
+    enum CodingKeys: String, CodingKey {
+        case body
+        case createdAt
+        case senderId
+        case senderName
     }
 }
 
@@ -34,7 +30,7 @@ extension Message: MessageType {
     }
     
     var messageId: String {
-        return id
+        return id ?? "0"
     }
     
     var sentDate: Date {

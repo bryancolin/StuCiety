@@ -83,41 +83,28 @@ class ChatViewController: MessagesViewController {
             .addSnapshotListener { [self] (querySnapshot, error) in
                 messages = []
                 
-                if let e = error {
-                    print("There was an issue retrieving data from Firestore. \(e)")
-                } else {
-                    if let snapshotDocuments = querySnapshot?.documents {
-                        for doc in snapshotDocuments {
-                            if let message = Message(dictionary: doc.data()) {
-                                messages.append(message)
-                                
-                                DispatchQueue.main.async {
-                                    self.messagesCollectionView.reloadData()
-                                    self.messagesCollectionView.scrollToLastItem()
-                                }
-                            }
-                        }
-                    }
+                guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
+                guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
+                
+                messages = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Message? in
+                    return try? QueryDocumentSnapshot.data(as: Message.self)
+                }
+                
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem()
                 }
             }
     }
     
     private func save(_ message: Message) {
         
-        let data: [String: Any] = [
-            K.FStore.Message.idField: message.id,
-            K.FStore.Message.bodyField: message.body,
-            K.FStore.Message.dateField: message.createdAt,
-            K.FStore.Message.senderIdField: message.senderId,
-            K.FStore.Message.senderNameField: message.senderName
-        ]
-        
-        db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(data: data) { (error) in
-            if let e = error {
-                print("There was an issue retrieving data from Firestore. \(e)")
-            } else {
-                print("Successfully saved data.")
-            }
+        do {
+            let _ = try db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(from: message)
+            print("Document successfully written!")
+        }
+        catch {
+            print(error)
         }
     }
 }
