@@ -95,14 +95,18 @@ extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationC
         alert.addAction(UIAlertAction(title: "Choose a Photo", style: .default) { (action) in
             self.showImagePickerController(sourceType: .photoLibrary)
         })
-        alert.addAction(UIAlertAction(title: "Take a New Photo", style: .default) { (action) in
-            self.showImagePickerController(sourceType: .camera)
-        })
+        if UIImagePickerController.isSourceTypeAvailable(.camera){
+            alert.addAction(UIAlertAction(title: "Take a New Photo", style: .default) { (action) in
+                self.showImagePickerController(sourceType: .camera)
+            })
+        }
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
