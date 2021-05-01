@@ -98,6 +98,9 @@ extension SettingsViewController: UITableViewDelegate {
         case 2:
             showAbout()
             break
+        case 3:
+            self.performSegue(withIdentifier: K.Segue.info, sender: self)
+            break
         case 7:
             signOut()
             break

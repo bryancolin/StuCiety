@@ -23,6 +23,9 @@
 		E54A51F726319ECF0003D110 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */; };
 		E54A9B042602554000EFC6B8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A9B032602554000EFC6B8 /* Constants.swift */; };
 		E5579A8F263BC32000F1EE81 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5579A8E263BC31F00F1EE81 /* Student.swift */; };
+		E5609BA3263D67A70003E4C3 /* AdditionalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5609BA2263D67A70003E4C3 /* AdditionalInfoViewController.swift */; };
+		E5609BA6263D68830003E4C3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5609BA4263D68830003E4C3 /* InfoTableViewCell.swift */; };
+		E5609BA7263D68830003E4C3 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */; };
 		E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574929B260EFAA60094670E /* LoungeTableViewCell.swift */; };
 		E57492A1260EFCD90094670E /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57492A0260EFCD90094670E /* Topic.swift */; };
 		E5767A6126021FFB00E851B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5767A6026021FFB00E851B2 /* AppDelegate.swift */; };
@@ -34,6 +37,7 @@
 		E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */; };
 		E59D1AE1263421200042EEED /* QuestionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D1AE0263421200042EEED /* QuestionViewController.swift */; };
 		E59D1AE3263424100042EEED /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D1AE2263424100042EEED /* Question.swift */; };
+		E59D9FEE263D72A500F48244 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59D9FED263D72A500F48244 /* Info.swift */; };
 		E59F03052629649E00E0E475 /* TableAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F03042629649E00E0E475 /* TableAnimations.swift */; };
 		E59F03072629650E00E0E475 /* Tables.swift in Sources */ = {isa = PBXBuildFile; fileRef = E59F03062629650E00E0E475 /* Tables.swift */; };
 		E5B112C1262EB6340043889A /* QuestionnaireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B112C0262EB6330043889A /* QuestionnaireViewController.swift */; };
@@ -85,6 +89,9 @@
 		E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		E54A9B032602554000EFC6B8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		E5579A8E263BC31F00F1EE81 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		E5609BA2263D67A70003E4C3 /* AdditionalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalInfoViewController.swift; sourceTree = "<group>"; };
+		E5609BA4263D68830003E4C3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
+		E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		E574929B260EFAA60094670E /* LoungeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeTableViewCell.swift; sourceTree = "<group>"; };
 		E57492A0260EFCD90094670E /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		E5767A5D26021FFB00E851B2 /* Stuciety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuciety.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +105,7 @@
 		E592BFDF261B63F600C40341 /* CustomUIInputBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIInputBar.swift; sourceTree = "<group>"; };
 		E59D1AE0263421200042EEED /* QuestionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionViewController.swift; sourceTree = "<group>"; };
 		E59D1AE2263424100042EEED /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		E59D9FED263D72A500F48244 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		E59F03042629649E00E0E475 /* TableAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableAnimations.swift; sourceTree = "<group>"; };
 		E59F03062629650E00E0E475 /* Tables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tables.swift; sourceTree = "<group>"; };
 		E5B112C0262EB6330043889A /* QuestionnaireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireViewController.swift; sourceTree = "<group>"; };
@@ -166,10 +174,11 @@
 			isa = PBXGroup;
 			children = (
 				E5454D8A26022ABB00A14DE6 /* Main.storyboard */,
-				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
-				E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */,
 				E5F9F9552635AF5A0055C7D5 /* LoungeCollectionViewCell.xib */,
+				E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */,
+				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
 				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
+				E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +192,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		E5609BA8263D68970003E4C3 /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E5609BA4263D68830003E4C3 /* InfoTableViewCell.swift */,
+			);
+			path = "Table View Cell";
+			sourceTree = "<group>";
+		};
 		E574929F260EFCC80094670E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +211,7 @@
 				E5E0EDA32632B15300D52230 /* Questionnaire.swift */,
 				E59D1AE2263424100042EEED /* Question.swift */,
 				E5579A8E263BC31F00F1EE81 /* Student.swift */,
+				E59D9FED263D72A500F48244 /* Info.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -224,7 +242,7 @@
 				E5454D7326022A1900A14DE6 /* View */,
 				E5454D7226022A0700A14DE6 /* Controller */,
 				E5767A692602200100E851B2 /* Assets.xcassets */,
-				E5DAE5662629C6EE00266FBE /* Supporting Files */,
+				E5DAE5662629C6EE00266FBE /* App */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = Stuciety;
@@ -262,8 +280,10 @@
 		E5C5EB3C2625AC0E00B78932 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E5609BA8263D68970003E4C3 /* Table View Cell */,
 				E5E099DD261894EC004CFE69 /* SettingsViewController.swift */,
 				E5C84C57261EF1AE00559C53 /* AccountViewController.swift */,
+				E5609BA2263D67A70003E4C3 /* AdditionalInfoViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -288,7 +308,7 @@
 			path = Lounge;
 			sourceTree = "<group>";
 		};
-		E5DAE5662629C6EE00266FBE /* Supporting Files */ = {
+		E5DAE5662629C6EE00266FBE /* App */ = {
 			isa = PBXGroup;
 			children = (
 				E5767A6026021FFB00E851B2 /* AppDelegate.swift */,
@@ -297,7 +317,7 @@
 				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
 				E5767A6E2602200100E851B2 /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = App;
 			sourceTree = "<group>";
 		};
 		E5E060D62632B9DE00198399 /* Collection View Cell */ = {
@@ -401,6 +421,7 @@
 				E5767A6D2602200100E851B2 /* LaunchScreen.storyboard in Resources */,
 				E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */,
 				E5454D8F26022B8000A14DE6 /* GoogleService-Info.plist in Resources */,
+				E5609BA7263D68830003E4C3 /* InfoTableViewCell.xib in Resources */,
 				E5767A6A2602200100E851B2 /* Assets.xcassets in Resources */,
 				E5F9F9502635A61E0055C7D5 /* CounselorTableViewCell.xib in Resources */,
 				E5F9F9572635AF5B0055C7D5 /* LoungeCollectionViewCell.xib in Resources */,
@@ -459,6 +480,7 @@
 			files = (
 				E5B3BA9926023143005D1D0B /* LoginViewController.swift in Sources */,
 				E5E060D82632BA1400198399 /* QuestionHomeViewController.swift in Sources */,
+				E5609BA6263D68830003E4C3 /* InfoTableViewCell.swift in Sources */,
 				E5E70FBF26381E0A00C8EB4D /* Sender.swift in Sources */,
 				E5F9F9562635AF5B0055C7D5 /* LoungeCollectionViewCell.swift in Sources */,
 				E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */,
@@ -474,6 +496,7 @@
 				E54A51F626319ECF0003D110 /* AccountCollectionViewCell.swift in Sources */,
 				E539D56826047E7800839E5A /* HomeViewController.swift in Sources */,
 				E578153C26257A4A00E424B4 /* CounselorViewController.swift in Sources */,
+				E5609BA3263D67A70003E4C3 /* AdditionalInfoViewController.swift in Sources */,
 				E5B112C1262EB6340043889A /* QuestionnaireViewController.swift in Sources */,
 				E54144F12604D9D500ADF901 /* CustomUITabBar.swift in Sources */,
 				E5C5EB392625A3AE00B78932 /* Counselor.swift in Sources */,
@@ -482,6 +505,7 @@
 				E57E4D5C261B19FD00C8EFCA /* ChatViewController.swift in Sources */,
 				E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */,
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
+				E59D9FEE263D72A500F48244 /* Info.swift in Sources */,
 				E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */,
 				E54A9B042602554000EFC6B8 /* Constants.swift in Sources */,
 				E59F03072629650E00E0E475 /* Tables.swift in Sources */,
@@ -633,7 +657,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QL7B6ZXFS7;
-				INFOPLIST_FILE = "Stuciety/Supporting Files/Info.plist";
+				INFOPLIST_FILE = Stuciety/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,7 +677,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QL7B6ZXFS7;
-				INFOPLIST_FILE = "Stuciety/Supporting Files/Info.plist";
+				INFOPLIST_FILE = Stuciety/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

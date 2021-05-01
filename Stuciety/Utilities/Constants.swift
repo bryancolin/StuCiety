@@ -18,6 +18,7 @@ struct K {
         static let login = "LoginToHome"
         static let chat = "ToChat"
         static let account = "ToAccount"
+        static let info = "ToInfo"
     }
     
     struct LoungeTable {
@@ -52,6 +53,10 @@ struct K {
     
     struct Settings {
         static let cellIdentifier = "SettingsReusableCell"
+    }
+    
+    struct AdditionalInfo {
+        static let cellIdentifier = "InfoReusableCell"
     }
     
     struct BrandColors {
