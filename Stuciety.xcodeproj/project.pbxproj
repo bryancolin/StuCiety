@@ -17,6 +17,7 @@
 		E5454D8F26022B8000A14DE6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */; };
 		E5454D9126022BC800A14DE6 /* Pods_Stuciety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75663564263D437D738F6B6 /* Pods_Stuciety.framework */; };
 		E5454D9226022BC800A14DE6 /* Pods_Stuciety.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E75663564263D437D738F6B6 /* Pods_Stuciety.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E545A1A5263ED6A10087A8E8 /* CounselorChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E545A1A4263ED6A10087A8E8 /* CounselorChatViewController.swift */; };
 		E54A51F226319A630003D110 /* QuestionnaireCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */; };
 		E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */; };
 		E54A51F626319ECF0003D110 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */; };
@@ -83,6 +84,7 @@
 		E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		E5454D8A26022ABB00A14DE6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E545A1A4263ED6A10087A8E8 /* CounselorChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorChatViewController.swift; sourceTree = "<group>"; };
 		E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCollectionViewCell.swift; sourceTree = "<group>"; };
 		E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionnaireCollectionViewCell.xib; sourceTree = "<group>"; };
 		E54A51F426319ECE0003D110 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 				E5F9F9512635A9620055C7D5 /* Table View Cell */,
 				E578153B26257A4A00E424B4 /* CounselorViewController.swift */,
 				E5C5EB3A2625A7DC00B78932 /* CounselorDetailsViewController.swift */,
+				E545A1A4263ED6A10087A8E8 /* CounselorChatViewController.swift */,
 			);
 			path = Counselor;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 				E5609BA6263D68830003E4C3 /* InfoTableViewCell.swift in Sources */,
 				E5E70FBF26381E0A00C8EB4D /* Sender.swift in Sources */,
 				E5F9F9562635AF5B0055C7D5 /* LoungeCollectionViewCell.swift in Sources */,
+				E545A1A5263ED6A10087A8E8 /* CounselorChatViewController.swift in Sources */,
 				E5B3BA9726023132005D1D0B /* WelcomeViewController.swift in Sources */,
 				E59D1AE3263424100042EEED /* Question.swift in Sources */,
 				E5B3BA9B26023150005D1D0B /* RegisterViewController.swift in Sources */,

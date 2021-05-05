@@ -1,29 +1,29 @@
 //
-//  ChatViewController.swift
+//  CounselorChatViewController.swift
 //  Stuciety
 //
-//  Created by bryan colin on 4/5/21.
+//  Created by bryan colin on 5/2/21.
 //
 
 import UIKit
+import SDWebImage
 import Firebase
+import MessageKit
 import InputBarAccessoryView
 import IQKeyboardManagerSwift
-import MessageKit
 
-class ChatViewController: MessagesViewController {
-    
-    var roomTitle: String?
+class CounselorChatViewController: MessagesViewController {
     
     var messages: [Message] = []
+    var counselor: Counselor?
     
     let db = Firestore.firestore()
     var currentUser: User = Auth.auth().currentUser!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = roomTitle
+        self.title = counselor?.displayName
         
         configureMessageCollectionView()
         messagesCollectionView.messagesDataSource = self
@@ -47,17 +47,6 @@ class ChatViewController: MessagesViewController {
     }
     
     func configureMessageCollectionView() {
-        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-        layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
-        
-        layout?.setMessageOutgoingAvatarSize(.zero)
-        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        
-        layout?.setMessageIncomingAvatarSize(.zero)
-        layout?.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-        
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
     }
@@ -76,9 +65,20 @@ class ChatViewController: MessagesViewController {
         return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
     }
     
+    private func checkEmptyMessage() {
+        if messages.isEmpty == true {
+            if let counselor = counselor {
+                let newMessage = Message(id: UUID().uuidString, body: "Hi, how can i help you with?", createdAt: Date().timeIntervalSince1970, senderId: counselor.id!, senderName: counselor.displayName)
+                save(newMessage)
+            }
+        }
+    }
+    
     private func loadMessages() {
         
-        db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName)
+        db.collection(K.FStore.Counselor.collectionName).document(counselor?.id ?? "")
+            .collection(K.FStore.Counselor.firstChildCollectionName).document(currentUser.uid)
+            .collection(K.FStore.Counselor.secondChildCollectionName)
             .order(by: K.FStore.Message.dateField, descending: false)
             .addSnapshotListener { [self] (querySnapshot, error) in
                 messages = []
@@ -90,6 +90,8 @@ class ChatViewController: MessagesViewController {
                     return try? QueryDocumentSnapshot.data(as: Message.self)
                 }
                 
+               checkEmptyMessage()
+                
                 DispatchQueue.main.async {
                     self.messagesCollectionView.reloadData()
                     self.messagesCollectionView.scrollToLastItem()
@@ -100,7 +102,9 @@ class ChatViewController: MessagesViewController {
     private func save(_ message: Message) {
         
         do {
-            let _ = try db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(from: message)
+            let _ = try db.collection(K.FStore.Counselor.collectionName).document(counselor?.id ?? "")
+                .collection(K.FStore.Counselor.firstChildCollectionName).document(currentUser.uid)
+                .collection(K.FStore.Counselor.secondChildCollectionName).addDocument(from: message)
             print("Document successfully written!")
         } catch {
             print(error)
@@ -110,7 +114,7 @@ class ChatViewController: MessagesViewController {
 
 //MARK: - MessagesDataSource
 
-extension ChatViewController: MessagesDataSource {
+extension CounselorChatViewController: MessagesDataSource {
     func currentSender() -> SenderType {
         return Sender(senderId: currentUser.uid, displayName: currentUser.displayName ?? "Unknown")
     }
@@ -149,10 +153,14 @@ extension ChatViewController: MessagesDataSource {
 
 //MARK: - MessagesLayoutDelegate
 
-extension ChatViewController: MessagesLayoutDelegate {
+extension CounselorChatViewController: MessagesLayoutDelegate {
     
-    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return .zero
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        let photoURL = message.sender.senderId == counselor?.id ? URL(string: counselor?.photo ?? "") : URL(string: currentUser.photoURL?.absoluteString ?? "")
+        SDWebImageManager.shared.loadImage(with: photoURL, options: .highPriority, progress: nil) { [self] (image, data, error, cacheType, isFinished, imageUrl) in
+            avatarView.image = image
+            avatarView.isHidden = isNextMessageSameSender(at: indexPath)
+        }
     }
     
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
@@ -178,7 +186,7 @@ extension ChatViewController: MessagesLayoutDelegate {
 
 //MARK: - MessagesDisplayDelegate
 
-extension ChatViewController: MessagesDisplayDelegate {
+extension CounselorChatViewController: MessagesDisplayDelegate {
     
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         return isFromCurrentSender(message: message) ? .clear : UIColor(named: K.BrandColors.purple)! as UIColor
@@ -200,7 +208,7 @@ extension ChatViewController: MessagesDisplayDelegate {
 
 //MARK: - InputBarAccessoryViewDelegate
 
-extension ChatViewController: InputBarAccessoryViewDelegate {
+extension CounselorChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         let newMessage = Message(id: UUID().uuidString, body: text, createdAt: Date().timeIntervalSince1970, senderId: currentUser.uid, senderName: currentUser.displayName ?? "Unkown")

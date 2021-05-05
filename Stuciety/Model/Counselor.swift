@@ -18,6 +18,7 @@ struct Counselor: Identifiable, Codable {
     var photo: String
     
     enum CodingKeys: String, CodingKey {
+        case id
         case displayName
         case email
         case biography

@@ -32,6 +32,7 @@ struct K {
         
         struct Segue {
             static let details = "ToCounselorDetails"
+            static let chat = "ToChatCounselor"
         }
     }
     
@@ -81,6 +82,8 @@ struct K {
         
         struct Counselor {
             static let collectionName = "counselors"
+            static let firstChildCollectionName = "chats"
+            static let secondChildCollectionName = "messages"
 
             static let id = "id"
             static let name = "displayName"

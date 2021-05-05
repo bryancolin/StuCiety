@@ -1277,6 +1277,32 @@
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="NUL-06-QrH"/>
                                                 </constraints>
                                             </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qtv-Tc-UgL">
+                                                <rect key="frame" x="250" y="763" width="134" height="50"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="scz-1z-POc"/>
+                                                    <constraint firstAttribute="width" constant="134" id="ydv-7X-RbW"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <state key="normal" title="Let's Chat">
+                                                    <color key="titleColor" name="BrandPurple"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" name="BrandPurple"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="buttonPressed:" destination="9Nk-aV-fzT" eventType="touchUpInside" id="VRq-y1-v6e"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -1290,11 +1316,13 @@
                                             <constraint firstItem="cdb-RB-Ywn" firstAttribute="top" secondItem="qNj-qK-Rr9" secondAttribute="bottom" constant="20" id="6yO-Sl-6dd"/>
                                             <constraint firstAttribute="trailing" secondItem="UEJ-YA-D7W" secondAttribute="trailing" constant="30" id="Bie-gi-TxU"/>
                                             <constraint firstAttribute="trailing" secondItem="qNj-qK-Rr9" secondAttribute="trailing" constant="30" id="CO2-BC-phi"/>
+                                            <constraint firstItem="Qtv-Tc-UgL" firstAttribute="top" secondItem="UEJ-YA-D7W" secondAttribute="bottom" constant="20" id="DA1-Fu-Clz"/>
                                             <constraint firstItem="qNj-qK-Rr9" firstAttribute="top" secondItem="ze2-QB-Vnb" secondAttribute="bottom" constant="20" id="HPe-jc-jjl"/>
                                             <constraint firstItem="hkB-Fv-KYJ" firstAttribute="leading" secondItem="eCl-Qb-XrP" secondAttribute="leading" constant="30" id="JXv-Vf-f9S"/>
                                             <constraint firstItem="9al-Hr-JKs" firstAttribute="top" secondItem="i4h-yO-Ko8" secondAttribute="bottom" constant="10" id="Jdc-VS-z6U"/>
                                             <constraint firstItem="cdb-RB-Ywn" firstAttribute="leading" secondItem="eCl-Qb-XrP" secondAttribute="leading" constant="30" id="KVv-rq-OAo"/>
                                             <constraint firstItem="X0C-jS-iLG" firstAttribute="top" secondItem="8gO-H2-G0Q" secondAttribute="bottom" constant="20" id="SgU-pS-BeG"/>
+                                            <constraint firstAttribute="trailing" secondItem="Qtv-Tc-UgL" secondAttribute="trailing" constant="30" id="Stb-FK-t0v"/>
                                             <constraint firstItem="9al-Hr-JKs" firstAttribute="leading" secondItem="eCl-Qb-XrP" secondAttribute="leading" constant="30" id="Uym-Ny-k2L"/>
                                             <constraint firstAttribute="trailing" secondItem="i4h-yO-Ko8" secondAttribute="trailing" constant="30" id="XkZ-M9-6kN"/>
                                             <constraint firstAttribute="trailing" secondItem="9al-Hr-JKs" secondAttribute="trailing" constant="30" id="YZf-As-lhy"/>
@@ -1348,11 +1376,28 @@
                         <outlet property="counselorLicense" destination="i4h-yO-Ko8" id="F3X-86-Lda"/>
                         <outlet property="counselorName" destination="mus-LP-VQQ" id="NKb-AX-EbK"/>
                         <outlet property="counselorPhoto" destination="Nih-bB-KrY" id="Fmm-nO-dVF"/>
+                        <segue destination="cfw-dq-NQH" kind="show" identifier="ToChatCounselor" id="hrh-u2-l19"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuS-X8-wuc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6711.594202898551" y="438.61607142857139"/>
+        </scene>
+        <!--Counselor Chat View Controller-->
+        <scene sceneID="VQA-G3-AKP">
+            <objects>
+                <viewController hidesBottomBarWhenPushed="YES" id="cfw-dq-NQH" customClass="CounselorChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0rj-XR-BL7">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="mX3-SW-lov"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dk3-QR-HXE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rKa-8c-dpZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7770" y="449"/>
         </scene>
         <!--Room-->
         <scene sceneID="uEB-Fh-fye">

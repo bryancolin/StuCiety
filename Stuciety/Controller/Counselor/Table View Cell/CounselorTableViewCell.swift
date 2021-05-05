@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CounselorTableViewCell: UITableViewCell {
     
@@ -34,6 +35,7 @@ class CounselorTableViewCell: UITableViewCell {
         if let counselor = counselor {
             counselorName.text = counselor.displayName
             counselorArea.text = "Area: \(counselor.area[0])"
+//            counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
             
             let url = URL(string: counselor.photo)
             guard let data = try? Data(contentsOf: url!) else { return }
