@@ -20,11 +20,10 @@ class CounselorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.CounselorTable.cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         
-        tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.CounselorTable.cellIdentifier)
         loadCounselors()
     }
     

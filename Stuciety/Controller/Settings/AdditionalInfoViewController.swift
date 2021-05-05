@@ -16,9 +16,9 @@ class AdditionalInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.register(UINib(nibName: "InfoTableViewCell", bundle: nil), forCellReuseIdentifier: K.AdditionalInfo.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UINib(nibName: "InfoTableViewCell", bundle: nil), forCellReuseIdentifier: K.AdditionalInfo.cellIdentifier)
     }
 }
 

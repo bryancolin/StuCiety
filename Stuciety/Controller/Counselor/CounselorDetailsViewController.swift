@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CounselorDetailsViewController: UIViewController {
     
@@ -21,9 +22,7 @@ class CounselorDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         if let counselor = counselorDetails {
-            let url = URL(string: counselor.photo)
-            guard let data = try? Data(contentsOf: url!) else { return }
-            counselorPhoto.image = UIImage(data: data)!
+            counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
             
             counselorName.text = counselor.displayName
             counselorBio.text = counselor.biography
