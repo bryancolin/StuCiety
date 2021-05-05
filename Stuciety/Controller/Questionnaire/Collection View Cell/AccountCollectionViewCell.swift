@@ -29,11 +29,8 @@ class AccountCollectionViewCell: UICollectionViewCell {
     func configure() {
         if let user = currentUser {
             nameLabel.text = user.displayName
-            
             guard let imageURL = user.photoURL?.absoluteString else { return }
-            let url = URL(string: imageURL)
-            guard let data = try? Data(contentsOf: url!) else { return }
-            profilePicture.image = UIImage(data: data)
+            profilePicture.sd_setImage(with: URL(string: imageURL))
         }
     }
 }
