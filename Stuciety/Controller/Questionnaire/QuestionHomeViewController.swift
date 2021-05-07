@@ -63,14 +63,18 @@ class QuestionHomeViewController: UIViewController {
     
     func loadPreviousAnswer() {
         if let user = currentUser, !complete {
-            let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire?.id ?? "-1").collection(K.FStore.Questionnaire.childCollectionName)
+            let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire?.id ?? "-1")
             
-            dbRef.getDocuments { [self] (querySnapshot, error) in
-                guard error == nil else { return print("Error getting documents") }
-                guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
+            dbRef.getDocument {[self] (document, error) in
+                guard let document = document, document.exists else { return print("Document does not exist") }
                 
-                questionnaire?.question = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Question? in
-                    return try? QueryDocumentSnapshot.data(as: Question.self)
+                document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments {(querySnapshot, error) in
+                    guard error == nil else { return print("Error getting documents") }
+                    guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
+                    
+                    questionnaire?.question = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Question? in
+                        return try? QueryDocumentSnapshot.data(as: Question.self)
+                    }
                 }
             }
         }
