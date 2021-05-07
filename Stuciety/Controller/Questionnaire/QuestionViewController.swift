@@ -11,18 +11,18 @@ class QuestionViewController: UIViewController {
 
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var answerTextField: UITextField!
+    @IBOutlet weak var answerTextView: UITextView!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
-    var questionCount = 0
     var questionnaire: Questionnaire?
+    var questionCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.title = "Questions"
-        answerTextField.delegate = self
+        answerTextView.delegate = self
         updateUI()
     }
     
@@ -39,7 +39,7 @@ class QuestionViewController: UIViewController {
         if let questionnaire = questionnaire {
             questionNumberLabel.text = "\(questionCount + 1) of \(questionnaire.question.count)"
             questionLabel.text = questionnaire.question[questionCount].text
-            answerTextField.text = questionnaire.question[questionCount].answer
+            answerTextView.text = questionnaire.question[questionCount].answer
             
             backButton.isHidden = questionCount == 0 ? true : false
         }
@@ -62,9 +62,9 @@ class QuestionViewController: UIViewController {
 
 //MARK: - UITextViewDelegate
 
-extension QuestionViewController: UITextFieldDelegate {
+extension QuestionViewController: UITextViewDelegate {
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        questionnaire?.question[questionCount].answer = textField.text ?? ""
+    func textViewDidEndEditing(_ textView: UITextView) {
+        questionnaire?.question[questionCount].answer = textView.text ?? ""
     }
 }

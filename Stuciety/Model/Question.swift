@@ -14,6 +14,7 @@ struct Question: Identifiable, Codable {
     var answer: String
     
     enum CodingKeys: String, CodingKey {
+        case id
         case text
         case answer
     }

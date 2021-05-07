@@ -27,6 +27,8 @@ class QuestionHomeViewController: UIViewController {
         self.title = !complete ? "Start" : "Finish"
         self.navigationItem.setHidesBackButton(complete, animated: true)
         updateUI()
+        
+        loadPreviousAnswer()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -54,6 +56,21 @@ class QuestionHomeViewController: UIViewController {
             for vc in controllers! {
                 if vc is QuestionnaireViewController {
                     self.navigationController?.popToViewController(vc as! QuestionnaireViewController, animated: true)
+                }
+            }
+        }
+    }
+    
+    func loadPreviousAnswer() {
+        if let user = currentUser, !complete {
+            let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire?.id ?? "-1").collection(K.FStore.Questionnaire.childCollectionName)
+            
+            dbRef.getDocuments { [self] (querySnapshot, error) in
+                guard error == nil else { return print("Error getting documents") }
+                guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
+                
+                questionnaire?.question = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Question? in
+                    return try? QueryDocumentSnapshot.data(as: Question.self)
                 }
             }
         }
