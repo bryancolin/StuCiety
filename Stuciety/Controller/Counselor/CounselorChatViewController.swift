@@ -157,10 +157,8 @@ extension CounselorChatViewController: MessagesLayoutDelegate {
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         let photoURL = message.sender.senderId == counselor?.id ? URL(string: counselor?.photo ?? "") : URL(string: currentUser.photoURL?.absoluteString ?? "")
-        SDWebImageManager.shared.loadImage(with: photoURL, options: .highPriority, progress: nil) { [self] (image, data, error, cacheType, isFinished, imageUrl) in
-            avatarView.image = image
-            avatarView.isHidden = isNextMessageSameSender(at: indexPath)
-        }
+        avatarView.sd_setImage(with: photoURL)
+        avatarView.isHidden = isNextMessageSameSender(at: indexPath)
     }
     
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
@@ -172,7 +170,7 @@ extension CounselorChatViewController: MessagesLayoutDelegate {
     }
     
     func cellBottomLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
-        return 5
+        return 2
     }
     
     func messageTopLabelHeight(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
