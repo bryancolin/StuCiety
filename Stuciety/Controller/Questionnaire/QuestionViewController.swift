@@ -51,6 +51,7 @@ class QuestionViewController: UIViewController {
     }
     
     @IBAction func nextQuestion(_ sender: UIButton) {
+        answerTextView.endEditing(true)
         questionCount += 1
         if questionCount < (questionnaire?.question.count)! {
             updateUI()
@@ -65,6 +66,8 @@ class QuestionViewController: UIViewController {
 extension QuestionViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        questionnaire?.question[questionCount].answer = textView.text ?? ""
+        if questionCount < (questionnaire?.question.count)! {
+            questionnaire?.question[questionCount].answer = textView.text ?? ""
+        }
     }
 }
