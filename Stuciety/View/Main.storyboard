@@ -685,7 +685,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="5768" y="2144"/>
+            <point key="canvasLocation" x="5764" y="2013"/>
         </scene>
         <!--Account View Controller-->
         <scene sceneID="DrO-3n-uHJ">
@@ -784,7 +784,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dNz-Cb-hQq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6713" y="2144"/>
+            <point key="canvasLocation" x="6709" y="2013"/>
         </scene>
         <!--Additional Info View Controller-->
         <scene sceneID="2ar-OS-7M6">
@@ -815,7 +815,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JQQ-gP-O9r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6713.04347826087" y="2947.0982142857142"/>
+            <point key="canvasLocation" x="6710" y="2817"/>
         </scene>
         <!--Login-->
         <scene sceneID="Q8j-AJ-YiS">
@@ -1600,7 +1600,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGB-qR-yz9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4807" y="2144"/>
+            <point key="canvasLocation" x="4803" y="2013"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1vh-dm-eYF">
@@ -1777,7 +1777,7 @@
     </designables>
     <inferredMetricsTieBreakers>
         <segue reference="mio-F5-uAv"/>
-        <segue reference="uGy-mz-xCO"/>
+        <segue reference="x4t-m2-ZXc"/>
         <segue reference="hPp-3z-syf"/>
     </inferredMetricsTieBreakers>
     <resources>
