@@ -13,9 +13,14 @@ import MessageKit
 
 class ChatViewController: MessagesViewController {
     
-    var roomTitle: String?
+    var roomTitle: String = "Room" {
+        didSet {
+            self.title = roomTitle
+        }
+    }
     
     var messages: [Message] = []
+    var users = [String: String]()
     
     let db = Firestore.firestore()
     var currentUser: User = Auth.auth().currentUser!
@@ -23,13 +28,8 @@ class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = roomTitle
-        
         configureMessageCollectionView()
-        messagesCollectionView.messagesDataSource = self
-        
-        messageInputBar = CustomUIInputBar()
-        messageInputBar.delegate = self
+        configureMessageInputBar()
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         
@@ -47,19 +47,14 @@ class ChatViewController: MessagesViewController {
     }
     
     func configureMessageCollectionView() {
-        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-        layout?.sectionInset = UIEdgeInsets(top: 1, left: 8, bottom: 1, right: 8)
-        
-        layout?.setMessageOutgoingAvatarSize(.zero)
-        layout?.setMessageOutgoingMessageTopLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        layout?.setMessageOutgoingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .right, textInsets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)))
-        
-        layout?.setMessageIncomingAvatarSize(.zero)
-        layout?.setMessageIncomingMessageBottomLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-        layout?.setMessageIncomingMessageTopLabelAlignment(LabelAlignment(textAlignment: .left, textInsets: UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)))
-        
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messagesDataSource = self
+    }
+    
+    func configureMessageInputBar() {
+        messageInputBar = CustomUIInputBar()
+        messageInputBar.delegate = self
     }
     
     func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
@@ -76,9 +71,27 @@ class ChatViewController: MessagesViewController {
         return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
     }
     
+    private func loadUsers() {
+        for (id, _) in users {
+            db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
+                guard let document = document, document.exists else {
+                    return print("Document does not exist")
+                }
+                
+                if let photoURL = document.data()?[K.FStore.Student.photoURL] as? String {
+                    users[id] = photoURL
+                }
+                
+                DispatchQueue.main.async {
+                    self.messagesCollectionView.reloadData()
+                    self.messagesCollectionView.scrollToLastItem()
+                }
+            }
+        }
+    }
+    
     private func loadMessages() {
-        
-        db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName)
+        db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased()).collection(K.FStore.Message.childCollectionName)
             .order(by: K.FStore.Message.dateField, descending: false)
             .addSnapshotListener { [self] (querySnapshot, error) in
                 messages = []
@@ -90,17 +103,21 @@ class ChatViewController: MessagesViewController {
                     return try? QueryDocumentSnapshot.data(as: Message.self)
                 }
                 
+                for message in messages {
+                    if users[message.senderId] == nil {
+                        users[message.senderId] = ""
+                    }
+                }
+                
                 DispatchQueue.main.async {
-                    self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToLastItem()
+                    self.loadUsers()
                 }
             }
     }
     
     private func save(_ message: Message) {
-        
         do {
-            let _ = try db.collection(K.FStore.Message.collectionName).document(roomTitle!.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(from: message)
+            let _ = try db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(from: message)
             print("Document successfully written!")
         } catch {
             print(error)
@@ -151,8 +168,9 @@ extension ChatViewController: MessagesDataSource {
 
 extension ChatViewController: MessagesLayoutDelegate {
     
-    func avatarSize(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CGSize {
-        return .zero
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId] ?? ""))
+        avatarView.isHidden = isNextMessageSameSender(at: indexPath)
     }
     
     func heightForLocation(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {

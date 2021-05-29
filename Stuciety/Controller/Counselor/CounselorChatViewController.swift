@@ -26,10 +26,7 @@ class CounselorChatViewController: MessagesViewController {
         self.title = counselor?.displayName
         
         configureMessageCollectionView()
-        messagesCollectionView.messagesDataSource = self
-        
-        messageInputBar = CustomUIInputBar()
-        messageInputBar.delegate = self
+        configureMessageInputBar()
         
         scrollsToLastItemOnKeyboardBeginsEditing = true
         
@@ -49,6 +46,12 @@ class CounselorChatViewController: MessagesViewController {
     func configureMessageCollectionView() {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messagesDataSource = self
+    }
+    
+    func configureMessageInputBar() {
+        messageInputBar = CustomUIInputBar()
+        messageInputBar.delegate = self
     }
     
     func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
@@ -75,7 +78,6 @@ class CounselorChatViewController: MessagesViewController {
     }
     
     private func loadMessages() {
-        
         db.collection(K.FStore.Counselor.collectionName).document(counselor?.id ?? "")
             .collection(K.FStore.Counselor.firstChildCollectionName).document(currentUser.uid)
             .collection(K.FStore.Counselor.secondChildCollectionName)
@@ -100,7 +102,6 @@ class CounselorChatViewController: MessagesViewController {
     }
     
     private func save(_ message: Message) {
-        
         do {
             let _ = try db.collection(K.FStore.Counselor.collectionName).document(counselor?.id ?? "")
                 .collection(K.FStore.Counselor.firstChildCollectionName).document(currentUser.uid)
