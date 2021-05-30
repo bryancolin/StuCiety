@@ -14,7 +14,7 @@ struct Student: Identifiable, Codable {
     var name: String
     var photoURL: String
     var result: String
-    var questionnaires: [String]
+    var questionnaires: [String: Bool]
     
     enum CodingKeys: String, CodingKey {
         case email

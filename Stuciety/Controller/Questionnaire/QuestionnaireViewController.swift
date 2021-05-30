@@ -18,6 +18,7 @@ class QuestionnaireViewController: UIViewController {
     var currentUser: User? = Auth.auth().currentUser
     
     var questionnaires: [Questionnaire] = []
+    var questionnairesCompletion = [String: Bool]()
     var selectedQuestionnaire = 0
     
     override func viewDidLoad() {
@@ -63,11 +64,13 @@ class QuestionnaireViewController: UIViewController {
     }
     
     func loadQuestionnaires() {
-        db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").getDocument {[self] (document, error) in
+        db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").addSnapshotListener {[self] (document, error) in
             guard let document = document, document.exists else { return print("Document does not exist") }
-            guard let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String] else { return print("Document Id is not found") }
+            guard let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String: Bool] else { return print("Document Id is not found") }
             
-            for questionnaireId in questionnairesId {
+            for (questionnaireId, complete) in questionnairesId {
+                questionnairesCompletion[questionnaireId] = complete
+                
                 db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
                     guard let document = document, document.exists else { return print("Document does not exist") }
                     guard let data = document.data() else {return print("Document data not found")}
@@ -125,7 +128,8 @@ extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
             guard let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell2Identifier, for: indexPath) as? QuestionnaireCollectionViewCell else {
                 fatalError("Unable to create topic collection view cell")
             }
-            cell2.configure(name: questionnaires[indexPath.row - 1].title)
+            let questionnaire = questionnaires[indexPath.row - 1]
+            cell2.configure(name: questionnaire.title, complete: questionnairesCompletion[questionnaire.id] ?? false)
             return cell2
         }
     }

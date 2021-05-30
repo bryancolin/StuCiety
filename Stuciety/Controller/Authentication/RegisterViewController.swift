@@ -65,7 +65,7 @@ class RegisterViewController: UIViewController {
                 changeRequest?.commitChanges(completion: { error in
                     guard error == nil else { return ProgressHUD.showFailed("Something went wrong. Please try again.") }
                     
-                    let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [])
+                    let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [:])
                     
                     do {
                         let _ = try db.collection(K.FStore.Student.collectionName).document(result!.user.uid).setData(from: newStudent)

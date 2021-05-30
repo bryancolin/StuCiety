@@ -83,6 +83,12 @@ class QuestionHomeViewController: UIViewController {
     func saveResult() {
         if let user = currentUser, let questionnaire = questionnaire {
             
+            db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "0").updateData([
+                K.FStore.Student.questionnaires: [ questionnaire.id: complete ]
+            ]) { error in
+                guard error == nil else { return ProgressHUD.showFailed("Error saving user result") }
+            }
+            
             let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire.id)
             
             dbRef.setData([

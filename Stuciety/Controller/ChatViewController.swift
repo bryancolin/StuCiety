@@ -169,7 +169,7 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: MessagesLayoutDelegate {
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId] ?? ""))
+        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId] ?? ""), placeholderImage: #imageLiteral(resourceName: "stuciety_app_icon"))
         avatarView.isHidden = isNextMessageSameSender(at: indexPath)
     }
     
