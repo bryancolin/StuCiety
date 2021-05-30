@@ -65,13 +65,14 @@ class QuestionnaireViewController: UIViewController {
     
     func loadQuestionnaires() {
         db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").addSnapshotListener {[self] (document, error) in
-            guard let document = document, document.exists else { return print("Document does not exist") }
-            guard let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String: Bool] else { return print("Document Id is not found") }
+            guard let document = document, document.exists, let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String: Bool] else { return print("Document does not exist") }
             
-            for (questionnaireId, complete) in questionnairesId {
-                questionnairesCompletion[questionnaireId] = complete
+            for (id, complete) in questionnairesId {
+                if questionnairesCompletion[id] == nil {
+                    questionnairesCompletion[id] = complete
+                }
                 
-                db.collection(K.FStore.Questionnaire.collectionName).document(questionnaireId).getDocument {[self] (document, error) in
+                db.collection(K.FStore.Questionnaire.collectionName).document(id).getDocument {[self] (document, error) in
                     guard let document = document, document.exists else { return print("Document does not exist") }
                     guard let data = document.data() else {return print("Document data not found")}
                     

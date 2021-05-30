@@ -74,13 +74,9 @@ class ChatViewController: MessagesViewController {
     private func loadUsers() {
         for (id, _) in users {
             db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
-                guard let document = document, document.exists else {
-                    return print("Document does not exist")
-                }
+                guard let document = document, document.exists, let photoURL = document.get(K.FStore.Student.photoURL) as? String else { return print("Document does not exist") }
                 
-                if let photoURL = document.data()?[K.FStore.Student.photoURL] as? String {
-                    users[id] = photoURL
-                }
+                users[id] = photoURL
                 
                 DispatchQueue.main.async {
                     self.messagesCollectionView.reloadData()

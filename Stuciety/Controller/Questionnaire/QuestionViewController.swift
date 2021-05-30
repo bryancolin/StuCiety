@@ -8,7 +8,7 @@
 import UIKit
 
 class QuestionViewController: UIViewController {
-
+    
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerTextView: UITextView!
@@ -20,9 +20,11 @@ class QuestionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.title = "Questions"
         answerTextView.delegate = self
+        
+        setSwipeGesture()
         updateUI()
     }
     
@@ -35,6 +37,16 @@ class QuestionViewController: UIViewController {
         }
     }
     
+    func setSwipeGesture() {
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(previousQuestion(_:)))
+        swipeRight.direction = .right
+        self.view.addGestureRecognizer(swipeRight)
+        
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(nextQuestion(_:)))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
     func updateUI() {
         if let questionnaire = questionnaire {
             questionNumberLabel.text = "\(questionCount + 1) of \(questionnaire.question.count)"
@@ -44,9 +56,14 @@ class QuestionViewController: UIViewController {
             backButton.isHidden = questionCount == 0 ? true : false
         }
     }
+}
+
+//MARK: - Button Events
+
+extension QuestionViewController {
     
     @IBAction func previousQuestion(_ sender: UIButton) {
-        questionCount -= 1        
+        questionCount -= 1
         updateUI()
     }
     
