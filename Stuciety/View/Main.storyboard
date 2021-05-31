@@ -169,6 +169,7 @@
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bryan" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tXB-jJ-ziT">
                                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                                        <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="u7R-By-HbW"/>
                                                                         </constraints>
@@ -189,6 +190,7 @@
                                                                     </textField>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bryancolin35@ymail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9hF-gV-59h">
                                                                         <rect key="frame" x="0.0" y="74" width="354" height="50"/>
+                                                                        <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="aF5-36-Q9E"/>
                                                                         </constraints>
@@ -209,6 +211,7 @@
                                                                     </textField>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bryancolin12" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EGf-pO-RWV">
                                                                         <rect key="frame" x="0.0" y="148" width="354" height="50"/>
+                                                                        <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="EmT-mq-Kav"/>
                                                                         </constraints>
@@ -515,7 +518,7 @@
             <objects>
                 <viewController id="gLL-tb-GyQ" customClass="SettingsViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wb2-Im-fmB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IL2-B6-dnN">
@@ -692,7 +695,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Dpq-tm-iwB" customClass="AccountViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XkS-Om-OeU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGI-dA-Zzd">
@@ -791,7 +794,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="I6N-hb-1rj" customClass="AdditionalInfoViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wje-n3-d4t">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Nn-Se-bi4">
@@ -865,6 +868,7 @@
                                                                 <subviews>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bryancolin35@ymail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-70-VUK">
                                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
+                                                                        <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="2F6-z4-PO5"/>
                                                                         </constraints>
@@ -885,6 +889,7 @@
                                                                     </textField>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bryancolin12" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3">
                                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
+                                                                        <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="laz-Ka-3Zb"/>
                                                                         </constraints>
@@ -989,7 +994,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="ocH-rm-gLU" customClass="HomeViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbP-2H-4Ob">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KvD-Zl-dsw">
@@ -1086,7 +1091,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="7tU-dq-7uW" customClass="CounselorViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ICU-xq-qvd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-8J-zA0">
@@ -1118,7 +1123,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="9Nk-aV-fzT" customClass="CounselorDetailsViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fec-LB-yNz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="946"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-Ly-ga4">
@@ -1368,7 +1373,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="cfw-dq-NQH" customClass="CounselorChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0rj-XR-BL7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="mX3-SW-lov"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1384,7 +1389,7 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="YVg-S4-2ev" customClass="ChatViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h1h-1w-70u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="zd0-gc-NQ0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1400,7 +1405,7 @@
             <objects>
                 <viewController id="zay-R1-0Cw" customClass="QuestionnaireViewController" customModule="Stuciety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="miE-hh-Rzs">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="759"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AXL-CM-UFn">
@@ -1778,7 +1783,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="mio-F5-uAv"/>
         <segue reference="x4t-m2-ZXc"/>
-        <segue reference="hPp-3z-syf"/>
+        <segue reference="Ivm-vC-QbZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="16.5" height="16.5"/>
