@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>643127923174-5529cd710co64lvf50jfs7cmpldpjknp.apps.googleusercontent.com</string>
+	<string>643127923174-8j4ll72ufdgri2r5m56m0i2229obnvlo.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.643127923174-5529cd710co64lvf50jfs7cmpldpjknp</string>
+	<string>com.googleusercontent.apps.643127923174-8j4ll72ufdgri2r5m56m0i2229obnvlo</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAzzLjdM0pMhI9qRwhJraL46y1fbNybtVk</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.bryancolin.Stuciety</string>
+	<string>com.bryancolin.StuCiety</string>
 	<key>PROJECT_ID</key>
 	<string>stuciety-d284d</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:643127923174:ios:74dfe16f77f0f86ed40627</string>
+	<string>1:643127923174:ios:22912a07972181b8d40627</string>
+	<key>DATABASE_URL</key>
+	<string>https://stuciety-d284d-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>

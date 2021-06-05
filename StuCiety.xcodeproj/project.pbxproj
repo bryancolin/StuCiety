@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA497653951A39C201EF9CFF /* Pods_StuCiety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F205B95EA13560C28AEDF00D /* Pods_StuCiety.framework */; };
 		E531DADA2605DE2800010B62 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531DAD92605DE2800010B62 /* CustomUIView.swift */; };
 		E539D56826047E7800839E5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539D56726047E7700839E5A /* HomeViewController.swift */; };
+		E53DB027266B412D00588F5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53DB026266B412D00588F5A /* GoogleService-Info.plist */; };
 		E54061C32611F36A006C1AD4 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54061C22611F36A006C1AD4 /* Message.swift */; };
 		E54144F12604D9D500ADF901 /* CustomUITabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54144F02604D9D500ADF901 /* CustomUITabBar.swift */; };
 		E5454D7F26022A7E00A14DE6 /* CustomUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */; };
 		E5454D8026022A7E00A14DE6 /* CustomUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */; };
 		E5454D8B26022ABC00A14DE6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5454D8A26022ABB00A14DE6 /* Main.storyboard */; };
-		E5454D8F26022B8000A14DE6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */; };
-		E5454D9126022BC800A14DE6 /* Pods_Stuciety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E75663564263D437D738F6B6 /* Pods_Stuciety.framework */; };
-		E5454D9226022BC800A14DE6 /* Pods_Stuciety.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E75663564263D437D738F6B6 /* Pods_Stuciety.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E5454D9226022BC800A14DE6 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E545A1A5263ED6A10087A8E8 /* CounselorChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E545A1A4263ED6A10087A8E8 /* CounselorChatViewController.swift */; };
 		E54A51F226319A630003D110 /* QuestionnaireCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */; };
 		E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */; };
@@ -66,7 +66,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E5454D9226022BC800A14DE6 /* Pods_Stuciety.framework in Embed Frameworks */,
+				E5454D9226022BC800A14DE6 /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,16 +74,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C9A29EF4185FC5DDAEF05AF /* Pods-Stuciety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stuciety.release.xcconfig"; path = "Target Support Files/Pods-Stuciety/Pods-Stuciety.release.xcconfig"; sourceTree = "<group>"; };
-		B3135AD34672CD451F473D5D /* Pods-Stuciety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stuciety.debug.xcconfig"; path = "Target Support Files/Pods-Stuciety/Pods-Stuciety.debug.xcconfig"; sourceTree = "<group>"; };
+		4985E5DA7FAB171F87FBB57E /* Pods-StuCiety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StuCiety.debug.xcconfig"; path = "Target Support Files/Pods-StuCiety/Pods-StuCiety.debug.xcconfig"; sourceTree = "<group>"; };
+		528D73F364FF316DA6C7BAD8 /* Pods-StuCiety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StuCiety.release.xcconfig"; path = "Target Support Files/Pods-StuCiety/Pods-StuCiety.release.xcconfig"; sourceTree = "<group>"; };
 		E531DAD92605DE2800010B62 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		E539D56726047E7700839E5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		E53DB026266B412D00588F5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E54061C22611F36A006C1AD4 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E54144F02604D9D500ADF901 /* CustomUITabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUITabBar.swift; sourceTree = "<group>"; };
 		E5454D7D26022A7E00A14DE6 /* CustomUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUITextField.swift; sourceTree = "<group>"; };
 		E5454D7E26022A7E00A14DE6 /* CustomUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomUIButton.swift; sourceTree = "<group>"; };
 		E5454D8A26022ABB00A14DE6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E545A1A4263ED6A10087A8E8 /* CounselorChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorChatViewController.swift; sourceTree = "<group>"; };
 		E54A51F026319A630003D110 /* QuestionnaireCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireCollectionViewCell.swift; sourceTree = "<group>"; };
 		E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionnaireCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -96,7 +96,7 @@
 		E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		E574929B260EFAA60094670E /* LoungeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeTableViewCell.swift; sourceTree = "<group>"; };
 		E57492A0260EFCD90094670E /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
-		E5767A5D26021FFB00E851B2 /* Stuciety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stuciety.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5767A5D26021FFB00E851B2 /* StuCiety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StuCiety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5767A6026021FFB00E851B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5767A6226021FFB00E851B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E5767A692602200100E851B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounselorTableViewCell.xib; sourceTree = "<group>"; };
 		E5F9F9542635AF5A0055C7D5 /* LoungeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeCollectionViewCell.swift; sourceTree = "<group>"; };
 		E5F9F9552635AF5A0055C7D5 /* LoungeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoungeCollectionViewCell.xib; sourceTree = "<group>"; };
-		E75663564263D437D738F6B6 /* Pods_Stuciety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stuciety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F205B95EA13560C28AEDF00D /* Pods_StuCiety.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StuCiety.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,28 +134,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5454D9126022BC800A14DE6 /* Pods_Stuciety.framework in Frameworks */,
+				AA497653951A39C201EF9CFF /* Pods_StuCiety.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		54B4ACA035516FB59235622C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F205B95EA13560C28AEDF00D /* Pods_StuCiety.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6D21508A1B692ED07E110AFD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				B3135AD34672CD451F473D5D /* Pods-Stuciety.debug.xcconfig */,
-				2C9A29EF4185FC5DDAEF05AF /* Pods-Stuciety.release.xcconfig */,
+				4985E5DA7FAB171F87FBB57E /* Pods-StuCiety.debug.xcconfig */,
+				528D73F364FF316DA6C7BAD8 /* Pods-StuCiety.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		DC6B09C550CF7183C123CABB /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				E75663564263D437D738F6B6 /* Pods_Stuciety.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E5454D7226022A0700A14DE6 /* Controller */ = {
@@ -221,22 +221,22 @@
 		E5767A5426021FFB00E851B2 = {
 			isa = PBXGroup;
 			children = (
-				E5767A5F26021FFB00E851B2 /* Stuciety */,
+				E5767A5F26021FFB00E851B2 /* StuCiety */,
 				E5767A5E26021FFB00E851B2 /* Products */,
 				6D21508A1B692ED07E110AFD /* Pods */,
-				DC6B09C550CF7183C123CABB /* Frameworks */,
+				54B4ACA035516FB59235622C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		E5767A5E26021FFB00E851B2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5767A5D26021FFB00E851B2 /* Stuciety.app */,
+				E5767A5D26021FFB00E851B2 /* StuCiety.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E5767A5F26021FFB00E851B2 /* Stuciety */ = {
+		E5767A5F26021FFB00E851B2 /* StuCiety */ = {
 			isa = PBXGroup;
 			children = (
 				E59F03032629647700E0E475 /* Animation */,
@@ -247,7 +247,7 @@
 				E5DAE5662629C6EE00266FBE /* App */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
-			path = Stuciety;
+			path = StuCiety;
 			sourceTree = "<group>";
 		};
 		E59F03032629647700E0E475 /* Animation */ = {
@@ -317,7 +317,7 @@
 				E5767A6026021FFB00E851B2 /* AppDelegate.swift */,
 				E5767A6226021FFB00E851B2 /* SceneDelegate.swift */,
 				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
-				E5454D8E26022B7F00A14DE6 /* GoogleService-Info.plist */,
+				E53DB026266B412D00588F5A /* GoogleService-Info.plist */,
 				E5767A6E2602200100E851B2 /* Info.plist */,
 			);
 			path = App;
@@ -363,24 +363,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E5767A5C26021FFB00E851B2 /* Stuciety */ = {
+		E5767A5C26021FFB00E851B2 /* StuCiety */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5767A712602200100E851B2 /* Build configuration list for PBXNativeTarget "Stuciety" */;
+			buildConfigurationList = E5767A712602200100E851B2 /* Build configuration list for PBXNativeTarget "StuCiety" */;
 			buildPhases = (
-				11FBF3995E28D23B744A942D /* [CP] Check Pods Manifest.lock */,
+				6BC316991AB13C094AF4A439 /* [CP] Check Pods Manifest.lock */,
 				E5767A5926021FFB00E851B2 /* Sources */,
 				E5767A5A26021FFB00E851B2 /* Frameworks */,
 				E5767A5B26021FFB00E851B2 /* Resources */,
-				8233EBA6DBA807FD919BBBAF /* [CP] Embed Pods Frameworks */,
 				E5454D9326022BC800A14DE6 /* Embed Frameworks */,
+				30EF8A917362B62B04AB7133 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Stuciety;
+			name = StuCiety;
 			productName = Stuciety;
-			productReference = E5767A5D26021FFB00E851B2 /* Stuciety.app */;
+			productReference = E5767A5D26021FFB00E851B2 /* StuCiety.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -397,7 +397,7 @@
 					};
 				};
 			};
-			buildConfigurationList = E5767A5826021FFB00E851B2 /* Build configuration list for PBXProject "Stuciety" */;
+			buildConfigurationList = E5767A5826021FFB00E851B2 /* Build configuration list for PBXProject "StuCiety" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -410,7 +410,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E5767A5C26021FFB00E851B2 /* Stuciety */,
+				E5767A5C26021FFB00E851B2 /* StuCiety */,
 			);
 		};
 /* End PBXProject section */
@@ -422,8 +422,8 @@
 			files = (
 				E54A51F726319ECF0003D110 /* AccountCollectionViewCell.xib in Resources */,
 				E5767A6D2602200100E851B2 /* LaunchScreen.storyboard in Resources */,
+				E53DB027266B412D00588F5A /* GoogleService-Info.plist in Resources */,
 				E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */,
-				E5454D8F26022B8000A14DE6 /* GoogleService-Info.plist in Resources */,
 				E5609BA7263D68830003E4C3 /* InfoTableViewCell.xib in Resources */,
 				E5767A6A2602200100E851B2 /* Assets.xcassets in Resources */,
 				E5F9F9502635A61E0055C7D5 /* CounselorTableViewCell.xib in Resources */,
@@ -435,7 +435,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11FBF3995E28D23B744A942D /* [CP] Check Pods Manifest.lock */ = {
+		30EF8A917362B62B04AB7133 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StuCiety/Pods-StuCiety-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StuCiety/Pods-StuCiety-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StuCiety/Pods-StuCiety-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6BC316991AB13C094AF4A439 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -450,28 +467,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Stuciety-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-StuCiety-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8233EBA6DBA807FD919BBBAF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Stuciety/Pods-Stuciety-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Stuciety/Pods-Stuciety-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Stuciety/Pods-Stuciety-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -655,18 +655,18 @@
 		};
 		E5767A722602200100E851B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3135AD34672CD451F473D5D /* Pods-Stuciety.debug.xcconfig */;
+			baseConfigurationReference = 4985E5DA7FAB171F87FBB57E /* Pods-StuCiety.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QL7B6ZXFS7;
-				INFOPLIST_FILE = Stuciety/App/Info.plist;
+				INFOPLIST_FILE = StuCiety/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bryancolin.Stuciety;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryancolin.StuCiety;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -675,18 +675,18 @@
 		};
 		E5767A732602200100E851B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C9A29EF4185FC5DDAEF05AF /* Pods-Stuciety.release.xcconfig */;
+			baseConfigurationReference = 528D73F364FF316DA6C7BAD8 /* Pods-StuCiety.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QL7B6ZXFS7;
-				INFOPLIST_FILE = Stuciety/App/Info.plist;
+				INFOPLIST_FILE = StuCiety/App/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bryancolin.Stuciety;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bryancolin.StuCiety;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -696,7 +696,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E5767A5826021FFB00E851B2 /* Build configuration list for PBXProject "Stuciety" */ = {
+		E5767A5826021FFB00E851B2 /* Build configuration list for PBXProject "StuCiety" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5767A6F2602200100E851B2 /* Debug */,
@@ -705,7 +705,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E5767A712602200100E851B2 /* Build configuration list for PBXNativeTarget "Stuciety" */ = {
+		E5767A712602200100E851B2 /* Build configuration list for PBXNativeTarget "StuCiety" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E5767A722602200100E851B2 /* Debug */,
