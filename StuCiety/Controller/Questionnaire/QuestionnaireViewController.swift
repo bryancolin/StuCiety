@@ -8,7 +8,6 @@
 import UIKit
 import Firebase
 import SkeletonView
-import Firebase
 
 class QuestionnaireViewController: UIViewController {
     
@@ -91,6 +90,7 @@ class QuestionnaireViewController: UIViewController {
                             questionnaires.append(questionnaire)
                         }
                         
+                        collectionView.hideSkeleton(transition: .crossDissolve(0.25))
                         collectionView.reloadData()
                     }
                 }

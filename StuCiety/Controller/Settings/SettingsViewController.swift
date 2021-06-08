@@ -94,16 +94,12 @@ extension SettingsViewController: UITableViewDelegate {
         switch indexPath.row {
         case 0:
             self.performSegue(withIdentifier: K.Segue.account, sender: self)
-            break
         case 2:
             showAbout()
-            break
         case 3:
             self.performSegue(withIdentifier: K.Segue.info, sender: self)
-            break
         case 7:
             signOut()
-            break
         default:
             return
         }

@@ -8,15 +8,21 @@
 import UIKit
 
 protocol TableViewInsideCollectionViewDelegate {
-    func cellTaped(topic: Topic?)
+    func cellTaped(room: Room?)
 }
 
 class LoungeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var roomCategory: UILabel!
     
     var delegate: TableViewInsideCollectionViewDelegate?
-    var topics: [Topic]?
+    var rooms: [Room]?
+    var category: String! {
+        didSet {
+            self.updateUI()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,10 +31,19 @@ class LoungeTableViewCell: UITableViewCell {
         collectionView.delegate = self
         
         collectionView.register(UINib(nibName: "LoungeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.LoungeTable.collectionCellIdentifier)
+        
+        roomCategory.lastLineFillPercent = 50
+        roomCategory.linesCornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func updateUI() {
+        if let title = category {
+            roomCategory.text = title
+        }
     }
 }
 
@@ -41,24 +56,22 @@ extension LoungeTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return topics?.count ?? 0
+        return rooms?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.LoungeTable.collectionCellIdentifier, for: indexPath) as? LoungeCollectionViewCell else {
             fatalError("Unable to create collection view cell")
         }
-        let topic = topics?[indexPath.item]
-        cell.topic = topic
+        cell.room = rooms?[indexPath.item]
         cell.delegate = delegate
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.delegate?.cellTaped(topic: topics?[indexPath.item])
+        self.delegate?.cellTaped(room: rooms?[indexPath.item])
     }
-
 }
 
 //MARK: - UICollectionViewDelegate

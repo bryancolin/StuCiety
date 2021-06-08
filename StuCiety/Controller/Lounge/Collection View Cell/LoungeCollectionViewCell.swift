@@ -13,8 +13,9 @@ class LoungeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var featuredImageView: UIImageView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var button: UIButton!
     
-    var topic: Topic! {
+    var room: Room! {
         didSet {
             self.updateUI()
         }
@@ -24,18 +25,22 @@ class LoungeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        textLabel.lastLineFillPercent = 50
+        textLabel.linesCornerRadius = 5
+        
+        button.skeletonCornerRadius = Float(button.frame.width/2)
     }
     
     func updateUI() {
-        if let topic = topic {
-            featuredImageView.image = topic.featuredImage
-            textLabel.text = topic.label
+        if let room = room {
+            featuredImageView.sd_setImage(with: URL(string: room.photoURL))
+            textLabel.text = room.name
             view.backgroundColor = randomColor(hue: .random, luminosity: .light)
         }
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        delegate?.cellTaped(topic: topic)
+        delegate?.cellTaped(room: room)
     }
 }

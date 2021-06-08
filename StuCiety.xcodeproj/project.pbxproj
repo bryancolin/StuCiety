@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AA497653951A39C201EF9CFF /* Pods_StuCiety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F205B95EA13560C28AEDF00D /* Pods_StuCiety.framework */; };
+		E52F1E4A266F487600B46B7D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F1E49266F486D00B46B7D /* Room.swift */; };
 		E531DADA2605DE2800010B62 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531DAD92605DE2800010B62 /* CustomUIView.swift */; };
 		E539D56826047E7800839E5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539D56726047E7700839E5A /* HomeViewController.swift */; };
 		E53DB027266B412D00588F5A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53DB026266B412D00588F5A /* GoogleService-Info.plist */; };
@@ -28,7 +29,6 @@
 		E5609BA6263D68830003E4C3 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5609BA4263D68830003E4C3 /* InfoTableViewCell.swift */; };
 		E5609BA7263D68830003E4C3 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */; };
 		E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E574929B260EFAA60094670E /* LoungeTableViewCell.swift */; };
-		E57492A1260EFCD90094670E /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57492A0260EFCD90094670E /* Topic.swift */; };
 		E5767A6126021FFB00E851B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5767A6026021FFB00E851B2 /* AppDelegate.swift */; };
 		E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5767A6226021FFB00E851B2 /* SceneDelegate.swift */; };
 		E5767A6A2602200100E851B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5767A692602200100E851B2 /* Assets.xcassets */; };
@@ -76,6 +76,7 @@
 /* Begin PBXFileReference section */
 		4985E5DA7FAB171F87FBB57E /* Pods-StuCiety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StuCiety.debug.xcconfig"; path = "Target Support Files/Pods-StuCiety/Pods-StuCiety.debug.xcconfig"; sourceTree = "<group>"; };
 		528D73F364FF316DA6C7BAD8 /* Pods-StuCiety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StuCiety.release.xcconfig"; path = "Target Support Files/Pods-StuCiety/Pods-StuCiety.release.xcconfig"; sourceTree = "<group>"; };
+		E52F1E49266F486D00B46B7D /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		E531DAD92605DE2800010B62 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		E539D56726047E7700839E5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E53DB026266B412D00588F5A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -95,7 +96,6 @@
 		E5609BA4263D68830003E4C3 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
 		E574929B260EFAA60094670E /* LoungeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeTableViewCell.swift; sourceTree = "<group>"; };
-		E57492A0260EFCD90094670E /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		E5767A5D26021FFB00E851B2 /* StuCiety.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StuCiety.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5767A6026021FFB00E851B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5767A6226021FFB00E851B2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +158,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E52F1E4B266F544100B46B7D /* Table View Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E574929B260EFAA60094670E /* LoungeTableViewCell.swift */,
+			);
+			path = "Table View Cell";
+			sourceTree = "<group>";
+		};
 		E5454D7226022A0700A14DE6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,15 +213,15 @@
 		E574929F260EFCC80094670E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E5579A8E263BC31F00F1EE81 /* Student.swift */,
 				E5C5EB382625A3AE00B78932 /* Counselor.swift */,
+				E52F1E49266F486D00B46B7D /* Room.swift */,
 				E54061C22611F36A006C1AD4 /* Message.swift */,
 				E5E70FBE26381E0A00C8EB4D /* Sender.swift */,
-				E59F03062629650E00E0E475 /* Tables.swift */,
-				E57492A0260EFCD90094670E /* Topic.swift */,
 				E5E0EDA32632B15300D52230 /* Questionnaire.swift */,
 				E59D1AE2263424100042EEED /* Question.swift */,
-				E5579A8E263BC31F00F1EE81 /* Student.swift */,
 				E59D9FED263D72A500F48244 /* Info.swift */,
+				E59F03062629650E00E0E475 /* Tables.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -304,9 +312,9 @@
 		E5C5EB3E2625ACE900B78932 /* Lounge */ = {
 			isa = PBXGroup;
 			children = (
+				E52F1E4B266F544100B46B7D /* Table View Cell */,
 				E5F9F9582635AFAE0055C7D5 /* Collection View Cell */,
 				E539D56726047E7700839E5A /* HomeViewController.swift */,
-				E574929B260EFAA60094670E /* LoungeTableViewCell.swift */,
 			);
 			path = Lounge;
 			sourceTree = "<group>";
@@ -515,9 +523,9 @@
 				E59F03072629650E00E0E475 /* Tables.swift in Sources */,
 				E59F03052629649E00E0E475 /* TableAnimations.swift in Sources */,
 				E592BFE0261B63F600C40341 /* CustomUIInputBar.swift in Sources */,
+				E52F1E4A266F487600B46B7D /* Room.swift in Sources */,
 				E54061C32611F36A006C1AD4 /* Message.swift in Sources */,
 				E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */,
-				E57492A1260EFCD90094670E /* Topic.swift in Sources */,
 				E5579A8F263BC32000F1EE81 /* Student.swift in Sources */,
 				E59D1AE1263421200042EEED /* QuestionViewController.swift in Sources */,
 			);
