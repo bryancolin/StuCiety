@@ -322,6 +322,7 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - SideMenu (6.5.0)
   - SkeletonView (1.15.0)
 
 DEPENDENCIES:
@@ -335,6 +336,7 @@ DEPENDENCIES:
   - ProgressHUD
   - RandomColorSwift
   - SDWebImage
+  - SideMenu
   - SkeletonView
 
 SPEC REPOS:
@@ -362,6 +364,7 @@ SPEC REPOS:
     - PromisesObjC
     - RandomColorSwift
     - SDWebImage
+    - SideMenu
     - SkeletonView
 
 SPEC CHECKSUMS:
@@ -388,8 +391,9 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   RandomColorSwift: d18b9b025403137b5543a002187489b06cc1782b
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
   SkeletonView: cac18a3ac4f893b09d99e65072d806ef08377aae
 
-PODFILE CHECKSUM: 9e39e5c6cc6b4a988c5f40108e4e6ba70e2d609e
+PODFILE CHECKSUM: 39f5015c46cfdca268438a887a10f532e5a21ae2
 
 COCOAPODS: 1.10.1

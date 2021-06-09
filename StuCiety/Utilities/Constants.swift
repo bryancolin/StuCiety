@@ -21,12 +21,20 @@ struct K {
         static let info = "ToInfo"
     }
     
-    struct LoungeTable {
+    struct Lounge {
         static let cellIdentifier = "LoungeTableReusableCell"
         static let collectionCellIdentifier = "LoungeCollectionReusableCell"
+        
+        struct Segue {
+            static let sideMenu = "ToSideMenu"
+        }
     }
     
-    struct CounselorTable {
+    struct SideMenu {
+        static let cellIdentifier = "SideMenuTableReusableCell"
+    }
+    
+    struct Counselor {
         static let cellIdentifier = "CounselorTableReusableCell"
         static let collectionCellIdentifier = "CounselorCollectionReusableCell"
         
@@ -34,11 +42,6 @@ struct K {
             static let details = "ToCounselorDetails"
             static let chat = "ToChatCounselor"
         }
-    }
-    
-    struct Room {
-        static let cellIdentifier = "ReusableCell"
-        static let cellNibName = "MessageCell"
     }
     
     struct QuestionnaireCollection {

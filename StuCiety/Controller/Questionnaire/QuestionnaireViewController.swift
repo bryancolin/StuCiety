@@ -121,13 +121,13 @@ extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell1Identifier, for: indexPath) as? AccountCollectionViewCell else {
-                fatalError("Unable to create topic collection view cell")
+                fatalError("Unable to create account collection view cell")
             }
             cell1.configure()
             return cell1
         } else {
             guard let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell2Identifier, for: indexPath) as? QuestionnaireCollectionViewCell else {
-                fatalError("Unable to create topic collection view cell")
+                fatalError("Unable to create questionnaire collection view cell")
             }
             let questionnaire = questionnaires[indexPath.row - 1]
             cell2.configure(name: questionnaire.title, complete: questionnairesCompletion[questionnaire.id] ?? false)

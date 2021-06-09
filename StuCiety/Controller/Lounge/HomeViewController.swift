@@ -98,8 +98,8 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.LoungeTable.cellIdentifier, for: indexPath) as? LoungeTableViewCell else {
-            fatalError("Unable to create topic table view cell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.Lounge.cellIdentifier, for: indexPath) as? LoungeTableViewCell else {
+            fatalError("Unable to create room table view cell")
         }
         let rooms = structureRooms[indexPath.row]
         cell.rooms = rooms

@@ -16,6 +16,7 @@ target 'StuCiety' do
   pod 'ProgressHUD'
   pod 'RandomColorSwift'
   pod 'SDWebImage'
+  pod 'SideMenu'
   pod 'SkeletonView'
   
 end

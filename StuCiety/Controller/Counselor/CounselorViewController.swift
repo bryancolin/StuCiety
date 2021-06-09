@@ -20,7 +20,7 @@ class CounselorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.CounselorTable.cellIdentifier)
+        tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.Counselor.cellIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -35,7 +35,7 @@ class CounselorViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.CounselorTable.Segue.details {
+        if segue.identifier == K.Counselor.Segue.details {
             if let destinationVC = segue.destination as? CounselorDetailsViewController {
                 destinationVC.counselorDetails = selectedCounselor
             }
@@ -65,8 +65,8 @@ extension CounselorViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.CounselorTable.cellIdentifier, for: indexPath) as? CounselorTableViewCell else {
-            fatalError("Unable to create topic table view cell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: K.Counselor.cellIdentifier, for: indexPath) as? CounselorTableViewCell else {
+            fatalError("Unable to create counselor table view cell")
         }
         cell.counselor = counselors[indexPath.row]
         return cell
@@ -79,7 +79,7 @@ extension CounselorViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCounselor = counselors[indexPath.row]
-        self.performSegue(withIdentifier: K.CounselorTable.Segue.details, sender: self)
+        self.performSegue(withIdentifier: K.Counselor.Segue.details, sender: self)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

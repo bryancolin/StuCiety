@@ -10,6 +10,7 @@ import Firebase
 import InputBarAccessoryView
 import IQKeyboardManagerSwift
 import MessageKit
+import SideMenu
 
 class ChatViewController: MessagesViewController {
     
@@ -20,10 +21,13 @@ class ChatViewController: MessagesViewController {
     }
     
     var messages: [Message] = []
-    var users = [String: String]()
+    typealias tuple = (firstObject: String, secondObject: String)
+    var users = [String: tuple]()
     
     let db = Firestore.firestore()
     var currentUser: User = Auth.auth().currentUser!
+    
+    var menu: SideMenuNavigationController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +48,26 @@ class ChatViewController: MessagesViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         IQKeyboardManager.shared.enable = true
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Lounge.Segue.sideMenu {
+            if let navViewController = segue.destination as? SideMenuNavigationController {
+                guard let sideMenu = navViewController.viewControllers.first as? SideMenuTableViewController else { return }
+                
+                navViewController.presentationStyle = .menuSlideIn
+                navViewController.blurEffectStyle = .light
+
+                SideMenuManager.default.rightMenuNavigationController = navViewController
+                SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+
+                sideMenu.users = users
+            }
+        }
+    }
+    
+    @IBAction func userButtonPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: K.Lounge.Segue.sideMenu, sender: self)
     }
     
     func configureMessageCollectionView() {
@@ -74,9 +98,12 @@ class ChatViewController: MessagesViewController {
     private func loadUsers() {
         for (id, _) in users {
             db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
-                guard let document = document, document.exists, let photoURL = document.get(K.FStore.Student.photoURL) as? String else { return print("Document does not exist") }
+                guard let document = document, document.exists,
+                      let displayName = document.get(K.FStore.Student.name) as? String,
+                      let photoURL = document.get(K.FStore.Student.photoURL) as? String
+                else { return print("Document does not exist") }
                 
-                users[id] = photoURL
+                users[id] = tuple(firstObject: displayName, secondObject: photoURL)
                 
                 DispatchQueue.main.async {
                     self.messagesCollectionView.reloadData()
@@ -101,7 +128,7 @@ class ChatViewController: MessagesViewController {
                 
                 for message in messages {
                     if users[message.senderId] == nil {
-                        users[message.senderId] = ""
+                        users[message.senderId] = tuple(firstObject: message.senderName, secondObject: "")
                     }
                 }
                 
@@ -165,7 +192,7 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: MessagesLayoutDelegate {
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId] ?? ""), placeholderImage: #imageLiteral(resourceName: "stuciety_app_icon"))
+        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId]?.secondObject ?? ""), placeholderImage: #imageLiteral(resourceName: "stuciety_app_icon"))
         avatarView.isHidden = isNextMessageSameSender(at: indexPath)
     }
     

@@ -37,7 +37,7 @@ class CounselorDetailsViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.CounselorTable.Segue.chat {
+        if segue.identifier == K.Counselor.Segue.chat {
             if let destinationVC = segue.destination as? CounselorChatViewController {
                 destinationVC.counselor = counselorDetails
             }
@@ -45,6 +45,6 @@ class CounselorDetailsViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: K.CounselorTable.Segue.chat, sender: self)
+        self.performSegue(withIdentifier: K.Counselor.Segue.chat, sender: self)
     }
 }

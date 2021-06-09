@@ -30,7 +30,7 @@ class LoungeTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        collectionView.register(UINib(nibName: "LoungeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.LoungeTable.collectionCellIdentifier)
+        collectionView.register(UINib(nibName: "LoungeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Lounge.collectionCellIdentifier)
         
         roomCategory.lastLineFillPercent = 50
         roomCategory.linesCornerRadius = 5
@@ -60,8 +60,8 @@ extension LoungeTableViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.LoungeTable.collectionCellIdentifier, for: indexPath) as? LoungeCollectionViewCell else {
-            fatalError("Unable to create collection view cell")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: K.Lounge.collectionCellIdentifier, for: indexPath) as? LoungeCollectionViewCell else {
+            fatalError("Unable to create room collection view cell")
         }
         cell.room = rooms?[indexPath.item]
         cell.delegate = delegate

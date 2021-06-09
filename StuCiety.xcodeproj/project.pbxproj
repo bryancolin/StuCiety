@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		AA497653951A39C201EF9CFF /* Pods_StuCiety.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F205B95EA13560C28AEDF00D /* Pods_StuCiety.framework */; };
+		E528A80C267099380066F36D /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528A80B267099370066F36D /* SideMenuTableViewController.swift */; };
+		E528A80F2670E3600066F36D /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E528A80D2670E3600066F36D /* SideMenuTableViewCell.swift */; };
+		E528A8102670E3600066F36D /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E528A80E2670E3600066F36D /* SideMenuTableViewCell.xib */; };
 		E52F1E4A266F487600B46B7D /* Room.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52F1E49266F486D00B46B7D /* Room.swift */; };
 		E531DADA2605DE2800010B62 /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E531DAD92605DE2800010B62 /* CustomUIView.swift */; };
 		E539D56826047E7800839E5A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E539D56726047E7700839E5A /* HomeViewController.swift */; };
@@ -76,6 +79,9 @@
 /* Begin PBXFileReference section */
 		4985E5DA7FAB171F87FBB57E /* Pods-StuCiety.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StuCiety.debug.xcconfig"; path = "Target Support Files/Pods-StuCiety/Pods-StuCiety.debug.xcconfig"; sourceTree = "<group>"; };
 		528D73F364FF316DA6C7BAD8 /* Pods-StuCiety.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StuCiety.release.xcconfig"; path = "Target Support Files/Pods-StuCiety/Pods-StuCiety.release.xcconfig"; sourceTree = "<group>"; };
+		E528A80B267099370066F36D /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
+		E528A80D2670E3600066F36D /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		E528A80E2670E3600066F36D /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		E52F1E49266F486D00B46B7D /* Room.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Room.swift; sourceTree = "<group>"; };
 		E531DAD92605DE2800010B62 /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		E539D56726047E7700839E5A /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +164,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E524E15D2670EA84008F0F5A /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				E528A80B267099370066F36D /* SideMenuTableViewController.swift */,
+				E528A80D2670E3600066F36D /* SideMenuTableViewCell.swift */,
+			);
+			path = "Side Menu";
+			sourceTree = "<group>";
+		};
 		E52F1E4B266F544100B46B7D /* Table View Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +204,7 @@
 				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
 				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
 				E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */,
+				E528A80E2670E3600066F36D /* SideMenuTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -312,6 +328,7 @@
 		E5C5EB3E2625ACE900B78932 /* Lounge */ = {
 			isa = PBXGroup;
 			children = (
+				E524E15D2670EA84008F0F5A /* Side Menu */,
 				E52F1E4B266F544100B46B7D /* Table View Cell */,
 				E5F9F9582635AFAE0055C7D5 /* Collection View Cell */,
 				E539D56726047E7700839E5A /* HomeViewController.swift */,
@@ -429,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E54A51F726319ECF0003D110 /* AccountCollectionViewCell.xib in Resources */,
+				E528A8102670E3600066F36D /* SideMenuTableViewCell.xib in Resources */,
 				E5767A6D2602200100E851B2 /* LaunchScreen.storyboard in Resources */,
 				E53DB027266B412D00588F5A /* GoogleService-Info.plist in Resources */,
 				E54A51F326319A630003D110 /* QuestionnaireCollectionViewCell.xib in Resources */,
@@ -528,6 +546,8 @@
 				E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */,
 				E5579A8F263BC32000F1EE81 /* Student.swift in Sources */,
 				E59D1AE1263421200042EEED /* QuestionViewController.swift in Sources */,
+				E528A80F2670E3600066F36D /* SideMenuTableViewCell.swift in Sources */,
+				E528A80C267099380066F36D /* SideMenuTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
