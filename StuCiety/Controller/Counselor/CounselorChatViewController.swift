@@ -15,15 +15,17 @@ import IQKeyboardManagerSwift
 class CounselorChatViewController: MessagesViewController {
     
     var messages: [Message] = []
-    var counselor: Counselor?
+    var counselor: Counselor? {
+        didSet {
+            self.title = counselor?.displayName
+        }
+    }
     
     let db = Firestore.firestore()
     var currentUser: User = Auth.auth().currentUser!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = counselor?.displayName
         
         configureMessageCollectionView()
         configureMessageInputBar()
@@ -54,20 +56,6 @@ class CounselorChatViewController: MessagesViewController {
         messageInputBar.delegate = self
     }
     
-    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
-        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
-    }
-    
-    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
-        guard indexPath.section - 1 >= 0 else { return false }
-        return messages[indexPath.section].senderId == messages[indexPath.section - 1].senderId
-    }
-    
-    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
-        guard indexPath.section + 1 < messages.count else { return false }
-        return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
-    }
-    
     private func checkEmptyMessage() {
         if messages.isEmpty == true {
             if let counselor = counselor {
@@ -92,7 +80,7 @@ class CounselorChatViewController: MessagesViewController {
                     return try? QueryDocumentSnapshot.data(as: Message.self)
                 }
                 
-               checkEmptyMessage()
+                checkEmptyMessage()
                 
                 DispatchQueue.main.async {
                     self.messagesCollectionView.reloadData()
@@ -113,9 +101,30 @@ class CounselorChatViewController: MessagesViewController {
     }
 }
 
+//MARK: - Helpers
+
+extension CounselorChatViewController {
+    
+    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
+        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages[indexPath.section].senderId == messages[indexPath.section - 1].senderId
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages.count else { return false }
+        return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
+    }
+}
+
+
 //MARK: - MessagesDataSource
 
 extension CounselorChatViewController: MessagesDataSource {
+    
     func currentSender() -> SenderType {
         return Sender(senderId: currentUser.uid, displayName: currentUser.displayName ?? "Unknown")
     }

@@ -1386,7 +1386,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" title="Room" largeTitleDisplayMode="never" id="E1K-Qg-JMR">
-                        <barButtonItem key="rightBarButtonItem" title="User" id="W3O-4H-e3o">
+                        <barButtonItem key="rightBarButtonItem" title="User" image="person.circle" catalog="system" id="W3O-4H-e3o">
                             <connections>
                                 <action selector="userButtonPressed:" destination="YVg-S4-2ev" id="zKX-cw-8lI"/>
                             </connections>
@@ -1829,6 +1829,7 @@
         <image name="home" width="16.5" height="16.5"/>
         <image name="list" width="16.5" height="16.5"/>
         <image name="next" width="16.5" height="16.5"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="settings" width="16.5" height="16.5"/>
         <image name="stuciety_app_icon" width="166.5" height="166.5"/>
         <image name="user" width="16.5" height="16.5"/>

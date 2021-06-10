@@ -81,20 +81,6 @@ class ChatViewController: MessagesViewController {
         messageInputBar.delegate = self
     }
     
-    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
-        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
-    }
-    
-    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
-        guard indexPath.section - 1 >= 0 else { return false }
-        return messages[indexPath.section].senderId == messages[indexPath.section - 1].senderId
-    }
-    
-    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
-        guard indexPath.section + 1 < messages.count else { return false }
-        return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
-    }
-    
     private func loadUsers() {
         for (id, _) in users {
             db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
@@ -148,9 +134,29 @@ class ChatViewController: MessagesViewController {
     }
 }
 
+//MARK: - Helpers
+
+extension ChatViewController {
+    
+    func isTimeLabelVisible(at indexPath: IndexPath) -> Bool {
+        return indexPath.section % 3 == 0 && !isPreviousMessageSameSender(at: indexPath)
+    }
+    
+    func isPreviousMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section - 1 >= 0 else { return false }
+        return messages[indexPath.section].senderId == messages[indexPath.section - 1].senderId
+    }
+    
+    func isNextMessageSameSender(at indexPath: IndexPath) -> Bool {
+        guard indexPath.section + 1 < messages.count else { return false }
+        return messages[indexPath.section].senderId  == messages[indexPath.section + 1].senderId
+    }
+}
+
 //MARK: - MessagesDataSource
 
 extension ChatViewController: MessagesDataSource {
+    
     func currentSender() -> SenderType {
         return Sender(senderId: currentUser.uid, displayName: currentUser.displayName ?? "Unknown")
     }
@@ -171,8 +177,9 @@ extension ChatViewController: MessagesDataSource {
     }
     
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
+        let sender = message.sender
         if !isPreviousMessageSameSender(at: indexPath) {
-            return NSAttributedString(string: message.sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
+            return NSAttributedString(string: users[sender.senderId]?.firstObject ?? sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
         }
         return nil
     }
