@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AccountReusableCell" id="gTV-IL-0wX" customClass="AccountCollectionViewCell" customModule="Stuciety" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AccountReusableCell" id="gTV-IL-0wX" customClass="AccountCollectionViewCell" customModule="StuCiety" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="372" height="232"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -147,6 +147,7 @@
             <connections>
                 <outlet property="nameLabel" destination="J5Y-Je-d16" id="XWA-DU-8FJ"/>
                 <outlet property="profilePicture" destination="zyN-JS-ZMZ" id="41G-Oc-kao"/>
+                <outlet property="sideView" destination="gpp-in-Ngy" id="IQb-XV-bNW"/>
                 <outlet property="statusLabel" destination="r05-U0-f2F" id="lqi-Sw-cIq"/>
             </connections>
             <point key="canvasLocation" x="327.536231884058" y="200.22321428571428"/>

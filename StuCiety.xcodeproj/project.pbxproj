@@ -56,6 +56,7 @@
 		E5E0E4B4261DD5D9001F59CE /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */; };
 		E5E0EDA42632B15300D52230 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E0EDA32632B15300D52230 /* Questionnaire.swift */; };
 		E5E70FBF26381E0A00C8EB4D /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5E70FBE26381E0A00C8EB4D /* Sender.swift */; };
+		E5F9528F267225F3005F6FC9 /* UIImage+AverageColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9528E267225F3005F6FC9 /* UIImage+AverageColor.swift */; };
 		E5F9F94F2635A61E0055C7D5 /* CounselorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9F94D2635A61E0055C7D5 /* CounselorTableViewCell.swift */; };
 		E5F9F9502635A61E0055C7D5 /* CounselorTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */; };
 		E5F9F9562635AF5B0055C7D5 /* LoungeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5F9F9542635AF5A0055C7D5 /* LoungeCollectionViewCell.swift */; };
@@ -128,6 +129,7 @@
 		E5E0E4B3261DD5D9001F59CE /* AddPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		E5E0EDA32632B15300D52230 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		E5E70FBE26381E0A00C8EB4D /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		E5F9528E267225F3005F6FC9 /* UIImage+AverageColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+AverageColor.swift"; sourceTree = "<group>"; };
 		E5F9F94D2635A61E0055C7D5 /* CounselorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounselorTableViewCell.swift; sourceTree = "<group>"; };
 		E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CounselorTableViewCell.xib; sourceTree = "<group>"; };
 		E5F9F9542635AF5A0055C7D5 /* LoungeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoungeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 			children = (
 				E54A9B032602554000EFC6B8 /* Constants.swift */,
 				E5E70FBD263810DD00C8EB4D /* Custom UI */,
+				E579E6642672254200ABFDBC /* Extension */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -272,6 +275,14 @@
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = StuCiety;
+			sourceTree = "<group>";
+		};
+		E579E6642672254200ABFDBC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9528E267225F3005F6FC9 /* UIImage+AverageColor.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		E59F03032629647700E0E475 /* Animation */ = {
@@ -534,6 +545,7 @@
 				E5C5EB3B2625A7DC00B78932 /* CounselorDetailsViewController.swift in Sources */,
 				E57E4D5C261B19FD00C8EFCA /* ChatViewController.swift in Sources */,
 				E574929C260EFAA60094670E /* LoungeTableViewCell.swift in Sources */,
+				E5F9528F267225F3005F6FC9 /* UIImage+AverageColor.swift in Sources */,
 				E5767A6326021FFB00E851B2 /* SceneDelegate.swift in Sources */,
 				E59D9FEE263D72A500F48244 /* Info.swift in Sources */,
 				E5E099DE261894EC004CFE69 /* SettingsViewController.swift in Sources */,
