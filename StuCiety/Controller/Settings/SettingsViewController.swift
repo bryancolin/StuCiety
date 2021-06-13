@@ -21,7 +21,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -90,15 +89,16 @@ extension SettingsViewController: UITableViewDataSource {
 extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
         
-        switch indexPath.row {
-        case 0:
-            self.performSegue(withIdentifier: K.Segue.account, sender: self)
-        case 2:
+        switch cell?.textLabel?.text {
+        case "Account":
+            performSegue(withIdentifier: K.Segue.account, sender: self)
+        case "About":
             showAbout()
-        case 3:
-            self.performSegue(withIdentifier: K.Segue.info, sender: self)
-        case 7:
+        case "Additional Info":
+            performSegue(withIdentifier: K.Segue.info, sender: self)
+        case "Sign Out":
             signOut()
         default:
             return
