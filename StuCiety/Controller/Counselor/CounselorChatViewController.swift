@@ -76,8 +76,8 @@ class CounselorChatViewController: MessagesViewController {
                 guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
                 guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
                 
-                messages = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Message? in
-                    return try? QueryDocumentSnapshot.data(as: Message.self)
+                messages = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Message? in
+                    return try? queryDocumentSnapshot.data(as: Message.self)
                 }
                 
                 checkEmptyMessage()

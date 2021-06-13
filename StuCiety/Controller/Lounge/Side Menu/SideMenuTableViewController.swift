@@ -12,7 +12,7 @@ import SideMenu
 class SideMenuTableViewController: UITableViewController {
     
     var usersId = [String]()
-    typealias tuple = (firstObject: String, secondObject: String)
+    typealias tuple = (displayName: String, photoURL: String)
     var users = [String: tuple]() {
         didSet {
             usersId = Array(users.keys)
@@ -37,7 +37,7 @@ class SideMenuTableViewController: UITableViewController {
             fatalError("Unable to create side menu table view cell")
         }
         let key = usersId[indexPath.row]
-        cell.configure(name: users[key]?.firstObject ?? "", photoURL: users[key]?.secondObject ?? "")
+        cell.configure(name: users[key]?.displayName ?? "", photoURL: users[key]?.photoURL ?? "")
         
         return cell
     }

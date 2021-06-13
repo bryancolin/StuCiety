@@ -21,7 +21,7 @@ class ChatViewController: MessagesViewController {
     }
     
     var messages: [Message] = []
-    typealias tuple = (firstObject: String, secondObject: String)
+    typealias tuple = (displayName: String, photoURL: String)
     var users = [String: tuple]()
     
     let db = Firestore.firestore()
@@ -81,21 +81,31 @@ class ChatViewController: MessagesViewController {
         messageInputBar.delegate = self
     }
     
+    private func reloadTable() {
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+            self.messagesCollectionView.scrollToLastItem()
+        }
+    }
+    
     private func loadUsers() {
-        for (id, _) in users {
-            db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
-                guard let document = document, document.exists,
-                      let displayName = document.get(K.FStore.Student.name) as? String,
-                      let photoURL = document.get(K.FStore.Student.photoURL) as? String
-                else { return print("Document does not exist") }
-                
-                users[id] = tuple(firstObject: displayName, secondObject: photoURL)
-                
-                DispatchQueue.main.async {
-                    self.messagesCollectionView.reloadData()
-                    self.messagesCollectionView.scrollToLastItem()
+        let filteredUsers = users.filter { $0.value.photoURL == "" }
+        
+        if !filteredUsers.isEmpty {
+            for (id, _) in filteredUsers {
+                db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
+                    guard let document = document, document.exists,
+                          let displayName = document.get(K.FStore.Student.name) as? String,
+                          let photoURL = document.get(K.FStore.Student.photoURL) as? String
+                    else { return print("Document does not exist") }
+                    
+                    users[id] = tuple(displayName: displayName, photoURL: photoURL)
+                    
+                    reloadTable()
                 }
             }
+        } else {
+            reloadTable()
         }
     }
     
@@ -108,13 +118,13 @@ class ChatViewController: MessagesViewController {
                 guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
                 guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
                 
-                messages = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Message? in
-                    return try? QueryDocumentSnapshot.data(as: Message.self)
+                messages = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Message? in
+                    return try? queryDocumentSnapshot.data(as: Message.self)
                 }
                 
                 for message in messages {
                     if users[message.senderId] == nil {
-                        users[message.senderId] = tuple(firstObject: message.senderName, secondObject: "")
+                        users[message.senderId] = tuple(displayName: message.senderName, photoURL: "")
                     }
                 }
                 
@@ -179,7 +189,7 @@ extension ChatViewController: MessagesDataSource {
     func messageTopLabelAttributedText(for message: MessageType, at indexPath: IndexPath) -> NSAttributedString? {
         let sender = message.sender
         if !isPreviousMessageSameSender(at: indexPath) {
-            return NSAttributedString(string: users[sender.senderId]?.firstObject ?? sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
+            return NSAttributedString(string: users[sender.senderId]?.displayName ?? sender.displayName, attributes: [.font: UIFont.systemFont(ofSize: 11)])
         }
         return nil
     }
@@ -199,7 +209,7 @@ extension ChatViewController: MessagesDataSource {
 extension ChatViewController: MessagesLayoutDelegate {
     
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
-        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId]?.secondObject ?? ""), placeholderImage: #imageLiteral(resourceName: "stuciety_app_icon"))
+        avatarView.sd_setImage(with: URL(string: users[message.sender.senderId]?.photoURL ?? ""), placeholderImage: #imageLiteral(resourceName: "stuciety_app_icon"))
         avatarView.isHidden = isNextMessageSameSender(at: indexPath)
     }
     

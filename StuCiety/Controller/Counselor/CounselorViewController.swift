@@ -48,8 +48,8 @@ class CounselorViewController: UIViewController {
             guard err == nil else { return print("Error getting documents") }
             guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
             
-            counselors = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Counselor? in
-                return try? QueryDocumentSnapshot.data(as: Counselor.self)
+            counselors = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Counselor? in
+                return try? queryDocumentSnapshot.data(as: Counselor.self)
             }
             
             tableView.reloadData()

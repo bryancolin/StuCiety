@@ -72,8 +72,8 @@ class QuestionHomeViewController: UIViewController {
                     guard error == nil else { return print("Error getting documents") }
                     guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
                     
-                    questionnaire?.question = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Question? in
-                        return try? QueryDocumentSnapshot.data(as: Question.self)
+                    questionnaire?.question = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Question? in
+                        return try? queryDocumentSnapshot.data(as: Question.self)
                     }
                 }
             }

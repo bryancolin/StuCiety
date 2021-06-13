@@ -85,7 +85,9 @@ class HomeViewController: UIViewController {
         structureRooms.append(general)
         structureRooms.append(subjects)
         
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 
