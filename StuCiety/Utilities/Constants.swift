@@ -44,7 +44,7 @@ struct K {
         }
     }
     
-    struct QuestionnaireCollection {
+    struct Questionnaire {
         static let cell1Identifier = "AccountReusableCell"
         static let cell2Identifier = "QuestionnaireReusableCell"
         
@@ -110,7 +110,7 @@ struct K {
 
         struct Questionnaire {
             static let collectionName = "questionnaires"
-            static let childCollectionName = "question"
+            static let childCollectionName = "questions"
             
             struct Child {
                 static let text = "text"

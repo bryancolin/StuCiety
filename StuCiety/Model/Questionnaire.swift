@@ -13,7 +13,7 @@ struct Questionnaire {
     var title: String
     var description: String
     var createdBy: String
-    var question: [Question]
+    var questions: [Question]
 }
 
 extension Questionnaire {
@@ -24,6 +24,6 @@ extension Questionnaire {
               let createdBy = dictionaryField[K.FStore.Questionnaire.createdBy] as? String
               else { return nil }
         
-        self.init(id: uid, title: title, description: description, createdBy: createdBy, question: questions)
+        self.init(id: uid, title: title, description: description, createdBy: createdBy, questions: questions)
     }
 }

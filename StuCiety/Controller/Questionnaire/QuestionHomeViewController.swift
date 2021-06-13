@@ -32,7 +32,7 @@ class QuestionHomeViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.QuestionnaireCollection.Segue.question {
+        if segue.identifier == K.Questionnaire.Segue.question {
             if let destinationVC = segue.destination as? QuestionViewController {
                 destinationVC.questionnaire = questionnaire
             }
@@ -48,7 +48,7 @@ class QuestionHomeViewController: UIViewController {
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         if !complete {
-            self.performSegue(withIdentifier: K.QuestionnaireCollection.Segue.question, sender: self)
+            self.performSegue(withIdentifier: K.Questionnaire.Segue.question, sender: self)
         } else {
             saveResult()
             
@@ -72,7 +72,7 @@ class QuestionHomeViewController: UIViewController {
                     guard error == nil else { return print("Error getting documents") }
                     guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
                     
-                    questionnaire?.question = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Question? in
+                    questionnaire?.questions = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Question? in
                         return try? queryDocumentSnapshot.data(as: Question.self)
                     }
                 }
@@ -99,7 +99,7 @@ class QuestionHomeViewController: UIViewController {
             ]) { error in
                 guard error == nil else { return print("Error getting documents") }
                 
-                for question in questionnaire.question {
+                for question in questionnaire.questions {
                     do {
                         let _ = try dbRef.collection(K.FStore.Questionnaire.childCollectionName).document(question.id ?? "-1").setData(from: question)
                         print("Document successfully written!")

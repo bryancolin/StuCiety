@@ -29,7 +29,7 @@ class QuestionViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.QuestionnaireCollection.Segue.finish {
+        if segue.identifier == K.Questionnaire.Segue.finish {
             if let destinationVC = segue.destination as? QuestionHomeViewController {
                 destinationVC.questionnaire = questionnaire
                 destinationVC.complete = true
@@ -49,9 +49,9 @@ class QuestionViewController: UIViewController {
     
     func updateUI() {
         if let questionnaire = questionnaire {
-            questionNumberLabel.text = "\(questionCount + 1) of \(questionnaire.question.count)"
-            questionLabel.text = questionnaire.question[questionCount].text
-            answerTextView.text = questionnaire.question[questionCount].answer
+            questionNumberLabel.text = "\(questionCount + 1) of \(questionnaire.questions.count)"
+            questionLabel.text = questionnaire.questions[questionCount].text
+            answerTextView.text = questionnaire.questions[questionCount].answer
             
             backButton.isHidden = questionCount == 0 ? true : false
         }
@@ -70,10 +70,10 @@ extension QuestionViewController {
     @IBAction func nextQuestion(_ sender: UIButton) {
         answerTextView.endEditing(true)
         questionCount += 1
-        if questionCount < (questionnaire?.question.count)! {
+        if questionCount < (questionnaire?.questions.count)! {
             updateUI()
         } else {
-            self.performSegue(withIdentifier: K.QuestionnaireCollection.Segue.finish, sender: self)
+            self.performSegue(withIdentifier: K.Questionnaire.Segue.finish, sender: self)
         }
     }
 }
@@ -83,8 +83,8 @@ extension QuestionViewController {
 extension QuestionViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if questionCount < (questionnaire?.question.count)! {
-            questionnaire?.question[questionCount].answer = textView.text ?? ""
+        if questionCount < (questionnaire?.questions.count)! {
+            questionnaire?.questions[questionCount].answer = textView.text ?? ""
         }
     }
 }

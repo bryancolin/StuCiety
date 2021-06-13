@@ -23,8 +23,8 @@ class QuestionnaireViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell1Identifier)
-        collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.QuestionnaireCollection.cell2Identifier)
+        collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Questionnaire.cell1Identifier)
+        collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Questionnaire.cell2Identifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         
@@ -54,7 +54,7 @@ class QuestionnaireViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.QuestionnaireCollection.Segue.start {
+        if segue.identifier == K.Questionnaire.Segue.start {
             if let destinationVC = segue.destination as? QuestionHomeViewController {
                 destinationVC.questionnaire = questionnaires[selectedQuestionnaire - 1]
                 destinationVC.complete = false
@@ -111,7 +111,7 @@ extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
     }
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
-        return indexPath.row == 0 ? K.QuestionnaireCollection.cell1Identifier : K.QuestionnaireCollection.cell2Identifier
+        return indexPath.row == 0 ? K.Questionnaire.cell1Identifier : K.Questionnaire.cell2Identifier
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,13 +120,13 @@ extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell1Identifier, for: indexPath) as? AccountCollectionViewCell else {
+            guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: K.Questionnaire.cell1Identifier, for: indexPath) as? AccountCollectionViewCell else {
                 fatalError("Unable to create account collection view cell")
             }
             cell1.configure()
             return cell1
         } else {
-            guard let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.QuestionnaireCollection.cell2Identifier, for: indexPath) as? QuestionnaireCollectionViewCell else {
+            guard let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.Questionnaire.cell2Identifier, for: indexPath) as? QuestionnaireCollectionViewCell else {
                 fatalError("Unable to create questionnaire collection view cell")
             }
             let questionnaire = questionnaires[indexPath.row - 1]
@@ -145,7 +145,7 @@ extension QuestionnaireViewController: UICollectionViewDelegate {
             self.performSegue(withIdentifier: K.Segue.account, sender: self)
         } else {
             selectedQuestionnaire = indexPath.row
-            self.performSegue(withIdentifier: K.QuestionnaireCollection.Segue.start, sender: self)
+            self.performSegue(withIdentifier: K.Questionnaire.Segue.start, sender: self)
         }
     }
 }
