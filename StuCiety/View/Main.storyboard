@@ -975,24 +975,24 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-v5-cXA">
                                                     <rect key="frame" x="20" y="11" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.3411764706" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" name="BrandPurple"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-nz-w6c">
-                                                    <rect key="frame" x="20" y="40" width="394" height="210"/>
+                                                    <rect key="frame" x="0.0" y="40" width="414" height="210"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="91O-1q-phG">
                                                         <size key="itemSize" width="191" height="165"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="sectionInset" minX="20" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoungeCollectionReusableCell" id="czY-s1-7iH" customClass="LoungeCollectionViewCell1" customModule="StuCiety" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="5" width="200" height="200"/>
+                                                            <rect key="frame" x="20" y="5" width="200" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="umW-xm-1z2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -1028,7 +1028,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="HHs-nz-w6c" secondAttribute="trailing" id="Xqu-3V-Ikl"/>
-                                                <constraint firstItem="HHs-nz-w6c" firstAttribute="leading" secondItem="8JU-O3-AjB" secondAttribute="leading" constant="20" symbolic="YES" id="aEk-7c-k8W"/>
+                                                <constraint firstItem="HHs-nz-w6c" firstAttribute="leading" secondItem="8JU-O3-AjB" secondAttribute="leading" id="aEk-7c-k8W"/>
                                                 <constraint firstItem="rbK-v5-cXA" firstAttribute="top" secondItem="8JU-O3-AjB" secondAttribute="topMargin" id="b6i-aa-yAF"/>
                                                 <constraint firstItem="rbK-v5-cXA" firstAttribute="leading" secondItem="8JU-O3-AjB" secondAttribute="leadingMargin" id="dWW-NU-d0G"/>
                                                 <constraint firstAttribute="bottom" secondItem="HHs-nz-w6c" secondAttribute="bottom" id="wAo-Tx-8tc"/>
