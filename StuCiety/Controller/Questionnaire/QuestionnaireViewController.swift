@@ -13,12 +13,12 @@ class QuestionnaireViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let db = Firestore.firestore()
-    var currentUser: User? = Auth.auth().currentUser
+    private let db = Firestore.firestore()
+    private var currentUser: User? = Auth.auth().currentUser
     
-    var questionnaires: [Questionnaire] = []
-    var questionnairesCompletion = [String: Bool]()
-    var selectedQuestionnaire = 0
+    private var questionnaires: [Questionnaire] = []
+    private var questionnairesCompletion = [String: Bool]()
+    private var selectedQuestionnaire = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +56,17 @@ class QuestionnaireViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == K.Questionnaire.Segue.start {
             if let destinationVC = segue.destination as? QuestionHomeViewController {
-                destinationVC.questionnaire = questionnaires[selectedQuestionnaire - 1]
-                destinationVC.complete = false
+                let questionnaire = questionnaires[selectedQuestionnaire - 1]
+                destinationVC.questionnaire = questionnaire
+                destinationVC.previousAnswers = questionnairesCompletion[questionnaire.id] ?? false
             }
         }
     }
     
     func loadQuestionnaires() {
         db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").addSnapshotListener {[self] (document, error) in
+            questionnaires = []
+            
             guard let document = document, document.exists, let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String: Bool] else { return print("Document does not exist") }
             
             for (id, complete) in questionnairesId {
@@ -142,10 +145,10 @@ extension QuestionnaireViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            self.performSegue(withIdentifier: K.Segue.account, sender: self)
+            performSegue(withIdentifier: K.Segue.account, sender: self)
         } else {
             selectedQuestionnaire = indexPath.row
-            self.performSegue(withIdentifier: K.Questionnaire.Segue.start, sender: self)
+            performSegue(withIdentifier: K.Questionnaire.Segue.start, sender: self)
         }
     }
 }

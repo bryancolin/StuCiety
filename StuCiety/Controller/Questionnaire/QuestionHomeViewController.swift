@@ -14,18 +14,19 @@ class QuestionHomeViewController: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var buttonLabel: UIButton!
     
-    let db = Firestore.firestore()
-    var currentUser: User? = Auth.auth().currentUser
+    private let db = Firestore.firestore()
+    private var currentUser: User? = Auth.auth().currentUser
     
     var questionnaire: Questionnaire?
-    var complete: Bool = false
+    var previousAnswers: Bool = false
+    var questionsAnswered: Bool = false
     var completionText = "Thank you for your time filling in the questionnaire, we will update your result and notify the counselor."
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = !complete ? "Start" : "Finish"
-        self.navigationItem.setHidesBackButton(complete, animated: true)
+        self.title = !questionsAnswered ? "Start" : "Finish"
+        self.navigationItem.setHidesBackButton(questionsAnswered, animated: true)
         updateUI()
         
         loadPreviousAnswer()
@@ -41,14 +42,14 @@ class QuestionHomeViewController: UIViewController {
     
     func updateUI() {
         if let questionnaire = questionnaire {
-            descriptionLabel.text = !complete ? questionnaire.description : completionText
-            buttonLabel.setTitle(!complete ? "Start" : "Complete", for: .normal)
+            descriptionLabel.text = !questionsAnswered ? questionnaire.description : completionText
+            buttonLabel.setTitle(!questionsAnswered ? "Start" : "Complete", for: .normal)
         }
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        if !complete {
-            self.performSegue(withIdentifier: K.Questionnaire.Segue.question, sender: self)
+        if !questionsAnswered {
+            performSegue(withIdentifier: K.Questionnaire.Segue.question, sender: self)
         } else {
             saveResult()
             
@@ -62,7 +63,7 @@ class QuestionHomeViewController: UIViewController {
     }
     
     func loadPreviousAnswer() {
-        if let user = currentUser, !complete {
+        if let user = currentUser, previousAnswers && !questionsAnswered {
             let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire?.id ?? "-1")
             
             dbRef.getDocument {[self] (document, error) in
@@ -84,7 +85,7 @@ class QuestionHomeViewController: UIViewController {
         if let user = currentUser, let questionnaire = questionnaire {
             
             db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "0").updateData([
-                K.FStore.Student.questionnaires: [ questionnaire.id: complete ]
+                K.FStore.Student.questionnaires: [ questionnaire.id: questionsAnswered ]
             ]) { error in
                 guard error == nil else { return ProgressHUD.showFailed("Error saving user result") }
             }

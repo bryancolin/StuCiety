@@ -16,7 +16,7 @@ class QuestionViewController: UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     
     var questionnaire: Questionnaire?
-    var questionCount = 0
+    private var questionCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class QuestionViewController: UIViewController {
         if segue.identifier == K.Questionnaire.Segue.finish {
             if let destinationVC = segue.destination as? QuestionHomeViewController {
                 destinationVC.questionnaire = questionnaire
-                destinationVC.complete = true
+                destinationVC.questionsAnswered = true
             }
         }
     }
@@ -73,7 +73,7 @@ extension QuestionViewController {
         if questionCount < (questionnaire?.questions.count)! {
             updateUI()
         } else {
-            self.performSegue(withIdentifier: K.Questionnaire.Segue.finish, sender: self)
+            performSegue(withIdentifier: K.Questionnaire.Segue.finish, sender: self)
         }
     }
 }
