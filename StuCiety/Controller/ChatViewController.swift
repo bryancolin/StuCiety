@@ -20,14 +20,12 @@ class ChatViewController: MessagesViewController {
         }
     }
     
-    var messages: [Message] = []
-    typealias tuple = (displayName: String, photoURL: String)
-    var users = [String: tuple]()
+    typealias tuple = (displayName: String, photoURL: String, exists: Bool)
+    private var users = [String: tuple]()
+    private var messages: [Message] = []
     
-    let db = Firestore.firestore()
-    var currentUser: User = Auth.auth().currentUser!
-    
-    var menu: SideMenuNavigationController?
+    private let db = Firestore.firestore()
+    private var currentUser: User = Auth.auth().currentUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,17 +87,22 @@ class ChatViewController: MessagesViewController {
     }
     
     private func loadUsers() {
-        let filteredUsers = users.filter { $0.value.photoURL == "" }
+        let filteredUsers = users.filter { ($0.value.photoURL == "" && $0.value.exists )}
         
         if !filteredUsers.isEmpty {
             for (id, _) in filteredUsers {
                 db.collection(K.FStore.Student.collectionName).document(id).getDocument { [self] (document, error) in
-                    guard let document = document, document.exists,
-                          let displayName = document.get(K.FStore.Student.name) as? String,
-                          let photoURL = document.get(K.FStore.Student.photoURL) as? String
-                    else { return print("Document does not exist") }
+                    guard let document = document, document.exists else {
+                        users[id]?.exists = false
+                        reloadTable()
+                        print("Document does not exist")
+                        return
+                    }
                     
-                    users[id] = tuple(displayName: displayName, photoURL: photoURL)
+                    guard let displayName = document.get(K.FStore.Student.name) as? String,
+                          let photoURL = document.get(K.FStore.Student.photoURL) as? String else { return }
+                    
+                    users[id] = tuple(displayName: displayName, photoURL: photoURL, exists: true)
                     
                     reloadTable()
                 }
@@ -113,19 +116,16 @@ class ChatViewController: MessagesViewController {
         db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased()).collection(K.FStore.Message.childCollectionName)
             .order(by: K.FStore.Message.dateField, descending: false)
             .addSnapshotListener { [self] (querySnapshot, error) in
-                messages = []
                 
                 guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
                 guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
                 
                 messages = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Message? in
-                    return try? queryDocumentSnapshot.data(as: Message.self)
-                }
-                
-                for message in messages {
+                    guard let message = try? queryDocumentSnapshot.data(as: Message.self) else { fatalError() }
                     if users[message.senderId] == nil {
-                        users[message.senderId] = tuple(displayName: message.senderName, photoURL: "")
+                        users[message.senderId] = tuple(displayName: message.senderName, photoURL: "", exists: true)
                     }
+                    return message
                 }
                 
                 DispatchQueue.main.async {

@@ -14,15 +14,16 @@ import IQKeyboardManagerSwift
 
 class CounselorChatViewController: MessagesViewController {
     
-    var messages: [Message] = []
     var counselor: Counselor? {
         didSet {
             self.title = counselor?.displayName
         }
     }
     
-    let db = Firestore.firestore()
-    var currentUser: User = Auth.auth().currentUser!
+    private var messages: [Message] = []
+    
+    private let db = Firestore.firestore()
+    private var currentUser: User = Auth.auth().currentUser!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +72,6 @@ class CounselorChatViewController: MessagesViewController {
             .collection(K.FStore.Counselor.secondChildCollectionName)
             .order(by: K.FStore.Message.dateField, descending: false)
             .addSnapshotListener { [self] (querySnapshot, error) in
-                messages = []
                 
                 guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
                 guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }

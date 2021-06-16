@@ -12,7 +12,7 @@ import SideMenu
 class SideMenuTableViewController: UITableViewController {
     
     var usersId = [String]()
-    typealias tuple = (displayName: String, photoURL: String)
+    typealias tuple = (displayName: String, photoURL: String, exists: Bool)
     var users = [String: tuple]() {
         didSet {
             usersId = Array(users.keys)
