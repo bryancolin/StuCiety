@@ -201,12 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				E5454D8A26022ABB00A14DE6 /* Main.storyboard */,
-				E5F9F9552635AF5A0055C7D5 /* LoungeCollectionViewCell.xib */,
-				E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */,
-				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
-				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
-				E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */,
-				E528A80E2670E3600066F36D /* SideMenuTableViewCell.xib */,
+				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
+				E58D2B2C267B0DF00068C63F /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -232,6 +228,7 @@
 		E574929F260EFCC80094670E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E59F03032629647700E0E475 /* Animation */,
 				E5579A8E263BC31F00F1EE81 /* Student.swift */,
 				E5C5EB382625A3AE00B78932 /* Counselor.swift */,
 				E52F1E49266F486D00B46B7D /* Room.swift */,
@@ -266,12 +263,11 @@
 		E5767A5F26021FFB00E851B2 /* StuCiety */ = {
 			isa = PBXGroup;
 			children = (
-				E59F03032629647700E0E475 /* Animation */,
+				E5DAE5662629C6EE00266FBE /* App */,
 				E574929F260EFCC80094670E /* Model */,
 				E5454D7326022A1900A14DE6 /* View */,
 				E5454D7226022A0700A14DE6 /* Controller */,
-				E5767A692602200100E851B2 /* Assets.xcassets */,
-				E5DAE5662629C6EE00266FBE /* App */,
+				E58D2B2B267B0BFB0068C63F /* Resources */,
 				E5454D7C26022A7E00A14DE6 /* Utilities */,
 			);
 			path = StuCiety;
@@ -283,6 +279,27 @@
 				E5F9528E267225F3005F6FC9 /* UIImage+AverageColor.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		E58D2B2B267B0BFB0068C63F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E5767A692602200100E851B2 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E58D2B2C267B0DF00068C63F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E5F9F9552635AF5A0055C7D5 /* LoungeCollectionViewCell.xib */,
+				E5F9F94E2635A61E0055C7D5 /* CounselorTableViewCell.xib */,
+				E54A51F126319A630003D110 /* QuestionnaireCollectionViewCell.xib */,
+				E54A51F526319ECE0003D110 /* AccountCollectionViewCell.xib */,
+				E5609BA5263D68830003E4C3 /* InfoTableViewCell.xib */,
+				E528A80E2670E3600066F36D /* SideMenuTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		E59F03032629647700E0E475 /* Animation */ = {
@@ -352,7 +369,6 @@
 			children = (
 				E5767A6026021FFB00E851B2 /* AppDelegate.swift */,
 				E5767A6226021FFB00E851B2 /* SceneDelegate.swift */,
-				E5767A6B2602200100E851B2 /* LaunchScreen.storyboard */,
 				E53DB026266B412D00588F5A /* GoogleService-Info.plist */,
 				E5767A6E2602200100E851B2 /* Info.plist */,
 			);

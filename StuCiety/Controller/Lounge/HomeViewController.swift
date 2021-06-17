@@ -125,7 +125,7 @@ extension HomeViewController: TableViewInsideCollectionViewDelegate {
     
     func cellTaped(room: Room?) {
         selectedRoom = room
-        self.performSegue(withIdentifier: K.Segue.chat, sender: self)
+        performSegue(withIdentifier: K.Segue.chat, sender: self)
     }
 }
 

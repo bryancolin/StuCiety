@@ -79,7 +79,7 @@ extension CounselorViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedCounselor = counselors[indexPath.row]
-        self.performSegue(withIdentifier: K.Counselor.Segue.details, sender: self)
+        performSegue(withIdentifier: K.Counselor.Segue.details, sender: self)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

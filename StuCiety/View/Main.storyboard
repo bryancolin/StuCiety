@@ -973,7 +973,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-v5-cXA">
-                                                    <rect key="frame" x="20" y="11" width="42" height="21"/>
+                                                    <rect key="frame" x="20" y="11" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" name="BrandPurple"/>
                                                     <nil key="highlightedColor"/>
@@ -982,7 +982,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-nz-w6c">
-                                                    <rect key="frame" x="0.0" y="40" width="414" height="210"/>
+                                                    <rect key="frame" x="0.0" y="36" width="414" height="214"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="91O-1q-phG">
                                                         <size key="itemSize" width="191" height="165"/>
@@ -992,7 +992,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoungeCollectionReusableCell" id="czY-s1-7iH" customClass="LoungeCollectionViewCell1" customModule="StuCiety" customModuleProvider="target">
-                                                            <rect key="frame" x="20" y="5" width="200" height="200"/>
+                                                            <rect key="frame" x="20" y="7" width="200" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="umW-xm-1z2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -1030,9 +1030,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="HHs-nz-w6c" secondAttribute="trailing" id="Xqu-3V-Ikl"/>
                                                 <constraint firstItem="HHs-nz-w6c" firstAttribute="leading" secondItem="8JU-O3-AjB" secondAttribute="leading" id="aEk-7c-k8W"/>
                                                 <constraint firstItem="rbK-v5-cXA" firstAttribute="top" secondItem="8JU-O3-AjB" secondAttribute="topMargin" id="b6i-aa-yAF"/>
+                                                <constraint firstItem="HHs-nz-w6c" firstAttribute="top" secondItem="rbK-v5-cXA" secondAttribute="bottom" constant="4.5" id="dFd-6n-t6L"/>
                                                 <constraint firstItem="rbK-v5-cXA" firstAttribute="leading" secondItem="8JU-O3-AjB" secondAttribute="leadingMargin" id="dWW-NU-d0G"/>
                                                 <constraint firstAttribute="bottom" secondItem="HHs-nz-w6c" secondAttribute="bottom" id="wAo-Tx-8tc"/>
-                                                <constraint firstItem="HHs-nz-w6c" firstAttribute="top" secondItem="rbK-v5-cXA" secondAttribute="bottom" constant="8" symbolic="YES" id="xeF-xG-ZHE"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>

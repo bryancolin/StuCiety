@@ -45,6 +45,6 @@ class CounselorDetailsViewController: UIViewController {
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier: K.Counselor.Segue.chat, sender: self)
+        performSegue(withIdentifier: K.Counselor.Segue.chat, sender: self)
     }
 }
