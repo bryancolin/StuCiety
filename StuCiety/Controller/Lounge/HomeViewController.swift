@@ -14,7 +14,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private let db = Firestore.firestore()
-    private var structureRooms: [[Room]] = [[Room]]()
+
+    private var categorizeRooms = [String: [Room]]()
+    private var roomKeys = [String]()
     private var selectedRoom: Room?
     
     override func viewDidLoad() {
@@ -35,7 +37,7 @@ class HomeViewController: UIViewController {
         
         tableView.isSkeletonable = true
         
-        if structureRooms.isEmpty {
+        if !categorizeRooms.isEmpty {
             tableView.showAnimatedGradientSkeleton(usingGradient: K.gradient)
         }
         
@@ -62,31 +64,13 @@ class HomeViewController: UIViewController {
             rooms = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Room? in
                 return try? QueryDocumentSnapshot.data(as: Room.self)
             }
+
+            categorizeRooms = Dictionary(grouping: rooms, by: { $0.category })
+            roomKeys = Array(categorizeRooms.keys.sorted())
             
-            categorizing(rooms)
-        }
-    }
-    
-    private func categorizing(_ rooms: [Room]) {
-        var general: [Room] = []
-        var subjects: [Room] = []
-        
-        for room in rooms {
-            switch room.category {
-            case "General":
-                general.append(room)
-            case "Subjects":
-                subjects.append(room)
-            default:
-                return
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
             }
-        }
-        
-        structureRooms.append(general)
-        structureRooms.append(subjects)
-        
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
         }
     }
 }
@@ -96,16 +80,16 @@ class HomeViewController: UIViewController {
 extension HomeViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return structureRooms.count
+        return categorizeRooms.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: K.Lounge.cellIdentifier, for: indexPath) as? LoungeTableViewCell else {
             fatalError("Unable to create room table view cell")
         }
-        let rooms = structureRooms[indexPath.row]
-        cell.rooms = rooms
-        cell.category = rooms[0].category
+        let key = roomKeys[indexPath.row]
+        cell.category = key
+        cell.rooms = categorizeRooms[key]
         cell.delegate = self
         
         return cell
@@ -120,6 +104,8 @@ extension HomeViewController: UITableViewDelegate {
         return 250
     }
 }
+
+//MARK: - TableViewInsideCollectionViewDelegate
 
 extension HomeViewController: TableViewInsideCollectionViewDelegate {
     
