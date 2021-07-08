@@ -11,7 +11,17 @@ import SkeletonView
 
 class QuestionnaireViewController: UIViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.isSkeletonable = true
+            
+            collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Questionnaire.cell1Identifier)
+            collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Questionnaire.cell2Identifier)
+            
+            collectionView.dataSource = self
+            collectionView.delegate = self
+        }
+    }
     
     private let db = Firestore.firestore()
     private var currentUser: User? = Auth.auth().currentUser
@@ -23,23 +33,11 @@ class QuestionnaireViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.register(UINib(nibName: "AccountCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Questionnaire.cell1Identifier)
-        collectionView.register(UINib(nibName: "QuestionnaireCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Questionnaire.cell2Identifier)
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        loadQuestionnaires()
         
-        DispatchQueue.global().async {
-            DispatchQueue.main.async { [self] in
-                loadQuestionnaires()
-            }
-        }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        collectionView.isSkeletonable = true
-        collectionView.showAnimatedGradientSkeleton(usingGradient: K.gradient)
+        collectionView.prepareSkeleton(completion: { done in
+            self.collectionView.showAnimatedGradientSkeleton(usingGradient: K.gradient)
+        })
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
             collectionView.hideSkeleton(transition: .crossDissolve(0.25))
@@ -93,7 +91,6 @@ class QuestionnaireViewController: UIViewController {
                             questionnaires.append(questionnaire)
                         }
                         
-                        collectionView.hideSkeleton(transition: .crossDissolve(0.25))
                         collectionView.reloadData()
                     }
                 }
@@ -105,9 +102,6 @@ class QuestionnaireViewController: UIViewController {
 //MARK: - SkeletonCollectionViewDataSource
 
 extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
-    func numSections(in collectionSkeletonView: UICollectionView) -> Int {
-        return 1
-    }
     
     func collectionSkeletonView(_ skeletonView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1 + questionnaires.count
@@ -116,6 +110,35 @@ extension QuestionnaireViewController: SkeletonCollectionViewDataSource {
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> ReusableCellIdentifier {
         return indexPath.row == 0 ? K.Questionnaire.cell1Identifier : K.Questionnaire.cell2Identifier
     }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, skeletonCellForItemAt indexPath: IndexPath) -> UICollectionViewCell? {
+        if indexPath.row == 0 {
+            guard let cell1 = collectionView.dequeueReusableCell(withReuseIdentifier: K.Questionnaire.cell1Identifier, for: indexPath) as? AccountCollectionViewCell else {
+                fatalError("Unable to create account collection view cell")
+            }
+            cell1.configure()
+            return cell1
+        } else {
+            guard let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: K.Questionnaire.cell2Identifier, for: indexPath) as? QuestionnaireCollectionViewCell else {
+                fatalError("Unable to create questionnaire collection view cell")
+            }
+            let questionnaire = questionnaires[indexPath.row - 1]
+            cell2.configure(name: questionnaire.title, complete: questionnairesCompletion[questionnaire.id] ?? false)
+            return cell2
+        }
+    }
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, prepareCellForSkeleton cell: UICollectionViewCell, at indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            let cell = cell as? AccountCollectionViewCell
+            cell?.isSkeletonable = true
+        } else {
+            let cell = cell as? QuestionnaireCollectionViewCell
+            cell?.isSkeletonable = true
+        }
+    }
+    
+    //MARK: - UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 1 + questionnaires.count
