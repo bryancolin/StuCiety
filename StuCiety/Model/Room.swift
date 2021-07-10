@@ -11,8 +11,13 @@ import FirebaseFirestoreSwift
 struct Room: Identifiable, Codable {
     @DocumentID var id: String?
     var name: String
-    var category: String
+    var category: Category
     var photoURL: String
+    
+    enum Category: String, Codable {
+        case general
+        case subjects
+    }
     
     enum CodingKeys: String, CodingKey {
         case name

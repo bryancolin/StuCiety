@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol TableViewInsideCollectionViewDelegate {
-    func cellTaped(room: Room?)
-}
-
 class LoungeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -42,7 +38,7 @@ class LoungeTableViewCell: UITableViewCell {
     
     func updateUI() {
         if let title = category {
-            roomCategory.text = title
+            roomCategory.text = title.capitalized
         }
     }
 }

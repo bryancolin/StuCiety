@@ -9,6 +9,10 @@ import UIKit
 import Firebase
 import SkeletonView
 
+protocol TableViewInsideCollectionViewDelegate {
+    func cellTaped(room: Room?)
+}
+
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -65,7 +69,7 @@ class HomeViewController: UIViewController {
                 return try? QueryDocumentSnapshot.data(as: Room.self)
             }
 
-            categorizeRooms = Dictionary(grouping: rooms, by: { $0.category })
+            categorizeRooms = Dictionary(grouping: rooms, by: { $0.category.rawValue })
             roomKeys = Array(categorizeRooms.keys.sorted())
             
             DispatchQueue.main.async {
