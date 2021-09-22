@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,10 +20,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="qS6-gg-5cX">
-                                <rect key="frame" x="61.5" y="339.5" width="291" height="217"/>
+                                <rect key="frame" x="61.5" y="338" width="291" height="220.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PLu-lE-pAJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="291" height="116"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="119.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="StuCiety" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="50" translatesAutoresizingMaskIntoConstraints="NO" id="6Ec-J4-9Bn">
                                                 <rect key="frame" x="1" y="0.0" width="289.5" height="95.5"/>
@@ -31,15 +32,15 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place where you connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="CY8-5x-9ai">
-                                                <rect key="frame" x="50" y="95.5" width="191" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <rect key="frame" x="36" y="95.5" width="219.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="SB7-ug-gm6">
-                                        <rect key="frame" x="0.0" y="167" width="291" height="50"/>
+                                        <rect key="frame" x="0.0" y="170.5" width="291" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qjx-xF-WSG">
                                                 <rect key="frame" x="0.0" y="0.0" width="134" height="50"/>
@@ -48,13 +49,14 @@
                                                     <constraint firstAttribute="width" constant="134" id="6xf-No-g22"/>
                                                     <constraint firstAttribute="height" constant="50" id="OYi-QR-C56"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" name="BrandPurple"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
+                                                        <real key="value" value="7.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" name="BrandPurple"/>
@@ -64,14 +66,11 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <segue destination="XIN-Oi-gS1" kind="popoverPresentation" popoverAnchorView="qjx-xF-WSG" id="210-6y-oSC">
-                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                    </segue>
+                                                    <segue destination="XIN-Oi-gS1" kind="presentation" id="210-6y-oSC"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gU6-aq-1aw">
                                                 <rect key="frame" x="157" y="0.0" width="134" height="50"/>
-                                                <color key="backgroundColor" name="BrandPurple"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="134" id="YB4-Dm-bCE"/>
                                                     <constraint firstAttribute="height" constant="50" id="pgS-KE-4P0"/>
@@ -80,17 +79,11 @@
                                                 <state key="normal" title="Register">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="BrandPurple"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <buttonConfiguration key="configuration" style="filled" title="Register">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" name="BrandPurple"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <segue destination="H0B-R7-hza" kind="presentation" id="zEI-RA-duh"/>
                                                 </connections>
@@ -152,11 +145,11 @@
                                                                             <constraint firstAttribute="height" constant="50" id="u7R-By-HbW"/>
                                                                         </constraints>
                                                                         <color key="textColor" name="BrandPurple"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" textContentType="name"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
+                                                                                <real key="value" value="7.5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                                 <real key="value" value="2"/>
@@ -173,11 +166,11 @@
                                                                             <constraint firstAttribute="height" constant="50" id="aF5-36-Q9E"/>
                                                                         </constraints>
                                                                         <color key="textColor" name="BrandPurple"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
+                                                                                <real key="value" value="7.5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                                 <real key="value" value="2"/>
@@ -194,11 +187,11 @@
                                                                             <constraint firstAttribute="height" constant="50" id="EmT-mq-Kav"/>
                                                                         </constraints>
                                                                         <color key="textColor" name="BrandPurple"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
+                                                                                <real key="value" value="7.5"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                                 <real key="value" value="2"/>
@@ -210,7 +203,6 @@
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RK9-Sp-kfN">
                                                                         <rect key="frame" x="0.0" y="222" width="354" height="50"/>
-                                                                        <color key="backgroundColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="80G-ZX-lMF"/>
                                                                         </constraints>
@@ -218,17 +210,11 @@
                                                                         <state key="normal" title="Create">
                                                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                         </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                <real key="value" value="2"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
+                                                                        <buttonConfiguration key="configuration" style="filled" title="Create">
+                                                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                                            <color key="baseForegroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                                            <color key="baseBackgroundColor" name="BrandPurple"/>
+                                                                        </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="registerPressed:" destination="H0B-R7-hza" eventType="touchUpInside" id="piH-0o-2RT"/>
                                                                         </connections>
@@ -378,13 +364,13 @@
                                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="auT-jO-cRj"/>
                                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="nbl-LC-vQF"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                 <state key="normal" title="Perfect!">
                                                                     <color key="titleColor" name="BrandPurple"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="5"/>
+                                                                        <real key="value" value="7.5"/>
                                                                     </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                         <color key="value" name="BrandPurple"/>
@@ -443,7 +429,7 @@
                         <outlet property="imageView" destination="XfE-Vz-jf6" id="iBy-lT-Uko"/>
                         <outlet property="label" destination="evo-1Z-DyH" id="96V-OR-VU1"/>
                         <outlet property="nextButton" destination="9Il-hV-QQd" id="Phd-rU-J7B"/>
-                        <segue destination="KqW-e3-TtX" kind="show" identifier="ProfileToHome" id="hPp-3z-syf"/>
+                        <segue destination="KqW-e3-TtX" kind="presentation" identifier="ProfileToHome" id="hPp-3z-syf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k5V-bM-OT4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -455,30 +441,10 @@
             <objects>
                 <tabBarController modalPresentationStyle="fullScreen" id="KqW-e3-TtX" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="b58-7q-4Ui"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Dh5-TL-gLV" customClass="CustomUITabBar" customModule="StuCiety" customModuleProvider="target">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Dh5-TL-gLV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="selectedImageTintColor" name="BrandPurple"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="0.0" height="-2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="2"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.29999999999999999"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="bAZ-GU-V9D" kind="relationship" relationship="viewControllers" id="Ghu-de-ebx"/>
@@ -500,12 +466,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IL2-B6-dnN">
-                                <rect key="frame" x="0.0" y="61" width="414" height="698"/>
+                                <rect key="frame" x="0.0" y="145" width="414" height="668"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="tintColor" name="BrandPurple"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsReusableCell" id="ap9-Sg-xP3">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ap9-Sg-xP3" id="w5G-ny-4Gd">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -516,16 +482,16 @@
                                 <sections/>
                             </tableView>
                             <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Tz-B0-R6S">
-                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="W0j-3H-0mh">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="703"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="673"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lE9-iT-Vcv">
-                                            <rect key="frame" x="0.0" y="0.0" width="174" height="575"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="545"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yDB-I4-dCy">
-                                                <rect key="frame" x="0.0" y="0.0" width="174" height="575"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="174" height="545"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             </view>
                                             <vibrancyEffect>
@@ -671,16 +637,16 @@
         <!--Account View Controller-->
         <scene sceneID="DrO-3n-uHJ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Dpq-tm-iwB" customClass="AccountViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Dpq-tm-iwB" customClass="AccountViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XkS-Om-OeU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGI-dA-Zzd">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yhF-cx-rzt">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="stuciety_app_icon" translatesAutoresizingMaskIntoConstraints="NO" id="Q1d-VO-Xkt">
                                                 <rect key="frame" x="132" y="50" width="150" height="150"/>
@@ -776,7 +742,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6Nn-Se-bi4">
-                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -801,7 +767,7 @@
         <!--Login-->
         <scene sceneID="Q8j-AJ-YiS">
             <objects>
-                <viewController title="Login" modalPresentationStyle="fullScreen" id="XIN-Oi-gS1" customClass="LoginViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="XIN-Oi-gS1" customClass="LoginViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kFS-21-i56">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -830,51 +796,50 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="wi4-wf-5mw">
                                                                 <rect key="frame" x="30" y="192" width="354" height="206"/>
                                                                 <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bryancolin35@ymail.com" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-70-VUK">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bryancolin35@ymail.com" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="09E-70-VUK">
                                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="50"/>
                                                                         <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="2F6-z4-PO5"/>
                                                                         </constraints>
                                                                         <color key="textColor" name="BrandPurple"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <textInputTraits key="textInputTraits" textContentType="email"/>
                                                                         <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
-                                                                            </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                 <color key="value" name="BrandPurple"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="7.5"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bryancolin12" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3">
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Bryancolin12" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sug-2L-Bv3">
                                                                         <rect key="frame" x="0.0" y="78" width="354" height="50"/>
                                                                         <color key="tintColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="laz-Ka-3Zb"/>
                                                                         </constraints>
                                                                         <color key="textColor" name="BrandPurple"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                                         <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
-                                                                            </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                                 <real key="value" value="2"/>
                                                                             </userDefinedRuntimeAttribute>
                                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                                 <color key="value" name="BrandPurple"/>
                                                                             </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="7.5"/>
+                                                                            </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </textField>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ac2-UK-q1l">
                                                                         <rect key="frame" x="0.0" y="156" width="354" height="50"/>
-                                                                        <color key="backgroundColor" name="BrandPurple"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="50" id="eiF-TD-7Hm"/>
                                                                         </constraints>
@@ -882,17 +847,11 @@
                                                                         <state key="normal" title="Login">
                                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         </state>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                                <real key="value" value="5"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                                <real key="value" value="2"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                                <color key="value" name="BrandPurple"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
+                                                                        <buttonConfiguration key="configuration" style="filled" title="Login">
+                                                                            <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            <color key="baseBackgroundColor" name="BrandPurple"/>
+                                                                        </buttonConfiguration>
                                                                         <connections>
                                                                             <action selector="loginPressed:" destination="XIN-Oi-gS1" eventType="touchUpInside" id="KCj-ju-4BA"/>
                                                                         </connections>
@@ -946,7 +905,7 @@
                         <outlet property="emailTextField" destination="09E-70-VUK" id="XKJ-kE-w4v"/>
                         <outlet property="passwordTextField" destination="Sug-2L-Bv3" id="5kp-hb-Z1W"/>
                         <outlet property="scrollView" destination="S56-0e-SK4" id="egp-Dp-mhN"/>
-                        <segue destination="KqW-e3-TtX" kind="show" identifier="LoginToHome" id="Ivm-vC-QbZ"/>
+                        <segue destination="KqW-e3-TtX" kind="presentation" identifier="LoginToHome" id="Ivm-vC-QbZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W0H-cw-Sif" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -956,25 +915,25 @@
         <!--Lounge-->
         <scene sceneID="qqn-ss-ZlH">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="ocH-rm-gLU" customClass="HomeViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ocH-rm-gLU" customClass="HomeViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cbP-2H-4Ob">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="KvD-Zl-dsw">
-                                <rect key="frame" x="0.0" y="59" width="414" height="700"/>
+                                <rect key="frame" x="0.0" y="143" width="414" height="670"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoungeTableReusableCell" rowHeight="250" id="oYi-qf-a83" customClass="LoungeTableViewCell" customModule="StuCiety" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="250"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oYi-qf-a83" id="8JU-O3-AjB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-v5-cXA">
-                                                    <rect key="frame" x="20" y="11" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="20" y="11" width="37" height="17"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" name="BrandPurple"/>
                                                     <nil key="highlightedColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -982,7 +941,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HHs-nz-w6c">
-                                                    <rect key="frame" x="0.0" y="36" width="414" height="214"/>
+                                                    <rect key="frame" x="0.0" y="32.5" width="414" height="217.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="91O-1q-phG">
                                                         <size key="itemSize" width="191" height="165"/>
@@ -992,7 +951,7 @@
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="LoungeCollectionReusableCell" id="czY-s1-7iH" customClass="LoungeCollectionViewCell1" customModule="StuCiety" customModuleProvider="target">
-                                                            <rect key="frame" x="20" y="7" width="200" height="200"/>
+                                                            <rect key="frame" x="20" y="9" width="200" height="200"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="umW-xm-1z2">
                                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
@@ -1075,13 +1034,13 @@
         <!--Counselors-->
         <scene sceneID="aHS-vX-ffk">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="7tU-dq-7uW" customClass="CounselorViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7tU-dq-7uW" customClass="CounselorViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ICU-xq-qvd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Hwl-8J-zA0">
-                                <rect key="frame" x="0.0" y="108" width="414" height="651"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -1107,22 +1066,22 @@
         <!--Counselor Details View Controller-->
         <scene sceneID="vgn-ym-zej">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="9Nk-aV-fzT" customClass="CounselorDetailsViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="9Nk-aV-fzT" customClass="CounselorDetailsViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fec-LB-yNz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="846"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="947"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WVQ-Ly-ga4">
-                                <rect key="frame" x="0.0" y="56" width="414" height="736"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="825"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCl-Qb-XrP">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1000"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iB-nJ-8gI">
-                                                <rect key="frame" x="0.0" y="301" width="414" height="699"/>
+                                                <rect key="frame" x="0.0" y="295" width="414" height="705"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gO-H2-G0Q" userLabel="Bar">
-                                                <rect key="frame" x="30" y="301" width="354" height="2"/>
+                                                <rect key="frame" x="30" y="295" width="354" height="2"/>
                                                 <color key="backgroundColor" red="0.59999999999999998" green="0.93333333330000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="2" id="ipq-vh-hMO"/>
@@ -1130,8 +1089,8 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="mus-LP-VQQ">
-                                                <rect key="frame" x="30" y="245" width="354" height="36"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                                <rect key="frame" x="30" y="245" width="354" height="30"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1156,8 +1115,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biography" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="X0C-jS-iLG">
-                                                <rect key="frame" x="30" y="323" width="354" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <rect key="frame" x="30" y="317" width="354" height="23"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1167,20 +1126,20 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ze2-QB-Vnb">
-                                                <rect key="frame" x="30" y="364.5" width="354" height="120"/>
+                                                <rect key="frame" x="30" y="360" width="354" height="120"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="120" id="ZPA-Po-FSh"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" red="0.3411764706" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="i4h-yO-Ko8">
-                                                <rect key="frame" x="30" y="589.5" width="354" height="50"/>
+                                                <rect key="frame" x="30" y="582" width="354" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="oF4-tV-JvB"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" red="0.3411764706" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1190,15 +1149,15 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNj-qK-Rr9" userLabel="Bar">
-                                                <rect key="frame" x="30" y="504.5" width="354" height="2"/>
+                                                <rect key="frame" x="30" y="500" width="354" height="2"/>
                                                 <color key="backgroundColor" red="0.59999999999999998" green="0.93333333333333335" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="q4r-0I-lwX"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="cdb-RB-Ywn">
-                                                <rect key="frame" x="30" y="526.5" width="354" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <rect key="frame" x="30" y="522" width="354" height="23"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1208,8 +1167,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="NbK-PB-nND">
-                                                <rect key="frame" x="30" y="558" width="354" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="30" y="555" width="354" height="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1219,8 +1178,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Area" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="9al-Hr-JKs">
-                                                <rect key="frame" x="30" y="649.5" width="354" height="21.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <rect key="frame" x="30" y="642" width="354" height="17"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1230,11 +1189,11 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="hkB-Fv-KYJ">
-                                                <rect key="frame" x="30" y="681" width="354" height="50"/>
+                                                <rect key="frame" x="30" y="669" width="354" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="wDv-6b-HNP"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <color key="textColor" red="0.3411764706" green="0.33725490200000002" blue="0.50588235290000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
@@ -1244,7 +1203,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UEJ-YA-D7W" userLabel="Bar">
-                                                <rect key="frame" x="30" y="741" width="354" height="2"/>
+                                                <rect key="frame" x="30" y="729" width="354" height="2"/>
                                                 <color key="backgroundColor" red="0.59999999999999998" green="0.93333333333333335" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="2" id="7Cm-Ek-2k2"/>
@@ -1252,25 +1211,18 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qtv-Tc-UgL">
-                                                <rect key="frame" x="250" y="763" width="134" height="50"/>
-                                                <color key="backgroundColor" name="BrandPurple"/>
+                                                <rect key="frame" x="250" y="751" width="134" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="scz-1z-POc"/>
                                                     <constraint firstAttribute="width" constant="134" id="ydv-7X-RbW"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                 <state key="normal" title="Let's Chat"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" name="BrandPurple"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                        <real key="value" value="2"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
+                                                <buttonConfiguration key="configuration" style="filled" title="Let's Chat">
+                                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="baseBackgroundColor" name="BrandPurple"/>
+                                                </buttonConfiguration>
                                                 <connections>
                                                     <action selector="buttonPressed:" destination="9Nk-aV-fzT" eventType="touchUpInside" id="VRq-y1-v6e"/>
                                                 </connections>
@@ -1345,7 +1297,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="gyY-nj-UZc"/>
-                    <size key="freeformSize" width="414" height="846"/>
+                    <size key="freeformSize" width="414" height="947"/>
                     <connections>
                         <outlet property="counselorArea" destination="hkB-Fv-KYJ" id="hIk-5O-OgB"/>
                         <outlet property="counselorBio" destination="ze2-QB-Vnb" id="KU2-Kp-B2M"/>
@@ -1357,7 +1309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VuS-X8-wuc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6711.594202898551" y="438.61607142857139"/>
+            <point key="canvasLocation" x="6711.594202898551" y="472.43303571428567"/>
         </scene>
         <!--Counselor Chat View Controller-->
         <scene sceneID="VQA-G3-AKP">
@@ -1428,7 +1380,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="AXL-CM-UFn">
-                                <rect key="frame" x="0.0" y="56" width="414" height="703"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="15" minimumInteritemSpacing="15" id="FSl-t7-yoj">
                                     <size key="itemSize" width="150" height="150"/>
@@ -1462,30 +1414,30 @@
         <!--Question Home View Controller-->
         <scene sceneID="UkP-mC-Hfz">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="Tfq-bv-V6N" customClass="QuestionHomeViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="Tfq-bv-V6N" customClass="QuestionHomeViewController" customModule="StuCiety" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aVk-Pw-KQk">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ePC-HA-2lV">
-                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sbC-Qt-N1A">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="752"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ha7-IB-Bpt">
-                                                <rect key="frame" x="45" y="657" width="324" height="50"/>
+                                                <rect key="frame" x="45" y="713" width="324" height="50"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="eUc-mT-JA6"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                 <state key="normal" title="Start">
                                                     <color key="titleColor" name="BrandPurple"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="5"/>
+                                                        <real key="value" value="7.5"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" name="BrandPurple"/>
@@ -1499,7 +1451,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="ioQ-R9-21p">
-                                                <rect key="frame" x="45" y="196" width="324" height="300"/>
+                                                <rect key="frame" x="45" y="224" width="324" height="300"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="0WB-xR-cZf"/>
                                                 </constraints>
@@ -1553,13 +1505,13 @@
         <!--Lounge-->
         <scene sceneID="cOB-Nr-jYl">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="bAZ-GU-V9D" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bAZ-GU-V9D" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Lounge" image="home" landscapeImage="home" largeContentSizeImage="home" id="hRp-bM-gb6">
                         <inset key="largeContentSizeImageInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="VQo-6o-8Fm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" name="BrandPurple"/>
@@ -1579,11 +1531,11 @@
         <!--Counselor-->
         <scene sceneID="KcZ-G8-6VD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="05i-D5-ySk" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="05i-D5-ySk" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Counselor" image="user" landscapeImage="user" largeContentSizeImage="user" id="qcz-4r-C2p"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="cDh-hT-eTJ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" name="BrandPurple"/>
@@ -1603,13 +1555,13 @@
         <!--Settings-->
         <scene sceneID="BTj-bZ-Ku6">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="hfQ-21-511" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hfQ-21-511" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" landscapeImage="settings" largeContentSizeImage="settings" id="1D9-qq-kFp">
                         <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="fsy-MP-bUr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" name="BrandPurple"/>
@@ -1629,13 +1581,13 @@
         <!--Questionnaire-->
         <scene sceneID="1vh-dm-eYF">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="tVD-Ep-SdQ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tVD-Ep-SdQ" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Questionnaire" image="list" landscapeImage="list" largeContentSizeImage="list" id="2KA-eW-pGP">
                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="qXo-xG-5Fh">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <color key="textColor" name="BrandPurple"/>
@@ -1661,19 +1613,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whX-7C-ogB">
-                                <rect key="frame" x="0.0" y="56" width="414" height="786"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFV-7a-DUC" userLabel="Top View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="78.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 of 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2RL-p9-YR4">
-                                                <rect key="frame" x="181" y="29" width="52" height="20.5"/>
+                                                <rect key="frame" x="181" y="32.5" width="52" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tli-vn-heO">
-                                                <rect key="frame" x="267" y="24.5" width="30" height="30"/>
+                                                <rect key="frame" x="267" y="27.5" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="77B-r5-OIb"/>
                                                     <constraint firstAttribute="width" constant="30" id="It3-4a-g6x"/>
@@ -1684,7 +1636,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XDk-ai-cIM">
-                                                <rect key="frame" x="117" y="24.5" width="30" height="30"/>
+                                                <rect key="frame" x="117" y="27.5" width="30" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="30" id="6ea-tL-u5V"/>
                                                     <constraint firstAttribute="height" constant="30" id="tyw-IH-alj"/>
@@ -1705,10 +1657,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Gb-vp-69O" userLabel="MiddleTop View">
-                                        <rect key="frame" x="0.0" y="78.5" width="414" height="471.5"/>
+                                        <rect key="frame" x="0.0" y="85" width="414" height="511.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Questions" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Wmk-U7-0hf">
-                                                <rect key="frame" x="45" y="0.0" width="324" height="441.5"/>
+                                                <rect key="frame" x="45" y="0.0" width="324" height="481.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1722,10 +1674,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CDX-sK-ZXd" userLabel="MiddleBottom View">
-                                        <rect key="frame" x="0.0" y="550" width="414" height="236"/>
+                                        <rect key="frame" x="0.0" y="596.5" width="414" height="255.5"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4WL-uA-0xY">
-                                                <rect key="frame" x="45" y="0.0" width="324" height="191"/>
+                                                <rect key="frame" x="45" y="0.0" width="324" height="210.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <color key="textColor" name="BrandPurple"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1819,9 +1771,10 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="dWT-vT-6tH"/>
-        <segue reference="uGy-mz-xCO"/>
-        <segue reference="hPp-3z-syf"/>
+        <segue reference="wDm-f4-dMv"/>
+        <segue reference="mio-F5-uAv"/>
+        <segue reference="x4t-m2-ZXc"/>
+        <segue reference="Ivm-vC-QbZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="back" width="16.5" height="16.5"/>
