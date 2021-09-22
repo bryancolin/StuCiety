@@ -10,8 +10,8 @@ An iOS app to help university students with their studies during COVID-19 allowi
 
 ## Requirements
 
-- iOS 14.0+
-- Xcode 12.4
+- iOS 15.0+
+- Xcode 13
 
 ## Setup
 
