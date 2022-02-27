@@ -9,13 +9,18 @@ import UIKit
 import Firebase
 import SkeletonView
 
-protocol TableViewInsideCollectionViewDelegate {
+protocol CollectionViewDelegate: AnyObject {
     func cellTaped(room: Room?)
 }
 
 class HomeViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self
+        }
+    }
     
     private let db = Firestore.firestore()
 
@@ -26,9 +31,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         DispatchQueue.global().async {
             DispatchQueue.main.async { [self] in
                 loadRooms()
@@ -38,16 +40,6 @@ class HomeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        tableView.isSkeletonable = true
-        
-        if !categorizeRooms.isEmpty {
-            tableView.showAnimatedGradientSkeleton(usingGradient: K.gradient)
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
-            tableView.hideSkeleton(transition: .crossDissolve(0.25))
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -59,13 +51,11 @@ class HomeViewController: UIViewController {
     }
     
     private func loadRooms() {
-        var rooms: [Room] = []
-        
         db.collection("rooms").getDocuments { [self] (querySnapshot, error) in
             guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
             guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
             
-            rooms = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Room? in
+            let rooms: [Room] = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Room? in
                 return try? QueryDocumentSnapshot.data(as: Room.self)
             }
 
@@ -107,11 +97,20 @@ extension HomeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 250
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let currentTableAnimation: TableAnimation = .fadeIn(duration: 0.5, delay: 0.03)
+        
+        /// fetch the animation from the TableAnimation enum and initialze the TableViewAnimator class
+        let animation = currentTableAnimation.getAnimation()
+        let animator = TableViewAnimator(animation: animation)
+        animator.animate(cell: cell, at: indexPath, in: tableView)
+    }
 }
 
-//MARK: - TableViewInsideCollectionViewDelegate
+//MARK: - CollectionViewDelegate
 
-extension HomeViewController: TableViewInsideCollectionViewDelegate {
+extension HomeViewController: CollectionViewDelegate {
     
     func cellTaped(room: Room?) {
         selectedRoom = room

@@ -11,52 +11,53 @@ import ProgressHUD
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var nameTextField: CustomUITextField!
-    @IBOutlet weak var emailTextField: CustomUITextField!
-    @IBOutlet weak var passwordTextField: CustomUITextField!
+    @IBOutlet weak var nameTextField: CustomUITextField! {
+        didSet {
+            nameTextField.tag = 0
+            nameTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var emailTextField: CustomUITextField! {
+        didSet {
+            emailTextField.tag = 1
+            emailTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var passwordTextField: CustomUITextField! {
+        didSet {
+            passwordTextField.tag = 2
+            passwordTextField.delegate = self
+        }
+    }
     @IBOutlet weak var scrollView: UIScrollView!
     
-    let db = Firestore.firestore()
+    private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        nameTextField.tag = 0
-        emailTextField.tag = 1
-        passwordTextField.tag = 2
-        
-        nameTextField.delegate = self
-        emailTextField.delegate = self
-        passwordTextField.delegate = self
     }
     
     @IBAction func registerPressed(_ sender: UIButton) {
         
         ProgressHUD.show()
         
-        guard nameTextField.text != "" else { return ProgressHUD.showError("Name field is empty") }
+        guard let name = nameTextField.text else { return ProgressHUD.showError("Name field is empty") }
         
-        guard emailTextField.text != "" else { return ProgressHUD.showError("Email field is empty") }
-        guard isValidEmail(emailTextField.text!) else { return ProgressHUD.showError("Email is not valid") }
+        guard let email = emailTextField.text else { return ProgressHUD.showError("Email field is empty") }
+        guard email.isValidEmail() else { return ProgressHUD.showError("Email is not valid") }
         
-        guard passwordTextField.text != "" else { return ProgressHUD.showError("Password field is empty") }
-        guard isValidPassword(passwordTextField.text!) else { return ProgressHUD.showError("Password is not strong enough") }
-        
-        guard let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text else {
-            return ProgressHUD.showError("Something went wrong. Please try again")
-        }
+        guard let password = passwordTextField.text else { return ProgressHUD.showError("Password field is empty") }
+        guard password.isValidPassword() else { return ProgressHUD.showError("Password is not strong enough") }
         
         Auth.auth().createUser(withEmail: email, password: password) {[self] (result, error) in
-            if let e = error {
-                if let errorCode = AuthErrorCode(rawValue: e._code) {
-                    switch errorCode {
-                    case .emailAlreadyInUse:
-                        ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
-                    case .networkError:
-                        ProgressHUD.showFailed("Network error. Please try again.")
-                    default:
-                        ProgressHUD.showFailed("Unknown error occurred")
-                    }
+            if let e = error, let errorCode = AuthErrorCode(rawValue: e._code) {
+                switch errorCode {
+                case .emailAlreadyInUse:
+                    ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
+                case .networkError:
+                    ProgressHUD.showFailed("Network error. Please try again.")
+                default:
+                    ProgressHUD.showFailed("Unknown error occurred")
                 }
             } else {
                 let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
@@ -68,7 +69,8 @@ class RegisterViewController: UIViewController {
                     let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [:])
                     
                     do {
-                        let _ = try db.collection(K.FStore.Student.collectionName).document(result!.user.uid).setData(from: newStudent)
+                        let _ = try db.collection(K.FStore.Student.collectionName).document(result!.user.uid)
+                            .setData(from: newStudent)
                         ProgressHUD.dismiss()
                         performSegue(withIdentifier: K.Segue.register, sender: self)
                     }
@@ -79,16 +81,6 @@ class RegisterViewController: UIViewController {
             }
         }
         
-    }
-    
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        return NSPredicate(format:"SELF MATCHES %@", emailRegEx).evaluate(with: email)
-    }
-    
-    func isValidPassword(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*()\\-_=+{}|?>.<,:;~`’]{8,}$"
-        return NSPredicate(format: "SELF MATCHES %@", passwordRegex).evaluate(with: password)
     }
 }
 

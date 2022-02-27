@@ -11,7 +11,12 @@ import ProgressHUD
 
 class SettingsViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self
+        }
+    }
     @IBOutlet var aboutView: UIView!
     @IBOutlet weak var visualEffectView: UIVisualEffectView!
     var effect: UIVisualEffect!
@@ -21,16 +26,13 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         // Hide Visual Effect
         effect = visualEffectView.effect
         visualEffectView.effect = nil
         visualEffectView.isHidden = true
     }
     
-    func signOut() {
+    private func signOut() {
         do {
             try Auth.auth().signOut()
             view.window?.rootViewController?.dismiss(animated: true, completion: nil)
@@ -39,7 +41,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    func showAbout() {
+    private func showAbout() {
         self.view.addSubview(aboutView)
         aboutView.center = self.view.center
         aboutView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)
@@ -54,7 +56,7 @@ class SettingsViewController: UIViewController {
         }
     }
     
-    @IBAction func quitAbout(_ sender: UIButton) {
+    @IBAction private func quitAbout(_ sender: UIButton) {
         // Add out animation on About Pop Up View
         UIView.animate(withDuration: 0.3, animations: {
             self.aboutView.transform = CGAffineTransform.init(scaleX: 1.3, y: 1.3)

@@ -25,7 +25,8 @@ class ChatViewController: MessagesViewController {
     private var messages: [Message] = []
     
     private let db = Firestore.firestore()
-    private var currentUser: User = Auth.auth().currentUser!
+    private let currentUser: User = Auth.auth().currentUser!
+    private var listener: ListenerRegistration? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +42,11 @@ class ChatViewController: MessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listener?.remove()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -80,9 +86,9 @@ class ChatViewController: MessagesViewController {
     }
     
     private func reloadTable() {
-        DispatchQueue.main.async {
-            self.messagesCollectionView.reloadData()
-            self.messagesCollectionView.scrollToLastItem()
+        DispatchQueue.main.async { [self] in
+            messagesCollectionView.reloadData()
+            messagesCollectionView.scrollToLastItem()
         }
     }
     
@@ -113,8 +119,8 @@ class ChatViewController: MessagesViewController {
     }
     
     private func loadMessages() {
-        db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased()).collection(K.FStore.Message.childCollectionName)
-            .order(by: K.FStore.Message.dateField, descending: false)
+        listener = db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased())
+            .collection(K.FStore.Message.childCollectionName).order(by: K.FStore.Message.dateField, descending: false)
             .addSnapshotListener { [self] (querySnapshot, error) in
                 
                 guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
@@ -136,7 +142,8 @@ class ChatViewController: MessagesViewController {
     
     private func save(_ message: Message) {
         do {
-            let _ = try db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased()).collection(K.FStore.Message.childCollectionName).addDocument(from: message)
+            let _ = try db.collection(K.FStore.Message.collectionName).document(roomTitle.lowercased())
+                .collection(K.FStore.Message.childCollectionName).addDocument(from: message)
             print("Document successfully written!")
         } catch {
             print(error)

@@ -16,14 +16,23 @@ class CounselorDetailsViewController: UIViewController {
     @IBOutlet weak var counselorLicense: UILabel!
     @IBOutlet weak var counselorArea: UILabel!
     
-    var counselorDetails: Counselor?
+    var counselorDetails: Counselor? 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updateUI()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == K.Counselor.Segue.chat {
+            if let destinationVC = segue.destination as? CounselorChatViewController {
+                destinationVC.counselor = counselorDetails
+            }
+        }
+    }
+    
+    private func updateUI() {
         if let counselor = counselorDetails {
-            counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
-            
             counselorName.text = counselor.displayName
             counselorBio.text = counselor.biography
             counselorLicense.text = counselor.license[0] + "\n" + counselor.license[1]
@@ -33,14 +42,7 @@ class CounselorDetailsViewController: UIViewController {
                     counselorArea.text! += ", "
                 }
             }
-        }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == K.Counselor.Segue.chat {
-            if let destinationVC = segue.destination as? CounselorChatViewController {
-                destinationVC.counselor = counselorDetails
-            }
+            counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
         }
     }
     

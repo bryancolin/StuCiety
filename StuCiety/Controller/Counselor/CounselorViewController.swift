@@ -11,20 +11,27 @@ import FirebaseFirestoreSwift
 
 class CounselorViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.dataSource = self
+            tableView.delegate = self
+            tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.Counselor.cellIdentifier)
+        }
+    }
     
-    let db = Firestore.firestore()
-    var counselors: [Counselor] = []
-    var selectedCounselor: Counselor?
+    private let db = Firestore.firestore()
+    private var counselors: [Counselor] = []
+    private var selectedCounselor: Counselor?
+    private var listener: ListenerRegistration? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        tableView.register(UINib(nibName: "CounselorTableViewCell", bundle: nil), forCellReuseIdentifier: K.Counselor.cellIdentifier)
-        tableView.dataSource = self
-        tableView.delegate = self
-        
         loadCounselors()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listener?.remove()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -43,17 +50,18 @@ class CounselorViewController: UIViewController {
     }
     
     func loadCounselors() {
-        db.collection(K.FStore.Counselor.collectionName).addSnapshotListener { [self] (querySnapshot, err) in
-            
-            guard err == nil else { return print("Error getting documents") }
-            guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
-            
-            counselors = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Counselor? in
-                return try? queryDocumentSnapshot.data(as: Counselor.self)
+        listener = db.collection(K.FStore.Counselor.collectionName)
+            .addSnapshotListener { [self] (querySnapshot, err) in
+                
+                guard err == nil else { return print("Error getting documents") }
+                guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
+                
+                counselors = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Counselor? in
+                    return try? queryDocumentSnapshot.data(as: Counselor.self)
+                }
+                
+                tableView.reloadData()
             }
-            
-            tableView.reloadData()
-        }
     }
 }
 

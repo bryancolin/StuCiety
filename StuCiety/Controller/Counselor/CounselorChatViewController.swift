@@ -24,6 +24,7 @@ class CounselorChatViewController: MessagesViewController {
     
     private let db = Firestore.firestore()
     private var currentUser: User = Auth.auth().currentUser!
+    private var listener: ListenerRegistration? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,11 @@ class CounselorChatViewController: MessagesViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         IQKeyboardManager.shared.enable = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        listener?.remove()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -67,7 +73,7 @@ class CounselorChatViewController: MessagesViewController {
     }
     
     private func loadMessages() {
-        db.collection(K.FStore.Counselor.collectionName).document(counselor?.id ?? "")
+        listener = db.collection(K.FStore.Counselor.collectionName).document(counselor?.id ?? "")
             .collection(K.FStore.Counselor.firstChildCollectionName).document(currentUser.uid)
             .collection(K.FStore.Counselor.secondChildCollectionName)
             .order(by: K.FStore.Message.dateField, descending: false)

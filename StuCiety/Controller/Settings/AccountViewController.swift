@@ -12,7 +12,12 @@ import ProgressHUD
 
 class AccountViewController: UIViewController {
     
-    @IBOutlet weak var profilePicture: UIImageView!
+    @IBOutlet weak var profilePicture: UIImageView! {
+        didSet {
+            profilePicture.layer.cornerRadius = profilePicture.frame.height/2
+            profilePicture.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var nameLabel: UILabel!
     
     private let storage = Storage.storage().reference()
@@ -22,9 +27,6 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        profilePicture.layer.cornerRadius = profilePicture.frame.height/2
-        profilePicture.clipsToBounds = true
         
         if let user = currentUser {
             nameLabel.text = user.displayName

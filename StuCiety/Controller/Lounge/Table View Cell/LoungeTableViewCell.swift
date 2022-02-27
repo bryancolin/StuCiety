@@ -9,12 +9,24 @@ import UIKit
 
 class LoungeTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var roomCategory: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.dataSource = self
+            collectionView.delegate = self
+            
+            collectionView.register(UINib(nibName: "LoungeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Lounge.collectionCellIdentifier)
+        }
+    }
+    @IBOutlet weak var roomCategory: UILabel! {
+        didSet {
+            roomCategory.lastLineFillPercent = 50
+            roomCategory.linesCornerRadius = 5
+        }
+    }
     
-    var delegate: TableViewInsideCollectionViewDelegate?
+    weak var delegate: CollectionViewDelegate?
     var rooms: [Room]?
-    var category: String! {
+    var category: String? {
         didSet {
             self.updateUI()
         }
@@ -22,23 +34,11 @@ class LoungeTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
-        collectionView.register(UINib(nibName: "LoungeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: K.Lounge.collectionCellIdentifier)
-        
-        roomCategory.lastLineFillPercent = 50
-        roomCategory.linesCornerRadius = 5
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     
     func updateUI() {
-        if let title = category {
-            roomCategory.text = title.capitalized
+        if let title = category?.capitalized {
+            roomCategory.text = title
         }
     }
 }

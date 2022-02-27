@@ -11,7 +11,11 @@ class QuestionViewController: UIViewController {
     
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var answerTextView: UITextView!
+    @IBOutlet weak var answerTextView: UITextView! {
+        didSet {
+            answerTextView.delegate = self
+        }
+    }
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     
@@ -22,7 +26,6 @@ class QuestionViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "Questions"
-        answerTextView.delegate = self
         
         setSwipeGesture()
         updateUI()

@@ -12,9 +12,14 @@ class CounselorTableViewCell: UITableViewCell {
     
     @IBOutlet weak var counselorName: UILabel!
     @IBOutlet weak var counselorArea: UILabel!
-    @IBOutlet weak var counselorPhoto: UIImageView!
+    @IBOutlet weak var counselorPhoto: UIImageView! {
+        didSet {
+            counselorPhoto.layer.cornerRadius = counselorPhoto.frame.height/2
+            counselorPhoto.clipsToBounds = true
+        }
+    }
 
-    var counselor: Counselor! {
+    var counselor: Counselor? {
         didSet {
             self.updateUI()
         }
@@ -22,16 +27,9 @@ class CounselorTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        counselorPhoto.layer.cornerRadius = counselorPhoto.frame.height/2
-        counselorPhoto.clipsToBounds = true
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
     }
     
-    func updateUI() {
+    private func updateUI() {
         if let counselor = counselor {
             counselorName.text = counselor.displayName
             counselorArea.text = "Area: \(counselor.area[0])"

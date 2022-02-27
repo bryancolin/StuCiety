@@ -10,18 +10,23 @@ import RandomColorSwift
 
 class QuestionnaireCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var completion: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel! {
+        didSet {
+            titleLabel.lastLineFillPercent = 50
+            titleLabel.linesCornerRadius = 5
+        }
+    }
+    @IBOutlet weak var completion: UIImageView! {
+        didSet {
+            completion.skeletonCornerRadius = Float(completion.frame.width/2)
+        }
+    }
     @IBOutlet weak var view: UIView!
     
-    let gradientLayer = CAGradientLayer()
+    private let gradientLayer = CAGradientLayer()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        titleLabel.lastLineFillPercent = 50
-        titleLabel.linesCornerRadius = 5
-        completion.skeletonCornerRadius = Float(completion.frame.width/2)
     }
     
     override func layoutSublayers(of layer: CALayer) {

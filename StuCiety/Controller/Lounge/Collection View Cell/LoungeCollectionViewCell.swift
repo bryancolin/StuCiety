@@ -11,25 +11,29 @@ import RandomColorSwift
 class LoungeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var featuredImageView: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var textLabel: UILabel! {
+        didSet {
+            textLabel.lastLineFillPercent = 50
+            textLabel.linesCornerRadius = 5
+        }
+    }
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var button: UIButton! {
+        didSet {
+            button.skeletonCornerRadius = Float(button.frame.width/2)
+        }
+    }
     
-    var room: Room! {
+    var room: Room? {
         didSet {
             self.updateUI()
         }
     }
     
-    var delegate: TableViewInsideCollectionViewDelegate?
+    weak var delegate: CollectionViewDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        textLabel.lastLineFillPercent = 50
-        textLabel.linesCornerRadius = 5
-        
-        button.skeletonCornerRadius = Float(button.frame.width/2)
     }
     
     func updateUI() {

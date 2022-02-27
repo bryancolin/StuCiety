@@ -79,13 +79,8 @@ class QuestionnaireViewController: UIViewController {
                     document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
                         guard error == nil else { return print("Error getting documents") }
                         guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
-                        
-                        var questions: [Question] = []
-                        for doc in snapshotDocuments {
-                            if let question = Question(no: doc.documentID, dictionary: doc.data()) {
-                                questions.append(question)
-                            }
-                        }
+
+                        let questions: [Question] = snapshotDocuments.compactMap { Question(no: $0.documentID, dictionary: $0.data()) }
                         
                         if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, questions: questions) {
                             questionnaires.append(questionnaire)

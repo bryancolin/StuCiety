@@ -12,7 +12,9 @@ struct Info {
     let title: String
     let description: String
     let image: UIImage
-    
+}
+
+extension Info {
     static func fetchInfo() -> [Info] {
         return [
             Info(title: "COVID-19", description: "Learn How to Stay Safe", image: #imageLiteral(resourceName: "1")),
