@@ -41,17 +41,31 @@ class RegisterViewController: UIViewController {
         
         ProgressHUD.show()
         
-        guard let name = nameTextField.text else { return ProgressHUD.showError("Name field is empty") }
+        guard nameTextField.text != "", let name = nameTextField.text else { return ProgressHUD.showError("Name field is empty") }
         
-        guard let email = emailTextField.text else { return ProgressHUD.showError("Email field is empty") }
-        guard email.isValidEmail() else { return ProgressHUD.showError("Email is not valid") }
+        guard emailTextField.text != "" else { return ProgressHUD.showError("Email field is empty") }
+        guard let email = emailTextField.text, email.isValidEmail() else { return ProgressHUD.showError("Email is not valid") }
         
-        guard let password = passwordTextField.text else { return ProgressHUD.showError("Password field is empty") }
-        guard password.isValidPassword() else { return ProgressHUD.showError("Password is not strong enough") }
+        guard passwordTextField.text != "" else { return ProgressHUD.showError("Password field is empty") }
+        guard let password = passwordTextField.text, password.isValidPassword() else { return ProgressHUD.showError("Password is not strong enough") }
         
-        Auth.auth().createUser(withEmail: email, password: password) {[self] (result, error) in
-            if let e = error, let errorCode = AuthErrorCode(rawValue: e._code) {
-                switch errorCode {
+        Task {
+            do {
+                let result = try await Auth.auth().createUser(withEmail: email, password: password)
+                
+                guard let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() else { return }
+                changeRequest.displayName = name
+                let _ = try await changeRequest.commitChanges()
+                
+                // Create new student
+                let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [:])
+                let _ = try db.collection(K.FStore.Student.collectionName).document(result.user.uid).setData(from: newStudent)
+                
+                performSegue(withIdentifier: K.Segue.register, sender: self)
+                ProgressHUD.dismiss()
+                
+            } catch {
+                switch AuthErrorCode(rawValue: error._code) {
                 case .emailAlreadyInUse:
                     ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
                 case .networkError:
@@ -59,28 +73,8 @@ class RegisterViewController: UIViewController {
                 default:
                     ProgressHUD.showFailed("Unknown error occurred")
                 }
-            } else {
-                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
-                changeRequest?.displayName = name
-                
-                changeRequest?.commitChanges(completion: { error in
-                    guard error == nil else { return ProgressHUD.showFailed("Something went wrong. Please try again.") }
-                    
-                    let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [:])
-                    
-                    do {
-                        let _ = try db.collection(K.FStore.Student.collectionName).document(result!.user.uid)
-                            .setData(from: newStudent)
-                        ProgressHUD.dismiss()
-                        performSegue(withIdentifier: K.Segue.register, sender: self)
-                    }
-                    catch {
-                        print(error)
-                    }
-                })
             }
         }
-        
     }
 }
 

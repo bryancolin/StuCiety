@@ -37,21 +37,22 @@ class LoginViewController: UIViewController {
             return ProgressHUD.showError("Something went wrong. Please try again")
         }
         
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
-            if let e = error, let errorCode = AuthErrorCode(rawValue: e._code) {
-                switch errorCode {
+        Task {
+            do {
+                _ = try await Auth.auth().signIn(withEmail: email, password: password)
+                performSegue(withIdentifier: K.Segue.login, sender: self)
+                ProgressHUD.dismiss()
+            } catch {
+                switch AuthErrorCode(rawValue: error._code)  {
                 case .invalidEmail:
                     ProgressHUD.showFailed("Invalid email. Please try again.")
                 case .wrongPassword:
-                    ProgressHUD.showFailed("Wrong password. Please try again.")
+                    ProgressHUD.showFailed("Wrong Password. Please try again.")
                 case .networkError:
                     ProgressHUD.showFailed("Network error. Please try again.")
                 default:
                     ProgressHUD.showFailed("Unknown error occurred")
                 }
-            } else {
-                self.performSegue(withIdentifier: K.Segue.login, sender: self)
-                ProgressHUD.dismiss()
             }
         }
     }

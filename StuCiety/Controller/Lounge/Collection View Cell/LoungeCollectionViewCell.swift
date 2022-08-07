@@ -30,7 +30,7 @@ class LoungeCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    weak var delegate: CollectionViewDelegate?
+    weak var delegate: CollectionViewCellTapDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

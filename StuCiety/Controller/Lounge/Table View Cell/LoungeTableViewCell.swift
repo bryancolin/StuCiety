@@ -24,7 +24,7 @@ class LoungeTableViewCell: UITableViewCell {
         }
     }
     
-    weak var delegate: CollectionViewDelegate?
+    weak var delegate: CollectionViewCellTapDelegate?
     var rooms: [Room]?
     var category: String? {
         didSet {

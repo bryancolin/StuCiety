@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 import SkeletonView
 
-protocol CollectionViewDelegate: AnyObject {
+protocol CollectionViewCellTapDelegate: AnyObject {
     func cellTaped(room: Room?)
 }
 
@@ -31,10 +31,9 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.global().async {
-            DispatchQueue.main.async { [self] in
-                loadRooms()
-            }
+        Task { [weak self] in
+            await self?.loadRooms()
+            self?.tableView.reloadData()
         }
     }
     
@@ -50,21 +49,17 @@ class HomeViewController: UIViewController {
         }
     }
     
-    private func loadRooms() {
-        db.collection("rooms").getDocuments { [self] (querySnapshot, error) in
-            guard error == nil else { return print("There was an issue retrieving data from Firestore.") }
-            guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
-            
-            let rooms: [Room] = snapshotDocuments.compactMap { (QueryDocumentSnapshot) -> Room? in
+    @MainActor
+    private func loadRooms() async {
+        do {
+            let querySnapshot = try await db.collection("rooms").getDocuments()
+            let rooms = querySnapshot.documents.compactMap { (QueryDocumentSnapshot) -> Room? in
                 return try? QueryDocumentSnapshot.data(as: Room.self)
             }
-
             categorizeRooms = Dictionary(grouping: rooms, by: { $0.category.rawValue })
             roomKeys = Array(categorizeRooms.keys.sorted())
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+        } catch {
+            print("No documents")
         }
     }
 }
@@ -108,9 +103,9 @@ extension HomeViewController: UITableViewDelegate {
     }
 }
 
-//MARK: - CollectionViewDelegate
+//MARK: - CollectionViewCellTapDelegate
 
-extension HomeViewController: CollectionViewDelegate {
+extension HomeViewController: CollectionViewCellTapDelegate {
     
     func cellTaped(room: Room?) {
         selectedRoom = room

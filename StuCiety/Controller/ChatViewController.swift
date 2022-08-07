@@ -74,13 +74,13 @@ class ChatViewController: MessagesViewController {
         performSegue(withIdentifier: K.Lounge.Segue.sideMenu, sender: self)
     }
     
-    func configureMessageCollectionView() {
+    private func configureMessageCollectionView() {
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messagesDataSource = self
     }
     
-    func configureMessageInputBar() {
+    private func configureMessageInputBar() {
         messageInputBar = CustomUIInputBar()
         messageInputBar.delegate = self
     }
