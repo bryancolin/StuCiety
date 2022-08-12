@@ -40,7 +40,7 @@ class QuestionViewController: UIViewController {
         }
     }
     
-    func setSwipeGesture() {
+    private func setSwipeGesture() {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(previousQuestion(_:)))
         swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
@@ -50,14 +50,13 @@ class QuestionViewController: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
     }
     
-    func updateUI() {
-        if let questionnaire = questionnaire {
-            questionNumberLabel.text = "\(questionCount + 1) of \(questionnaire.questions.count)"
-            questionLabel.text = questionnaire.questions[questionCount].text
-            answerTextView.text = questionnaire.questions[questionCount].answer
-            
-            backButton.isHidden = questionCount == 0 ? true : false
-        }
+    private func updateUI() {
+        guard let questionnaire = questionnaire else { return }
+        questionNumberLabel.text = "\(questionCount + 1) of \(questionnaire.questions.count)"
+        questionLabel.text = questionnaire.questions[questionCount].text
+        answerTextView.text = questionnaire.questions[questionCount].answer
+        
+        backButton.isHidden = questionCount == 0 ? true : false
     }
 }
 
@@ -73,7 +72,7 @@ extension QuestionViewController {
     @IBAction func nextQuestion(_ sender: UIButton) {
         answerTextView.endEditing(true)
         questionCount += 1
-        if questionCount < (questionnaire?.questions.count)! {
+        if questionCount < (questionnaire?.questions.count) ?? 0 {
             updateUI()
         } else {
             performSegue(withIdentifier: K.Questionnaire.Segue.finish, sender: self)
@@ -86,7 +85,7 @@ extension QuestionViewController {
 extension QuestionViewController: UITextViewDelegate {
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        if questionCount < (questionnaire?.questions.count)! {
+        if questionCount < (questionnaire?.questions.count) ?? 0 {
             questionnaire?.questions[questionCount].answer = textView.text ?? ""
         }
     }

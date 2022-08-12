@@ -116,13 +116,12 @@ extension SettingsViewController: UITableViewDelegate {
         cell.textLabel?.textAlignment = .left
         cell.backgroundColor = indexPath.row % 2 == 0 ? UIColor(named: K.BrandColors.lightBlue) : .white
         
-        if indexPath.row >= 4 {
-            cell.accessoryType = .none
-            cell.backgroundColor = .white
-            if indexPath.row == 7 {
-                cell.textLabel?.textAlignment = .center
-                cell.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
-            }
-        }
+        guard indexPath.row >= 4 else { return }
+        cell.accessoryType = .none
+        cell.backgroundColor = .white
+        
+        guard indexPath.row == 7 else { return }
+        cell.textLabel?.textAlignment = .center
+        cell.backgroundColor = UIColor(named: K.BrandColors.lightBlue)
     }
 }

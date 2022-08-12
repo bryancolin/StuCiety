@@ -52,14 +52,14 @@ class HomeViewController: UIViewController {
     @MainActor
     private func loadRooms() async {
         do {
-            let querySnapshot = try await db.collection("rooms").getDocuments()
+            let querySnapshot = try await db.collection((K.FStore.Message.collectionName)).getDocuments()
             let rooms = querySnapshot.documents.compactMap { (QueryDocumentSnapshot) -> Room? in
                 return try? QueryDocumentSnapshot.data(as: Room.self)
             }
             categorizeRooms = Dictionary(grouping: rooms, by: { $0.category.rawValue })
             roomKeys = Array(categorizeRooms.keys.sorted())
-        } catch {
-            print("No documents")
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }

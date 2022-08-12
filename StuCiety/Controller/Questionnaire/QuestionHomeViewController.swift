@@ -20,7 +20,7 @@ class QuestionHomeViewController: UIViewController {
     var questionnaire: Questionnaire?
     var previousAnswers: Bool = false
     var questionsAnswered: Bool = false
-    var completionText = "Thank you for your time filling in the questionnaire, we will update your result and notify the counselor."
+    private var completionText = "Thank you for your time filling in the questionnaire, we will update your result and notify the counselor."
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,9 @@ class QuestionHomeViewController: UIViewController {
         self.navigationItem.setHidesBackButton(questionsAnswered, animated: true)
         updateUI()
         
-        loadPreviousAnswer()
+        Task { [weak self] in
+            await self?.loadPreviousAnswer()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,18 +42,19 @@ class QuestionHomeViewController: UIViewController {
         }
     }
     
-    func updateUI() {
-        if let questionnaire = questionnaire {
-            descriptionLabel.text = !questionsAnswered ? questionnaire.description : completionText
-            buttonLabel.setTitle(!questionsAnswered ? "Start" : "Complete", for: .normal)
-        }
+    private func updateUI() {
+        guard let questionnaire = questionnaire else { return }
+        descriptionLabel.text = !questionsAnswered ? questionnaire.description : completionText
+        buttonLabel.setTitle(!questionsAnswered ? "Start" : "Complete", for: .normal)
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         if !questionsAnswered {
             performSegue(withIdentifier: K.Questionnaire.Segue.question, sender: self)
         } else {
-            saveResult()
+            Task { [weak self] in
+                await self?.saveResult()
+            }
             
             let controllers = self.navigationController?.viewControllers
             for vc in controllers! {
@@ -62,54 +65,51 @@ class QuestionHomeViewController: UIViewController {
         }
     }
     
-    func loadPreviousAnswer() {
-        if let user = currentUser, previousAnswers && !questionsAnswered {
-            let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire?.id ?? "-1")
+    private func loadPreviousAnswer() async {
+        guard let user = currentUser, previousAnswers && !questionsAnswered else { return }
+        
+        let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire?.id ?? "-1")
+        
+        do {
+            let querySnapshot = try await dbRef.getDocument()
             
-            dbRef.getDocument {[self] (document, error) in
-                guard let document = document, document.exists else { return print("Document does not exist") }
-                
-                document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments {(querySnapshot, error) in
-                    guard error == nil else { return print("Error getting documents") }
-                    guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
-                    
-                    questionnaire?.questions = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Question? in
-                        return try? queryDocumentSnapshot.data(as: Question.self)
-                    }
-                }
+            let innerQuerySnapshot = try await querySnapshot.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments()
+            questionnaire?.questions = innerQuerySnapshot.documents.compactMap { QueryDocumentSnapshot -> Question? in
+                return try? QueryDocumentSnapshot.data(as: Question.self)
             }
+            
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
-    func saveResult() {
-        if let user = currentUser, let questionnaire = questionnaire {
-            
-            db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "0").updateData([
+    private func saveResult() async {
+        guard let user = currentUser, let questionnaire = questionnaire else { return }
+        
+        do {
+            try await db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "0").updateData([
                 K.FStore.Student.questionnaires: [ questionnaire.id: questionsAnswered ]
-            ]) { error in
-                guard error == nil else { return ProgressHUD.showFailed("Error saving user result") }
-            }
-            
+            ])
+        } catch {
+            ProgressHUD.showFailed("Error saving user result")
+        }
+        
+        do {
             let dbRef = db.collection(K.FStore.Student.collectionName).document(user.uid).collection(K.FStore.Questionnaire.collectionName).document(questionnaire.id)
             
-            dbRef.setData([
+            try await dbRef.setData([
                 K.FStore.Questionnaire.description: questionnaire.description,
                 K.FStore.Questionnaire.createdBy: questionnaire.createdBy,
                 K.FStore.Questionnaire.title: questionnaire.title,
                 K.FStore.Questionnaire.result: ""
-            ]) { error in
-                guard error == nil else { return print("Error getting documents") }
-                
-                for question in questionnaire.questions {
-                    do {
-                        let _ = try dbRef.collection(K.FStore.Questionnaire.childCollectionName).document(question.id ?? "-1").setData(from: question)
-                        print("Document successfully written!")
-                    }
-                    catch {
-                        print(error)
-                    }
-                }
+            ])
+            
+            for question in questionnaire.questions {
+                try dbRef.collection(K.FStore.Questionnaire.childCollectionName).document(question.id ?? "-1").setData(from: question)
+                print("Document successfully written!")
             }
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }

@@ -61,7 +61,7 @@ class QuestionnaireViewController: UIViewController {
         }
     }
     
-    func loadQuestionnaires() {
+    private func loadQuestionnaires() {
         db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").addSnapshotListener {[self] (document, error) in
             questionnaires = []
             
@@ -72,24 +72,27 @@ class QuestionnaireViewController: UIViewController {
                     questionnairesCompletion[id] = complete
                 }
                 
-                db.collection(K.FStore.Questionnaire.collectionName).document(id).getDocument {[self] (document, error) in
-                    guard let document = document, document.exists else { return print("Document does not exist") }
-                    guard let data = document.data() else {return print("Document data not found")}
-                    
-                    document.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments { (querySnapshot, error) in
-                        guard error == nil else { return print("Error getting documents") }
-                        guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
-
-                        let questions: [Question] = snapshotDocuments.compactMap { Question(no: $0.documentID, dictionary: $0.data()) }
-                        
-                        if let questionnaire = Questionnaire(uid: document.documentID, dictionaryField: data, questions: questions) {
-                            questionnaires.append(questionnaire)
-                        }
-                        
-                        collectionView.reloadData()
-                    }
+                Task { [weak self] in
+                    await self?.getQuestionnaire(with: id)
+                    self?.collectionView.reloadData()
                 }
             }
+        }
+    }
+    
+    private func getQuestionnaire(with id: String) async {
+        do {
+            let querySnapshot = try await db.collection(K.FStore.Questionnaire.collectionName).document(id).getDocument()
+            guard querySnapshot.exists else { return print("Document does not exist") }
+            
+            let innerQuerySnapshot = try await querySnapshot.reference.collection(K.FStore.Questionnaire.childCollectionName).getDocuments()
+            let questions = innerQuerySnapshot.documents.compactMap { Question(no: $0.documentID, dictionary: $0.data()) }
+            
+            if let questionnaire = Questionnaire(uid: querySnapshot.documentID, dictionaryField: querySnapshot.data() ?? [:], questions: questions) {
+                questionnaires.append(questionnaire)
+            }
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
 }
