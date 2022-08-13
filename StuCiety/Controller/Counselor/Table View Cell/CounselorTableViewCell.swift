@@ -30,10 +30,9 @@ class CounselorTableViewCell: UITableViewCell {
     }
     
     private func updateUI() {
-        if let counselor = counselor {
-            counselorName.text = counselor.displayName
-            counselorArea.text = "Area: \(counselor.area[0])"
-            counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
-        }
+        guard let counselor = counselor else { return }
+        counselorName.text = counselor.displayName
+        counselorArea.text = "Area: \(counselor.area[0])"
+        counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
     }
 }

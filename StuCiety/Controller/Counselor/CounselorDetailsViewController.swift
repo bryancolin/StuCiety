@@ -32,18 +32,17 @@ class CounselorDetailsViewController: UIViewController {
     }
     
     private func updateUI() {
-        if let counselor = counselorDetails {
-            counselorName.text = counselor.displayName
-            counselorBio.text = counselor.biography
-            counselorLicense.text = counselor.license[0] + "\n" + counselor.license[1]
-            for (index, area) in counselor.area.enumerated() {
-                counselorArea.text! += area
-                if index < counselor.area.count-1 {
-                    counselorArea.text! += ", "
-                }
+        guard let counselor = counselorDetails else { return }
+        counselorName.text = counselor.displayName
+        counselorBio.text = counselor.biography
+        counselorLicense.text = counselor.license[0] + "\n" + counselor.license[1]
+        for (index, area) in counselor.area.enumerated() {
+            counselorArea.text! += area
+            if index < counselor.area.count-1 {
+                counselorArea.text! += ", "
             }
-            counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
         }
+        counselorPhoto.sd_setImage(with: URL(string: counselor.photo))
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {

@@ -22,16 +22,18 @@ class CounselorViewController: UIViewController {
     private let db = Firestore.firestore()
     private var counselors: [Counselor] = []
     private var selectedCounselor: Counselor?
-    private var listener: ListenerRegistration? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCounselors()
+        
+        Task { [weak self] in
+            await self?.loadCounselors()
+            self?.tableView.reloadData()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        listener?.remove()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -49,19 +51,16 @@ class CounselorViewController: UIViewController {
         }
     }
     
-    func loadCounselors() {
-        listener = db.collection(K.FStore.Counselor.collectionName)
-            .addSnapshotListener { [self] (querySnapshot, err) in
-                
-                guard err == nil else { return print("Error getting documents") }
-                guard let snapshotDocuments = querySnapshot?.documents else { return print("No documents") }
-                
-                counselors = snapshotDocuments.compactMap { (queryDocumentSnapshot) -> Counselor? in
-                    return try? queryDocumentSnapshot.data(as: Counselor.self)
-                }
-                
-                tableView.reloadData()
+    @MainActor
+    func loadCounselors() async {
+        do {
+            let querySnapshot = try await db.collection(K.FStore.Counselor.collectionName).getDocuments()
+            counselors = querySnapshot.documents.compactMap { QueryDocumentSnapshot -> Counselor? in
+                return try? QueryDocumentSnapshot.data(as: Counselor.self)
             }
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
 }
 
