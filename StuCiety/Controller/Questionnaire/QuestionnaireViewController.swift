@@ -33,7 +33,9 @@ class QuestionnaireViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadQuestionnaires()
+        Task { [weak self] in
+            await self?.loadQuestionnaires()
+        }
         
         collectionView.prepareSkeleton(completion: { done in
             self.collectionView.showAnimatedGradientSkeleton(usingGradient: K.gradient)
@@ -61,24 +63,27 @@ class QuestionnaireViewController: UIViewController {
         }
     }
     
-    private func loadQuestionnaires() {
-        db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").addSnapshotListener {[self] (document, error) in
+    @MainActor
+    private func loadQuestionnaires() async {
+        do {
+            let document = try await db.collection(K.FStore.Student.collectionName).document(currentUser?.uid ?? "").getDocument()
             questionnaires = []
             
-            guard let document = document, document.exists, let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String: Bool] else { return print("Document does not exist") }
-            
+            guard let questionnairesId = document.get(K.FStore.Student.questionnaires) as? [String: Bool] else { return print("Document does not exist") }
+
             for (id, complete) in questionnairesId {
                 if questionnairesCompletion[id] == nil {
                     questionnairesCompletion[id] = complete
                 }
-                
-                Task { [weak self] in
-                    await self?.getQuestionnaire(with: id)
-                }
+
+                await getQuestionnaire(with: id)
             }
+        } catch let error {
+            print(error.localizedDescription)
         }
     }
     
+    @MainActor
     private func getQuestionnaire(with id: String) async {
         do {
             let querySnapshot = try await db.collection(K.FStore.Questionnaire.collectionName).document(id).getDocument()
