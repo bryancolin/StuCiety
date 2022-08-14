@@ -74,7 +74,6 @@ class QuestionnaireViewController: UIViewController {
                 
                 Task { [weak self] in
                     await self?.getQuestionnaire(with: id)
-                    self?.collectionView.reloadData()
                 }
             }
         }
@@ -91,6 +90,8 @@ class QuestionnaireViewController: UIViewController {
             if let questionnaire = Questionnaire(uid: querySnapshot.documentID, dictionaryField: querySnapshot.data() ?? [:], questions: questions) {
                 questionnaires.append(questionnaire)
             }
+            
+            collectionView.reloadData()
         } catch let error {
             print(error.localizedDescription)
         }

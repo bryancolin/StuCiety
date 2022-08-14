@@ -33,7 +33,6 @@ class HomeViewController: UIViewController {
         
         Task { [weak self] in
             await self?.loadRooms()
-            self?.tableView.reloadData()
         }
     }
     
@@ -58,6 +57,8 @@ class HomeViewController: UIViewController {
             }
             categorizeRooms = Dictionary(grouping: rooms, by: { $0.category.rawValue })
             roomKeys = Array(categorizeRooms.keys.sorted())
+            
+            tableView.reloadData()
         } catch let error {
             print(error.localizedDescription)
         }

@@ -28,7 +28,6 @@ class CounselorViewController: UIViewController {
         
         Task { [weak self] in
             await self?.loadCounselors()
-            self?.tableView.reloadData()
         }
     }
     
@@ -58,6 +57,8 @@ class CounselorViewController: UIViewController {
             counselors = querySnapshot.documents.compactMap { QueryDocumentSnapshot -> Counselor? in
                 return try? QueryDocumentSnapshot.data(as: Counselor.self)
             }
+            
+            tableView.reloadData()
         } catch let error {
             print(error.localizedDescription)
         }

@@ -37,11 +37,10 @@ class LoungeCollectionViewCell: UICollectionViewCell {
     }
     
     func updateUI() {
-        if let room = room {
-            featuredImageView.sd_setImage(with: URL(string: room.photoURL))
-            textLabel.text = room.name
-            view.backgroundColor = randomColor(hue: .random, luminosity: .light)
-        }
+        guard let room = room else { return }
+        featuredImageView.sd_setImage(with: URL(string: room.photoURL))
+        textLabel.text = room.name
+        view.backgroundColor = randomColor(hue: .random, luminosity: .light)
     }
     
     @IBAction func buttonPressed(_ sender: UIButton) {

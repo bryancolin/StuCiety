@@ -37,9 +37,8 @@ class LoungeTableViewCell: UITableViewCell {
     }
     
     func updateUI() {
-        if let title = category?.capitalized {
-            roomCategory.text = title
-        }
+        guard let title = category?.capitalized else { return }
+        roomCategory.text = title
     }
 }
 

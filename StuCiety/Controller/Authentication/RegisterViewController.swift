@@ -11,6 +11,9 @@ import ProgressHUD
 
 class RegisterViewController: UIViewController {
     
+    typealias Result = Bool
+    typealias Error = String
+    
     @IBOutlet weak var nameTextField: CustomUITextField! {
         didSet {
             nameTextField.tag = 0
@@ -49,31 +52,44 @@ class RegisterViewController: UIViewController {
         guard passwordTextField.text != "" else { return ProgressHUD.showError("Password field is empty") }
         guard let password = passwordTextField.text, password.isValidPassword() else { return ProgressHUD.showError("Password is not strong enough") }
         
-        Task {
-            do {
-                let result = try await Auth.auth().createUser(withEmail: email, password: password)
-                
-                guard let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() else { return }
-                changeRequest.displayName = name
-                let _ = try await changeRequest.commitChanges()
-                
-                // Create new student
-                let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [:])
-                let _ = try db.collection(K.FStore.Student.collectionName).document(result.user.uid).setData(from: newStudent)
-                
-                performSegue(withIdentifier: K.Segue.register, sender: self)
+        Task { [weak self] in
+            let args = await self?.handleRegister(name: name, email: email, password: password)
+            
+            if args?.0 ?? false {
+                self?.performSegue(withIdentifier: K.Segue.register, sender: self)
                 ProgressHUD.dismiss()
-                
-            } catch {
-                switch AuthErrorCode(rawValue: error._code) {
-                case .emailAlreadyInUse:
-                    ProgressHUD.showFailed("Email is already registered. Please try again with another email.")
-                case .networkError:
-                    ProgressHUD.showFailed("Network error. Please try again.")
-                default:
-                    ProgressHUD.showFailed("Unknown error occurred")
-                }
+            } else {
+                ProgressHUD.showFailed(args?.1)
             }
+        }
+    }
+    
+    @MainActor
+    private func handleRegister(name: String, email: String, password: String) async -> (Result, Error) {
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            
+            guard let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() else { return (false, "") }
+            changeRequest.displayName = name
+            let _ = try await changeRequest.commitChanges()
+            
+            // Create new student
+            let newStudent = Student(email: email, name: name, photoURL: "", result: "", questionnaires: [:])
+            let _ = try db.collection(K.FStore.Student.collectionName).document(result.user.uid).setData(from: newStudent)
+            
+            return (true, "")
+        } catch {
+            let errorMessage: String
+            switch AuthErrorCode(rawValue: error._code) {
+            case .emailAlreadyInUse:
+                errorMessage = "Email is already registered. Please try again with another email."
+            case .networkError:
+                errorMessage = "Network error. Please try again."
+            default:
+                errorMessage = "Unkown error occured"
+            }
+            
+            return (false, errorMessage)
         }
     }
 }

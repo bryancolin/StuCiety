@@ -11,6 +11,9 @@ import ProgressHUD
 
 class LoginViewController: UIViewController {
     
+    typealias Result = Bool
+    typealias Error = String
+    
     @IBOutlet weak var emailTextField: CustomUITextField! {
         didSet {
             emailTextField.tag = 0
@@ -37,23 +40,36 @@ class LoginViewController: UIViewController {
             return ProgressHUD.showError("Something went wrong. Please try again")
         }
         
-        Task {
-            do {
-                _ = try await Auth.auth().signIn(withEmail: email, password: password)
-                performSegue(withIdentifier: K.Segue.login, sender: self)
+        Task { [weak self] in
+            let args = await self?.handleLogin(with: email, password: password)
+            
+            if args?.0 ?? false {
+                self?.performSegue(withIdentifier: K.Segue.login, sender: self)
                 ProgressHUD.dismiss()
-            } catch {
-                switch AuthErrorCode(rawValue: error._code)  {
-                case .invalidEmail:
-                    ProgressHUD.showFailed("Invalid email. Please try again.")
-                case .wrongPassword:
-                    ProgressHUD.showFailed("Wrong Password. Please try again.")
-                case .networkError:
-                    ProgressHUD.showFailed("Network error. Please try again.")
-                default:
-                    ProgressHUD.showFailed("Unknown error occurred")
-                }
+            } else {
+                ProgressHUD.showFailed(args?.1)
             }
+        }
+    }
+    
+    @MainActor
+    private func handleLogin(with email: String, password: String) async -> (Result, Error) {
+        do {
+            _ = try await Auth.auth().signIn(withEmail: email, password: password)
+            return (true, "")
+        } catch {
+            let errorMessage: String
+            switch AuthErrorCode(rawValue: error._code)  {
+            case .invalidEmail:
+                errorMessage = "Invalid email. Please try again."
+            case .wrongPassword:
+                errorMessage = "Wrong Password. Please try again."
+            case .networkError:
+                errorMessage = "Network error. Please try again."
+            default:
+                errorMessage = "Unknown error occurred"
+            }
+            return (false, errorMessage)
         }
     }
 }
